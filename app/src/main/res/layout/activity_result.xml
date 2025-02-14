@@ -10,7 +10,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="85dp"
         android:elevation="4dp"
         android:padding="24dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
