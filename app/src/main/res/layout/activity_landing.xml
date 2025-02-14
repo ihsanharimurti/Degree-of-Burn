@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient">
+
+    <!-- Dekorasi Salib Transparan -->
+    <ImageView
+        android:id="@+id/decorativeCross"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_cross"
+        android:scaleType="fitCenter" />
+
+    <!-- Dekorasi Stetoskop -->
+    <ImageView
+        android:id="@+id/decorativeStethoscope"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="200dp"
+        android:src="@drawable/ic_stethoscope"
+        android:alpha="1"
+        android:scaleType="fitCenter" />
+
+    <!-- Gambar Dokter -->
+    <ImageView
+        android:id="@+id/imageDoctor"
+        android:layout_width="165dp"
+        android:layout_height="350dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="85dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_doctor" />
+
+    <!-- Judul -->
+
+    <!-- Garis Horizontal -->
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageDoctor"
+        android:layout_marginTop="21dp"
+        android:lineSpacingExtra="4dp"
+        android:text="@string/title_landing"
+        android:layout_marginStart="77dp"
+        android:layout_marginEnd="77dp"
+        android:textAlignment="textStart"
+        android:textColor="#004AAD"
+        android:textSize="30sp"
+        android:fontFamily="@font/poppins_bold"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/horizontalLine"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@id/textTitle"
+        android:layout_marginStart="77dp"
+        android:layout_marginEnd="77dp"
+        android:layout_marginTop="8dp"
+        android:background="#004AAD" />
+
+    <!-- Deskripsi -->
+    <TextView
+        android:id="@+id/textDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/horizontalLine"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="77dp"
+        android:gravity="start"
+        android:text="@string/subtitle_landing"
+        android:textColor="@color/abu_abu_landing"
+        android:fontFamily="@font/lato_regular"
+        android:textSize="11.5sp" />
+
+    <!-- Tombol -->
+    <Button
+        android:id="@+id/buttonNext"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="77dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button_background"
+        android:backgroundTint="#004AAD"
+        android:drawableEnd="@drawable/ic_arrow"
+        android:fontFamily="@font/lato_regular"
+        android:minHeight="35dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="@string/selanjutnya"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="11.5sp" />
+
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@drawable/background_gradient" />
+
+</RelativeLayout>

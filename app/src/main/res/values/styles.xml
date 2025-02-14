@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema atau Gaya Default -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Warna utama -->
+        <item name="colorPrimary">#004AAD</item>
+        <item name="colorPrimaryDark">#003C8A</item>
+        <item name="colorAccent">#82C9F9</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- Gaya Khusus untuk Tombol -->
+    <style name="ButtonNoDefaultStyle" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">@null</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:drawablePadding">8dp</item>
+    </style>
+
+
+    <style name="HintStyle">
+        <item name="android:textSize">11.5sp</item> <!-- Ubah ukuran teks -->
+        <item name="android:textColorHint">@color/abu_abu_landing</item> <!-- Warna teks hint -->
+        <item name="fontFamily">@font/lato_regular</item>
+    </style>
+
+
+    <style name="TextMainTitle">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="TextBigMainTitle">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">48sp</item>
+    </style>
+
+
+
+    <style name="TextSubMainTitle">
+        <item name="android:textColorHint">@color/abu_abu_landing</item>
+        <item name="fontFamily">@font/lato_regular</item>
+        <item name="android:textSize">11.5sp</item>
+    </style>
+
+    <style name="TextSmall">
+        <item name="fontFamily">@font/lato_regular</item>
+        <item name="android:textSize">7sp</item>
+    </style>
+
+
+
+    <style name="CustomBottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+    </style>
+
+    <style name="CustomBottomSheet" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:backgroundDimEnabled">true</item> <!-- Gelapkan background -->
+        <item name="android:backgroundDimAmount">0.5</item> <!-- Transparansi gelap -->
+        <item name="android:windowFullscreen">true</item> <!-- Full-screen -->
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay_NoCorners</item>
+
+    </style>
+
+    <style name="ShapeAppearanceOverlay_NoCorners" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item> <!-- Tanpa sudut melengkung -->
+    </style>
+
+
+    <style name="Theme.App.BottomSheetDialog.FullScreen" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.App.BottomSheetDialog.FullScreen</item>
+    </style>
+
+    <style name="Widget.App.BottomSheetDialog.FullScreen" parent="Widget.Design.BottomSheet.Modal">
+        <item name="behavior_peekHeight">0dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
+    <style name="BottomSheetTransparent" parent="Theme.Design.BottomSheetDialog">
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.3</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+
+    </style>
+
+
+    <style name="margin20">
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+</resources>

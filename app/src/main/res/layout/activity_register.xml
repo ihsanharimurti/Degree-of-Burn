@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+
+<!--    android:elevation="8dp">-->
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    android:padding="16dp"
+    >
+
+
+        <!-- Logo atau Icon di Bagian Atas -->
+        <ImageView
+            android:id="@+id/imageLogo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_logo"
+            android:layout_marginTop="10dp" />
+
+        <!-- Teks Judul -->
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageLogo"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:text="@string/buat_akun_baru"
+            android:textColor="#004AAD"
+            style="@style/TextBigMainTitle"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textTitle"
+            android:gravity="center"
+            android:text="Nama"
+            android:layout_marginHorizontal="65dp"
+            style="@style/TextSubMainTitle" />
+
+        <EditText
+            android:id="@+id/editName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textName"
+            android:layout_marginTop="4dp"
+            android:layout_marginHorizontal="65dp"
+            android:background="@drawable/edittext_background"
+            android:textAppearance="@style/TextSubMainTitle"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/textEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editName"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Email"
+            style="@style/TextSubMainTitle"
+            android:layout_marginHorizontal="65dp" />
+
+        <EditText
+            android:id="@+id/editEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textEmail"
+            android:layout_marginTop="4dp"
+            android:layout_marginHorizontal="65dp"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/edittext_background"
+            android:textAppearance="@style/TextSubMainTitle"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/textPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editEmail"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="No. HP"
+            style="@style/TextSubMainTitle"
+            android:layout_marginHorizontal="65dp" />
+
+        <EditText
+            android:id="@+id/editPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textPhone"
+            android:layout_marginTop="4dp"
+            android:layout_marginHorizontal="65dp"
+            android:inputType="number"
+            android:background="@drawable/edittext_background"
+            android:textAppearance="@style/TextSubMainTitle"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/textPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editPhone"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/password"
+            style="@style/TextSubMainTitle"
+            android:layout_marginHorizontal="65dp" />
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textPassword"
+            android:layout_marginTop="4dp"
+            android:layout_marginHorizontal="65dp"
+            android:inputType="textPassword"
+            android:background="@drawable/edittext_background"
+            android:textAppearance="@style/TextSubMainTitle"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/textConfirmPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editPassword"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/konfirmasi_password"
+            style="@style/TextSubMainTitle"
+            android:layout_marginHorizontal="65dp" />
+
+        <EditText
+            android:id="@+id/editConfirmPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textConfirmPass"
+            android:layout_marginTop="4dp"
+            android:layout_marginHorizontal="65dp"
+            android:background="@drawable/edittext_background"
+            android:textAppearance="@style/TextSubMainTitle"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/textToken"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editConfirmPass"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/token"
+            style="@style/TextSubMainTitle"
+            android:layout_marginHorizontal="65dp" />
+
+        <EditText
+            android:id="@+id/editToken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textToken"
+            android:layout_marginTop="4dp"
+            android:layout_marginHorizontal="65dp"
+            android:inputType="number"
+            android:background="@drawable/edittext_background"
+            android:textAppearance="@style/TextSubMainTitle"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/textTokenInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editToken"
+            android:layout_marginHorizontal="65dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/token_hint"
+            style="@style/TextSmall"
+            android:textColor="#888888" />
+
+
+        <TextView
+            android:id="@+id/textEULA"
+            style="@style/TextSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/buttonLogin"
+            android:layout_marginHorizontal="65dp"
+            android:text="@string/eula"
+            android:textColor="#888888" />
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="65dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="#004AAD"
+            android:background="@drawable/button_background"
+            android:text="@string/daftar"
+            android:textAppearance="@style/TextSubMainTitle"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF" />
+
+
+        <!-- Button (Contoh yang sempat dikomen) -->
+    </RelativeLayout>
+
+
+
