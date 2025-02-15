@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     tools:context=".ui.ImageResultActivity">
 
     <TextView
@@ -20,7 +21,7 @@
         android:id="@+id/linearLayout7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/abu_abu_landing"
+        android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="30dp"
@@ -35,7 +36,7 @@
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:layout_gravity="center"
-            android:src="@drawable/bg_mainbutton" />
+            android:src="@color/abu_abu_landing" />
     </LinearLayout>
 
     <TextView
