@@ -1,135 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:background="@android:color/transparent"
-    android:theme="@style/Theme.App.BottomSheetDialog.FullScreen"
-    android:elevation="8dp">
+    android:paddingTop="16dp">
 
-    <RelativeLayout
-        android:background="@drawable/background_curved"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:background="@drawable/background_curved"
+        >
 
-        <!-- Logo atau Icon di Bagian Atas -->
+        <!-- Teks Judul -->
+
+        <!-- Subjudul -->
+
+        <!-- Input Email/No. HP -->
+
         <ImageView
             android:id="@+id/imageLogo"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
             android:src="@drawable/ic_logo"
-            android:layout_marginTop="80dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Teks Judul -->
-
-        <!-- Subjudul -->
         <TextView
             android:id="@+id/textTitle"
+            style="@style/TextMainTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/imageLogo"
-            android:layout_marginTop="25dp"
-            android:gravity="start"
             android:layout_marginHorizontal="65dp"
+            android:gravity="start"
             android:text="@string/login_text_fragment"
             android:textColor="#004AAD"
-            style="@style/TextMainTitle"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageLogo" />
 
-        <!-- Input Email/No. HP -->
         <TextView
             android:id="@+id/textSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textTitle"
-            android:layout_marginTop="6dp"
-            android:gravity="center"
             android:layout_marginHorizontal="65dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:letterSpacing="0.05"
             android:text="@string/login_desc"
             android:textColor="@color/abu_abu_landing"
-            android:letterSpacing="0.05"
-            android:textSize="11.5sp" />
+            android:textSize="11.5sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.418"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitle" />
 
         <TextView
             android:id="@+id/textEmail"
+            style="@style/TextSubMainTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textSubtitle"
+            android:layout_marginHorizontal="65dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Email/No. HP"
-            android:layout_marginHorizontal="65dp"
-            style="@style/TextSubMainTitle"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textSubtitle" />
 
         <EditText
             android:id="@+id/editEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/textEmail"
-            android:layout_marginTop="4dp"
-            android:hint="@string/email_no_hp"
             android:layout_marginHorizontal="65dp"
-            android:inputType="textEmailAddress"
+            android:layout_marginTop="4dp"
             android:background="@drawable/edittext_background"
+            android:hint="@string/email_no_hp"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
             android:textAppearance="@style/HintStyle"
-            android:padding="10dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textEmail" />
+
+        <!-- Input Password -->
+
+        <!-- Link Lupa Password -->
+
+        <!-- Tombol Masuk -->
+
+        <!-- Link Daftar -->
 
         <TextView
             android:id="@+id/textPassword"
+            style="@style/TextSubMainTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/editEmail"
-            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="65dp"
             android:gravity="center"
             android:text="@string/password"
-            style="@style/TextSubMainTitle"
-            android:layout_marginHorizontal="65dp"
-            />
+            app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.003"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editEmail"
+            app:layout_constraintVertical_bias="0.051" />
 
-        <!-- Input Password -->
         <EditText
             android:id="@+id/editPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/textPassword"
-            android:layout_marginTop="4dp"
-            android:hint="Password"
             android:layout_marginHorizontal="65dp"
-            android:inputType="textPassword"
+            android:layout_marginTop="4dp"
             android:background="@drawable/edittext_background"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="10dp"
             android:textAppearance="@style/HintStyle"
-            android:padding="10dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textPassword" />
 
-        <!-- Link Lupa Password -->
         <TextView
             android:id="@+id/textForgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/editPassword"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="8dp"
-            android:layout_marginHorizontal="65dp"
+            android:layout_marginTop="12dp"
             android:text="@string/lupa_password"
+            android:textColor="#004AAD"
             android:textSize="11.5sp"
-            android:textColor="#004AAD" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.219"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editPassword" />
 
-        <!-- Tombol Masuk -->
         <Button
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/textForgotPassword"
-            android:layout_marginTop="24dp"
-            android:text="@string/login_button"
-            android:backgroundTint="#004AAD"
-            android:textColor="#FFFFFF"
             android:layout_marginHorizontal="65dp"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#004AAD"
+            android:padding="12dp"
+            android:text="@string/login_button"
             android:textAllCaps="false"
-            android:padding="12dp" />
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textForgotPassword" />
 
-        <!-- Link Daftar -->
         <TextView
             android:id="@+id/textRegister"
             android:layout_width="wrap_content"
@@ -137,10 +175,16 @@
             android:layout_below="@id/buttonLogin"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="70dp"
             android:text="@string/belum_punya_akun_daftar_di_sini"
             android:textColor="#666666"
-            android:textSize="11.5sp" />
+            android:textSize="11.5sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
+            app:layout_constraintVertical_bias="0.035" />
 
-    </RelativeLayout>
-</ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

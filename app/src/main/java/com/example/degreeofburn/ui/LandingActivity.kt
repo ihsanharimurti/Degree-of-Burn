@@ -11,12 +11,17 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.degreeofburn.R
+import com.example.degreeofburn.databinding.ActivityLandingBinding
+import com.example.degreeofburn.databinding.FragmentLoginBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class LandingActivity : AppCompatActivity() {
 
+    private val binding by lazy { ActivityLandingBinding.inflate(layoutInflater) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_landing)
+        setContentView(binding.root)
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -50,14 +55,33 @@ class LandingActivity : AppCompatActivity() {
         )
         textView.paint.shader = textShader
 
+        binding.buttonNext.setOnClickListener{
+            showBottomSheet()
+        }
 
 
         // Tombol Selanjutnya
-        val buttonNext: Button = findViewById(R.id.buttonNext)
-        buttonNext.setOnClickListener {
-            // Tampilkan BottomSheetDialogFragment untuk login
-            val loginFragment = LoginFragment()
-            loginFragment.show(supportFragmentManager, "com.example.degreeofburn.ui.LoginFragment")
+//        val openBottomSheet : Button = findViewById(R.id.buttonNext)
+//        openBottomSheet.setOnClickListener  {
+//            val bottomSheet =
+//                LoginFragment()
+//            bottomSheet.show(
+//                supportFragmentManager,
+//                "ModalBottomSheet"
+//            )
+//        }
+
+
+    }
+
+    private fun showBottomSheet() {
+        val sheetDialog=BottomSheetDialog(this, R.style.BottomSheetTransparent)
+        val  sheetBinding = FragmentLoginBinding.inflate(layoutInflater)
+        sheetDialog.apply {
+
+            setContentView(sheetBinding.root)
+            show()
         }
+
     }
 }

@@ -82,13 +82,14 @@
         android:textSize="11.5sp" />
 
     <!-- Tombol -->
+
     <Button
         android:id="@+id/buttonNext"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="77dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="51dp"
         android:background="@drawable/button_background"
         android:backgroundTint="#004AAD"
         android:drawableEnd="@drawable/ic_arrow"

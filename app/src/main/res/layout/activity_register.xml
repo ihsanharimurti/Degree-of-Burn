@@ -197,15 +197,19 @@
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="65dp"
+            android:layout_marginStart="108dp"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#004AAD"
+            android:layout_marginEnd="117dp"
+            android:layout_marginBottom="52dp"
             android:background="@drawable/button_background"
+            android:backgroundTint="#004AAD"
             android:text="@string/daftar"
-            android:textAppearance="@style/TextSubMainTitle"
             android:textAllCaps="false"
+            android:textAppearance="@style/TextSubMainTitle"
             android:textColor="#FFFFFF" />
 
 

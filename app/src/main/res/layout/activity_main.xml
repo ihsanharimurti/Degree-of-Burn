@@ -143,10 +143,12 @@
         android:background="@drawable/background_gradient"
         android:orientation="vertical"
         android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout9"
-        app:layout_constraintHorizontal_bias="0.417"
+        app:layout_constraintHorizontal_bias="0.404"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patient_data_title">
+        app:layout_constraintTop_toBottomOf="@+id/patient_data_title"
+        app:layout_constraintVertical_bias="0.195">
 
         <TextView
             android:layout_width="wrap_content"
@@ -172,6 +174,7 @@
         android:background="@drawable/background_gradient"
         android:orientation="vertical"
         android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout8">
 
@@ -206,14 +209,14 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:contentDescription="Riwayat"
-            android:src="@drawable/ic_history" />
+            android:src="@drawable/ic_profile" />
 
         <ImageButton
             android:id="@+id/home_button"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:contentDescription="Beranda"
-            android:src="@drawable/ic_home" />
+            android:src="@drawable/ic_profile" />
 
         <ImageButton
             android:id="@+id/profile_button"
