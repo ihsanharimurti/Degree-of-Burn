@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/bg_result_act"
     tools:context=".ui.ResultActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -85,7 +85,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/add_patient_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.892"
-        android:background="@color/abu_abu_landing"
+        android:background="@drawable/bg_rect_result"
         app:layout_constraintStart_toEndOf="@+id/add_patient_text"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
         app:layout_constraintVertical_bias="1.0">
@@ -120,7 +120,7 @@
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:layout_marginTop="8dp"
-        android:background="@color/blue_start"
+        android:background="@drawable/bg_rect2_result"
         app:layout_constraintTop_toBottomOf="@+id/add_patient_text"
         tools:layout_editor_absoluteX="0dp">
 
@@ -187,6 +187,7 @@
         android:layout_width="match_parent"
         android:layout_height="280dp"
         android:orientation="horizontal"
+        android:background="@drawable/bg_rect_big_result"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
         app:layout_constraintVertical_bias="0.122"
@@ -200,7 +201,9 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_rect_left_result"
+                >
 
                 <TextView
                     android:id="@+id/textView27"
@@ -261,7 +264,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/white">
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -318,37 +321,44 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_gradient"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
+        android:background="@drawable/bg_btm_menu"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/history_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@null"
             android:contentDescription="Riwayat"
-            android:src="@drawable/ic_profile" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_history_menu" />
 
         <ImageButton
             android:id="@+id/home_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="@null"
             android:contentDescription="Beranda"
-            android:src="@drawable/ic_profile" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_home_menu" />
 
         <ImageButton
             android:id="@+id/profile_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@null"
             android:contentDescription="Profil"
             android:scaleType="fitCenter"
-            android:background="@null"
-            android:src="@drawable/ic_profile" />
+            android:src="@drawable/ic_profile_menu" />
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
