@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/bg_home"
     tools:context=".ui.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-
+        android:background="@drawable/bg_profile_home"
         android:layout_height="85dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,169 +63,215 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/add_patient_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="15dp"
-        android:text="Tambahkan\nPasien\nPenderita\nLuka\nBakar"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/kanan"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.303" />
 
     <LinearLayout
-        android:id="@+id/kanan"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/bg_linear_home"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/add_patient_text"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
-
-        <ImageButton
-            android:id="@+id/add_patient_button"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:background="@null"
-            android:contentDescription="Tambah Pasien"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_add_patient" />
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:src="@drawable/threearrow" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.002">
 
 
-        <TextView
-            android:id="@+id/click_here"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Klik disini"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg_linear_left">
 
+            <TextView
+                android:id="@+id/add_patient_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Tambahkan\nPasien\nPenderita\nLuka\nBakar"
+                android:textColor="@color/blue_start"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/kanan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/add_patient_text"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+            <ImageButton
+                android:id="@+id/add_patient_button"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:background="@null"
+                android:contentDescription="Tambah Pasien"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_add_patient" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/threearrow" />
+
+
+            <TextView
+                android:id="@+id/click_here"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Klik disini"
+                android:textColor="@color/blue_start"
+                android:textSize="16sp" />
+
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
         android:id="@+id/patient_data_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="344dp"
         android:text="Data Pasien"
-        android:textColor="@color/black"
+        android:textColor="@color/blue_start"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kanan" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout8"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="36dp"
-        android:layout_weight="1"
-        android:background="@drawable/background_gradient"
-        android:orientation="vertical"
-        android:padding="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout9"
-        app:layout_constraintHorizontal_bias="0.404"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/bg_rect_left_home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/patient_data_title"
-        app:layout_constraintVertical_bias="0.195">
+        app:layout_constraintVertical_bias="0.138">
 
         <TextView
+            android:id="@+id/textView35"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Jumlah Pasien Hari Ini"
+            android:layout_margin=""
+            android:gravity="center"
+            android:text="Jumlah Pasien\nHari Ini"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.122" />
 
         <TextView
+            android:id="@+id/textView34"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="1"
             android:textColor="@color/black"
             android:textSize="32sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView35" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayout9"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginEnd="48dp"
-        android:background="@drawable/background_gradient"
-        android:orientation="vertical"
-        android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout8"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/bg_rect_right_home"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout8">
+        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patient_data_title"
+        app:layout_constraintVertical_bias="0.138">
 
         <TextView
+            android:id="@+id/textView33"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Jumlah Pasien Total"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.122" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:text="8"
             android:textColor="@color/black"
             android:textSize="32sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView33" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_gradient"
+        android:layout_width="170dp"
+        android:layout_height="70dp"
+        android:background="@drawable/bg_btm_menu"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/history_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@null"
             android:contentDescription="Riwayat"
-            android:src="@drawable/ic_profile" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_history_menu" />
 
         <ImageButton
             android:id="@+id/home_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginHorizontal="25dp"
+            android:background="@null"
             android:contentDescription="Beranda"
-            android:src="@drawable/ic_profile" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_home_menu" />
 
         <ImageButton
             android:id="@+id/profile_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@null"
             android:contentDescription="Profil"
             android:scaleType="fitCenter"
-            android:background="@null"
-            android:src="@drawable/ic_profile" />
+            android:src="@drawable/ic_profile_menu" />
     </LinearLayout>
 
 
