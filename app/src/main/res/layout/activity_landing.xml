@@ -50,10 +50,8 @@
         android:layout_marginStart="77dp"
         android:layout_marginEnd="77dp"
         android:textAlignment="textStart"
-        android:textColor="#004AAD"
-        android:textSize="30sp"
-        android:fontFamily="@font/poppins_bold"
-        android:textStyle="bold" />
+        style="@style/TextBigBlueStyle"
+        />
 
     <View
         android:id="@+id/horizontalLine"
