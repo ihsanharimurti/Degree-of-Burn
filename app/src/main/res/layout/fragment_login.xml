@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/textTitle"
-            style="@style/TextMainTitle"
+            style="@style/Txt30PoppinsBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/imageLogo"
@@ -68,7 +68,7 @@
 
         <TextView
             android:id="@+id/textEmail"
-            style="@style/TextSubMainTitle"
+            style="@style/Txt115AbuLatoReg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/textSubtitle"
@@ -92,7 +92,7 @@
             android:hint="@string/email_no_hp"
             android:inputType="textEmailAddress"
             android:padding="10dp"
-            android:textAppearance="@style/HintStyle"
+            android:textAppearance="@style/Txt115AbuLato"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textEmail" />
@@ -107,7 +107,7 @@
 
         <TextView
             android:id="@+id/textPassword"
-            style="@style/TextSubMainTitle"
+            style="@style/Txt115AbuLatoReg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/editEmail"
@@ -132,7 +132,7 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="10dp"
-            android:textAppearance="@style/HintStyle"
+            android:textAppearance="@style/Txt115AbuLato"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textPassword" />

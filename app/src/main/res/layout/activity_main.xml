@@ -85,14 +85,13 @@
 
             <TextView
                 android:id="@+id/add_patient_text"
+                style="@style/Txt30PoppinsBold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="4dp"
                 android:layout_marginTop="24dp"
                 android:text="Tambahkan\nPasien\nPenderita\nLuka\nBakar"
-                android:textColor="@color/blue_start"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textColor="@color/blue_start" />
 
         </LinearLayout>
 
@@ -112,6 +111,7 @@
                 android:id="@+id/add_patient_button"
                 android:layout_width="180dp"
                 android:layout_height="180dp"
+                android:layout_marginStart="4dp"
                 android:background="@null"
                 android:contentDescription="Tambah Pasien"
                 android:scaleType="fitCenter"
@@ -131,7 +131,9 @@
                 android:layout_gravity="center"
                 android:text="Klik disini"
                 android:textColor="@color/blue_start"
-                android:textSize="16sp" />
+                android:textStyle="bold"
+                style="@style/Txt18LatoBold"
+                />
 
         </LinearLayout>
     </LinearLayout>
@@ -143,12 +145,12 @@
         android:layout_marginTop="344dp"
         android:text="Data Pasien"
         android:textColor="@color/blue_start"
-        android:textSize="30sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        style="@style/Txt30PoppinsBold"
+        />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -167,11 +169,11 @@
             android:id="@+id/textView35"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin=""
             android:gravity="center"
             android:text="Jumlah Pasien\nHari Ini"
-            android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            style="@style/Txt18Lato"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -184,13 +186,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="1"
-            android:textColor="@color/black"
-            android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView35" />
+            app:layout_constraintTop_toBottomOf="@+id/textView35"
+            style="@style/Txt30WhiteLatoReg"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -210,8 +212,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Jumlah Pasien Total"
-            android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            style="@style/Txt18Lato"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -223,18 +226,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="8"
-            android:textColor="@color/black"
-            android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView33" />
+            app:layout_constraintTop_toBottomOf="@+id/textView33"
+            style="@style/Txt30WhiteLatoReg"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="170dp"
+        android:layout_width="190dp"
         android:layout_height="70dp"
         android:background="@drawable/bg_btm_menu"
         android:gravity="center"
@@ -258,7 +261,7 @@
             android:id="@+id/home_button"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginHorizontal="25dp"
+            android:layout_marginHorizontal="30dp"
             android:background="@null"
             android:contentDescription="Beranda"
             android:scaleType="fitCenter"

@@ -19,38 +19,53 @@
     </style>
 
 
-    <style name="HintStyle">
+    <style name="Txt115AbuLato">
         <item name="android:textSize">11.5sp</item> <!-- Ubah ukuran teks -->
         <item name="android:textColorHint">@color/abu_abu_landing</item> <!-- Warna teks hint -->
         <item name="fontFamily">@font/lato_regular</item>
     </style>
 
 
-    <style name="TextMainTitle">
+    <style name="Txt30PoppinsBold">
         <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">30sp</item>
     </style>
 
 
-    <style name="TextBigMainTitle">
+    <style name="Txt48PoppinsBold">
         <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">48sp</item>
     </style>
 
+    <style name="Txt18Lato">
+        <item name="fontFamily">@font/lato_regular</item>
+        <item name="android:textSize">18sp</item>
+    </style>
 
-    <style name="Text48BluePoppins">
+    <style name="Txt18LatoBold">
+        <item name="fontFamily">@font/lato_bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Txt48BluePoppinsBold">
         <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/blue_start</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextSubMainTitle">
+    <style name="Txt115AbuLatoReg">
         <item name="android:textColorHint">@color/abu_abu_landing</item>
         <item name="fontFamily">@font/lato_regular</item>
         <item name="android:textSize">11.5sp</item>
     </style>
 
+
+    <style name="Txt30WhiteLatoReg">
+        <item name="android:textColorHint">@color/white</item>
+        <item name="fontFamily">@font/lato_regular</item>
+        <item name="android:textSize">30dp</item>
+    </style>
 
     <style name="TextSubMainTitleBlue">
         <item name="android:textColor">@color/blue_start</item>
