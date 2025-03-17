@@ -19,9 +19,8 @@
     </style>
 
 
-    <style name="Txt115AbuLato">
+    <style name="Txt115Lato">
         <item name="android:textSize">11.5sp</item> <!-- Ubah ukuran teks -->
-        <item name="android:textColorHint">@color/abu_abu_landing</item> <!-- Warna teks hint -->
         <item name="fontFamily">@font/lato_regular</item>
     </style>
 

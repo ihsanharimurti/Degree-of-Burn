@@ -92,7 +92,7 @@
             android:hint="@string/email_no_hp"
             android:inputType="textEmailAddress"
             android:padding="10dp"
-            android:textAppearance="@style/Txt115AbuLato"
+            android:textAppearance="@style/Txt115Lato"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textEmail" />
@@ -132,7 +132,7 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="10dp"
-            android:textAppearance="@style/Txt115AbuLato"
+            android:textAppearance="@style/Txt115Lato"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textPassword" />

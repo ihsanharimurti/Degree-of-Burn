@@ -265,7 +265,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="350dp"
-        android:layout_height="85dp"
+        android:layout_height="95dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -318,10 +318,10 @@
 
         <Button
             android:id="@+id/button8"
+            style="@style/BtnBody"
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:background="@drawable/bg_rct_btnbody"
-            style="@style/BtnBody"
             android:text="Genital"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -362,15 +362,18 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Button"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_btn_gradient"
+        android:text="Selanjutnya"
+        android:textAllCaps="false"
+        android:textAppearance="@style/Txt115AbuLatoReg"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
         app:layout_constraintVertical_bias="0.977" />
 
 
