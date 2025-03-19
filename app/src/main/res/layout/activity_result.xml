@@ -32,17 +32,17 @@
 
         <TextView
             android:id="@+id/welcome_text"
+            style="@style/Txt115Lato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:paddingStart="4dp"
             android:text="Selamat datang,"
-            android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/profile_icon"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.253" />
+            app:layout_constraintTop_toTopOf="@+id/profile_icon"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/user_name"
@@ -50,15 +50,15 @@
             android:layout_height="wrap_content"
             android:paddingStart="4dp"
             android:text="Susi Susanti"
-            android:textColor="@color/black"
-            android:textSize="18sp"
+            style="@style/Txt18PoppinsBold"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="@color/blue_start"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.015"
+            app:layout_constraintHorizontal_bias="0.016"
             app:layout_constraintStart_toEndOf="@+id/profile_icon"
             app:layout_constraintTop_toBottomOf="@+id/welcome_text"
-            app:layout_constraintVertical_bias="0.2" />
+            app:layout_constraintVertical_bias="1.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -70,9 +70,8 @@
         android:layout_gravity="end"
         android:layout_marginTop="16dp"
         android:text="Hasil\nScanning\nLuka"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:textColor="@color/blue_start"
+        style="@style/Txt30PoppinsBold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,25 +92,56 @@
 
         <TextView
             android:id="@+id/textView24"
+            style="@style/Txt115Lato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="TextView"
+            android:text="Petugas"
+            android:textColor="@color/blue_start"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.741"
+            app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView26"
+            android:id="@+id/textView36"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.741"
+            android:gravity="end"
+            android:layout_marginTop="2dp"
+            android:text="Siva Maharani"
+            android:textColor="@color/white"
+            style="@style/Txt115LatoBold"
+            app:layout_constraintEnd_toEndOf="@+id/textView24"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView24" />
+
+        <TextView
+            android:id="@+id/textView26"
+            style="@style/Txt115Lato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Tindakan"
+            android:layout_marginBottom="2dp"
+            android:textColor="@color/blue_start"
+            app:layout_constraintBottom_toTopOf="@+id/textView37"
+            app:layout_constraintEnd_toEndOf="@+id/textView24"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView36"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textView37"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="18/01/2024"
+            android:textColor="@color/white"
+            style="@style/Txt115LatoBold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView26" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -126,60 +156,72 @@
 
         <TextView
             android:id="@+id/textView20"
+            style="@style/Txt18LatoBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nama : %s"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.197" />
+            app:layout_constraintVertical_bias="0.181" />
 
         <TextView
             android:id="@+id/textView19"
+            style="@style/Txt115Lato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="Berat Badan : %s"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.045"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView20"
             app:layout_constraintTop_toBottomOf="@+id/textView20"
-            app:layout_constraintVertical_bias="0.152" />
+            app:layout_constraintVertical_bias="0.172" />
 
         <TextView
             android:id="@+id/textView21"
+            style="@style/Txt115Lato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="Tinggi Badan : %s"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintHorizontal_bias="0.674"
             app:layout_constraintStart_toEndOf="@+id/textView19"
             app:layout_constraintTop_toTopOf="@+id/textView19" />
 
         <TextView
             android:id="@+id/textView22"
+            style="@style/Txt115Lato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="TextView"
+            android:layout_marginTop="8dp"
+            android:text="Umur : %s"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.045"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView19"
+            app:layout_constraintTop_toBottomOf="@+id/textView19"
+            app:layout_constraintVertical_bias="0.384" />
 
         <TextView
             android:id="@+id/textView23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="Golongan Darah : %s"
+            style="@style/Txt115Lato"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.508"
-            app:layout_constraintStart_toEndOf="@+id/textView22"
-            app:layout_constraintTop_toBottomOf="@+id/textView19"
-            app:layout_constraintVertical_bias="0.461" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView21"
+            app:layout_constraintTop_toTopOf="@+id/textView22"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -207,20 +249,25 @@
 
                 <TextView
                     android:id="@+id/textView27"
+                    style="@style/Txt18LatoBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="TextView"
+                    android:layout_marginTop="4dp"
+                    android:text="TIPE"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView28"
+                    style="@style/Txt48PoppinsBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:text="TextView"
+                    android:layout_marginTop="8dp"
+                    android:text="TIPE 2"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView27" />
@@ -229,32 +276,36 @@
                     android:id="@+id/imageView"
                     android:layout_width="38dp"
                     android:layout_height="35dp"
-                    android:layout_marginTop="76dp"
+                    android:src="@drawable/ic_flame"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.165"
-                    app:srcCompat="@drawable/edittext_background" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView28"
+                    app:layout_constraintVertical_bias="0.046" />
 
                 <TextView
                     android:id="@+id/textView29"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="TextView"
+                    android:text="PERSENTASE"
+                    style="@style/Txt18LatoBold"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
                 <TextView
                     android:id="@+id/textView30"
+                    style="@style/Txt48PoppinsBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="TextView"
+                    android:layout_marginTop="4dp"
+                    android:text="18%"
+                    android:lineSpacingMultiplier="0.7"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.486"
+                    app:layout_constraintHorizontal_bias="0.504"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView29" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -273,35 +324,44 @@
 
                 <TextView
                     android:id="@+id/textView31"
+                    style="@style/Txt18LatoBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="TextView"
+                    android:layout_marginTop="4dp"
+                    android:text="KEBUTUHAN\nCAIRAN"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView32"
+                    style="@style/Txt48PoppinsBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
+                    android:gravity="center"
+                    android:lineSpacingMultiplier="0.7"
+                    android:text="2500\nML"
+                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.453"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView31"
-                    app:layout_constraintVertical_bias="0.424" />
+                    app:layout_constraintVertical_bias="0.271" />
 
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="38dp"
                     android:layout_height="36dp"
+                    android:src="@drawable/ic_water"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView32"
-                    app:layout_constraintVertical_bias="0.829"
-                    app:srcCompat="@drawable/edittext_background" />
+                    app:layout_constraintVertical_bias="0.6" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
@@ -309,10 +369,12 @@
 
     <TextView
         android:id="@+id/textView25"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView"
+        android:text="*Data yang dihasilkan hanya digunakan sebagai data pendukung tindakan medis selanjutnya"
+        android:gravity="center"
+        style="@style/Txt115Lato"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -321,8 +383,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="170dp"
-        android:layout_height="70dp"
+        android:layout_width="190dp"
+        android:layout_height="60dp"
         android:background="@drawable/bg_btm_menu"
         android:gravity="center"
         android:orientation="horizontal"

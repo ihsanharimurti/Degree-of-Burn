@@ -24,6 +24,10 @@
         <item name="fontFamily">@font/lato_regular</item>
     </style>
 
+    <style name="Txt115LatoBold">
+        <item name="android:textSize">11.5sp</item> <!-- Ubah ukuran teks -->
+        <item name="fontFamily">@font/lato_bold</item>
+    </style>
 
     <style name="Txt30PoppinsBold">
         <item name="fontFamily">@font/poppins_bold</item>
@@ -38,6 +42,15 @@
 
     <style name="Txt18Lato">
         <item name="fontFamily">@font/lato_regular</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Txt18Poppins">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="Txt18PoppinsBold">
+        <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">18sp</item>
     </style>
 
@@ -63,6 +76,11 @@
     <style name="Txt30WhiteLatoReg">
         <item name="android:textColorHint">@color/white</item>
         <item name="fontFamily">@font/lato_regular</item>
+        <item name="android:textSize">30dp</item>
+    </style>
+
+    <style name="Txt30LatoBold">
+        <item name="fontFamily">@font/lato_bold</item>
         <item name="android:textSize">30dp</item>
     </style>
 

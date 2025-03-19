@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="@drawable/background_gradient"
+    android:background="@drawable/bg_prfl_act"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.ProfileActivity">
@@ -34,8 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Profil Anda"
-            android:textSize="30sp"
-            android:textStyle="bold"
+            style="@style/Txt30PoppinsBold"
+            android:textColor="@color/blue_start"
             android:layout_gravity="center"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="19dp" />
@@ -54,49 +54,57 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Button"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/bg_btn_gradient"
+        android:text="Selanjutnya"
+        android:textAllCaps="false"
+        android:textAppearance="@style/Txt115AbuLatoReg"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
+        app:layout_constraintVertical_bias="1.0" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout5"
         android:layout_width="250dp"
-        android:layout_height="160dp"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="120dp"
         android:background="@drawable/bg_rect_profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.185">
+        app:layout_constraintVertical_bias="0.118">
 
 
         <TextView
             android:id="@+id/textView13"
+            style="@style/Txt48PoppinsBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="20dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="3"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/textView12"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.578"
             app:layout_constraintStart_toEndOf="@+id/textView12"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/textView12" />
 
         <TextView
             android:id="@+id/textView12"
+            style="@style/Txt30LatoBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="16dp"
-
-            android:padding="20dp"
-            android:text="TextView"
+            android:text="Pasien\nDitangani"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -105,12 +113,15 @@
 
     <TextView
         android:id="@+id/textView9"
+        style="@style/Txt30PoppinsBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="TextView"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:textColor="@color/blue_start"
+        android:text="Siva Maharani"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -118,20 +129,21 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="12dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginVertical="10dp"
+        style="@style/Txt115LatoBold"
+        android:text="ranisiva@gmail.com"
+        android:textColor="@color/blue_start"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout5"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView11"
+        style="@style/Txt115LatoBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="116dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        android:textColor="@color/blue_start"
+        android:text="+628989898989"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout5"
+        app:layout_constraintTop_toTopOf="@+id/textView10" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
