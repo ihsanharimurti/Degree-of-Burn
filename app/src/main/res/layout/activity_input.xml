@@ -133,7 +133,7 @@
         android:layout_width="350dp"
         android:layout_height="25dp"
         android:layout_marginTop="4dp"
-        android:background="@drawable/edittext_background"
+        android:background="@drawable/bg_edittext"
         android:textAppearance="@style/Txt115AbuLatoReg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -147,7 +147,7 @@
         android:layout_width="150dp"
         android:layout_height="25dp"
         android:layout_marginTop="4dp"
-        android:background="@drawable/edittext_background"
+        android:background="@drawable/bg_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView4"
@@ -169,7 +169,7 @@
         android:id="@+id/editTextText"
         android:layout_width="151dp"
         android:layout_height="25dp"
-        android:background="@drawable/edittext_background"
+        android:background="@drawable/bg_edittext"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -192,7 +192,7 @@
         android:id="@+id/editTextText9"
         android:layout_width="151dp"
         android:layout_height="25dp"
-        android:background="@drawable/edittext_background"
+        android:background="@drawable/bg_edittext"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -217,7 +217,7 @@
         android:layout_width="151dp"
         android:layout_height="25dp"
         android:layout_marginTop="4dp"
-        android:background="@drawable/edittext_background"
+        android:background="@drawable/bg_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView0"
@@ -257,7 +257,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:src="@drawable/wound_distribution" />
+            android:src="@drawable/ic_wound_distribution" />
 
 
     </LinearLayout>

@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_curved"
+        android:background="@drawable/bg_curved_fragment"
         >
 
         <!-- Teks Judul -->
@@ -88,7 +88,7 @@
             android:layout_below="@id/textEmail"
             android:layout_marginHorizontal="65dp"
             android:layout_marginTop="4dp"
-            android:background="@drawable/edittext_background"
+            android:background="@drawable/bg_edittext"
             android:hint="@string/email_no_hp"
             android:inputType="textEmailAddress"
             android:padding="10dp"
@@ -128,7 +128,7 @@
             android:layout_below="@id/textPassword"
             android:layout_marginHorizontal="65dp"
             android:layout_marginTop="4dp"
-            android:background="@drawable/edittext_background"
+            android:background="@drawable/bg_edittext"
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="10dp"
