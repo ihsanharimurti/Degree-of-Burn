@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:background="@android:color/transparent"
+    android:background="@drawable/bg_curved_fragment"
     android:paddingTop="16dp">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_curved_fragment"
-        >
-
-        <!-- Teks Judul -->
-
-        <!-- Subjudul -->
-
-        <!-- Input Email/No. HP -->
 
         <ImageView
             android:id="@+id/imageLogo"
@@ -42,6 +28,8 @@
             android:layout_below="@id/imageLogo"
             android:layout_marginHorizontal="65dp"
             android:gravity="start"
+            android:clickable="true"
+            android:focusable="true"
             android:text="@string/login_text_fragment"
             android:textColor="#004AAD"
             android:textStyle="bold"
@@ -76,6 +64,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Email/No. HP"
+            android:textColor="@color/abu_abu_landing"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -88,6 +77,7 @@
             android:layout_below="@id/textEmail"
             android:layout_marginHorizontal="65dp"
             android:layout_marginTop="4dp"
+            android:textColor="@color/abu_abu_landing"
             android:background="@drawable/bg_edittext"
             android:hint="@string/email_no_hp"
             android:inputType="textEmailAddress"
@@ -97,13 +87,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textEmail" />
 
-        <!-- Input Password -->
-
-        <!-- Link Lupa Password -->
-
-        <!-- Tombol Masuk -->
-
-        <!-- Link Daftar -->
 
         <TextView
             android:id="@+id/textPassword"
@@ -114,6 +97,7 @@
             android:layout_marginHorizontal="65dp"
             android:gravity="center"
             android:text="@string/password"
+            android:textColor="@color/abu_abu_landing"
             app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.003"
@@ -130,6 +114,7 @@
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
             android:hint="Password"
+            android:textColor="@color/abu_abu_landing"
             android:inputType="textPassword"
             android:padding="10dp"
             android:textAppearance="@style/Txt115Lato"
@@ -168,23 +153,41 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textForgotPassword" />
 
-        <TextView
-            android:id="@+id/textRegister"
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/buttonLogin"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:text="@string/belum_punya_akun_daftar_di_sini"
-            android:textColor="#666666"
-            android:textSize="11.5sp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
-            app:layout_constraintVertical_bias="0.035" />
+            app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
+            app:layout_constraintStart_toStartOf="@+id/buttonLogin"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLogin">
+
+            <TextView
+                android:id="@+id/textRegister"
+                style="@style/Txt115Lato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/abu_abu_landing"
+                android:text="@string/belum_punya_akun_daftar_di_sini" />
+
+            <TextView
+                android:id="@+id/textlinkreg"
+                style="@style/Txt115Lato"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daftar di sini"
+                android:textColor="@color/blue_start"
+                android:clickable="true"
+                android:focusable="true" />
+
+
+        </LinearLayout>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>

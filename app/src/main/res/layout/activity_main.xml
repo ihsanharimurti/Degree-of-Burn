@@ -11,8 +11,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:paddingTop="16dp"
         android:background="@drawable/bg_profile_home"
-        android:layout_height="85dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -22,43 +23,42 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
 
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="16dp"
             android:contentDescription="Profile Icon"
             android:src="@drawable/ic_profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.488" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/welcome_text"
+            style="@style/Txt115Lato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="8dp"
             android:paddingStart="4dp"
             android:text="Selamat datang,"
             android:textColor="@color/white"
-            style="@style/Txt115Lato"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/profile_icon"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.253" />
+            app:layout_constraintTop_toTopOf="@+id/profile_icon"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/user_name"
+            style="@style/Txt18PoppinsBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="4dp"
             android:text="Siva Maharani"
-            style="@style/Txt18PoppinsBold"
             android:textColor="@color/blue_start"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.015"
-            app:layout_constraintStart_toEndOf="@+id/profile_icon"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/welcome_text"
             app:layout_constraintTop_toBottomOf="@+id/welcome_text"
-            app:layout_constraintVertical_bias="0.2" />
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -85,11 +85,12 @@
 
             <TextView
                 android:id="@+id/add_patient_text"
-                style="@style/Txt30PoppinsBold"
+                style="@style/Txt24PoppinsBold"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="24dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
                 android:text="Tambahkan\nPasien\nPenderita\nLuka\nBakar"
                 android:textColor="@color/blue_start" />
 
@@ -140,17 +141,16 @@
 
     <TextView
         android:id="@+id/patient_data_title"
+        style="@style/Txt30PoppinsBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="344dp"
         android:text="Data Pasien"
+        android:layout_marginTop="10dp"
         android:textColor="@color/blue_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        style="@style/Txt30PoppinsBold"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -185,7 +185,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="1"
+            android:text="%s"
             android:textStyle="bold"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -226,7 +226,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="8"
+            android:text="%s"
             android:textStyle="bold"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -241,14 +241,15 @@
         android:id="@+id/linearLayout2"
         android:layout_width="190dp"
         android:layout_height="60dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/bg_btm_menu"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/constraintLayout3">
 
         <ImageButton
             android:id="@+id/history_button"

@@ -74,14 +74,20 @@ class LandingActivity : AppCompatActivity() {
 
     }
 
+//    private fun showBottomSheet() {
+//        val sheetDialog=BottomSheetDialog(this, R.style.BottomSheetTransparent)
+//        val  sheetBinding = FragmentLoginBinding.inflate(layoutInflater)
+//        sheetDialog.apply {
+//
+//            setContentView(sheetBinding.root)
+//            show()
+//        }
+//
+//    }
+
     private fun showBottomSheet() {
-        val sheetDialog=BottomSheetDialog(this, R.style.BottomSheetTransparent)
-        val  sheetBinding = FragmentLoginBinding.inflate(layoutInflater)
-        sheetDialog.apply {
-
-            setContentView(sheetBinding.root)
-            show()
-        }
-
+        val bottomSheet = LoginFragment()
+        bottomSheet.show(supportFragmentManager, "LoginFragment")
     }
+
 }
