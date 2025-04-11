@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/profile_icon"
+            android:id="@+id/icOfficerProfileMain"
             android:layout_width="50dp"
             android:layout_height="50dp"
 
@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/welcome_text"
+            android:id="@+id/tvWelcomeMain"
             style="@style/Txt115Lato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,12 +40,12 @@
             android:text="Selamat datang,"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/profile_icon"
-            app:layout_constraintTop_toTopOf="@+id/profile_icon"
+            app:layout_constraintStart_toEndOf="@+id/icOfficerProfileMain"
+            app:layout_constraintTop_toTopOf="@+id/icOfficerProfileMain"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/user_name"
+            android:id="@+id/tvOfficerAccMain"
             style="@style/Txt18PoppinsBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,11 +53,11 @@
             android:text="Siva Maharani"
             android:textColor="@color/blue_start"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/profile_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/icOfficerProfileMain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/welcome_text"
-            app:layout_constraintTop_toBottomOf="@+id/welcome_text"
+            app:layout_constraintStart_toStartOf="@+id/tvWelcomeMain"
+            app:layout_constraintTop_toBottomOf="@+id/tvWelcomeMain"
             app:layout_constraintVertical_bias="0.0" />
 
 
@@ -84,7 +84,7 @@
             android:background="@drawable/bg_linear_left">
 
             <TextView
-                android:id="@+id/add_patient_text"
+                android:id="@+id/tvAddPatient"
                 style="@style/Txt24PoppinsBold"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
@@ -105,11 +105,11 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/add_patient_text"
+            app:layout_constraintStart_toEndOf="@+id/tvAddPatient"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
             <ImageButton
-                android:id="@+id/add_patient_button"
+                android:id="@+id/btnAddPatient"
                 android:layout_width="180dp"
                 android:layout_height="180dp"
                 android:layout_marginStart="4dp"
@@ -126,7 +126,7 @@
 
 
             <TextView
-                android:id="@+id/click_here"
+                android:id="@+id/tvClickHere"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -140,7 +140,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/patient_data_title"
+        android:id="@+id/tvPatientDataTitle"
         style="@style/Txt30PoppinsBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -154,7 +154,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+        android:id="@+id/layoutPatientTotalToday"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:background="@drawable/bg_rect_left_home"
@@ -162,11 +162,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patient_data_title"
+        app:layout_constraintTop_toBottomOf="@+id/tvPatientDataTitle"
         app:layout_constraintVertical_bias="0.138">
 
         <TextView
-            android:id="@+id/textView35"
+            android:id="@+id/tvTotalToday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -181,7 +181,7 @@
             app:layout_constraintVertical_bias="0.122" />
 
         <TextView
-            android:id="@+id/textView34"
+            android:id="@+id/tvTotalTodaySum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -191,12 +191,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView35"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalToday"
             style="@style/Txt30WhiteLatoReg"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutPatientTotal"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:background="@drawable/bg_rect_right_home"
@@ -204,11 +205,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patient_data_title"
+        app:layout_constraintTop_toBottomOf="@+id/tvPatientDataTitle"
         app:layout_constraintVertical_bias="0.138">
 
         <TextView
-            android:id="@+id/textView33"
+            android:id="@+id/tvTotalPatient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -223,6 +224,7 @@
             app:layout_constraintVertical_bias="0.122" />
 
         <TextView
+            android:id="@+id/tvTotalSum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -232,7 +234,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView33"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalPatient"
             style="@style/Txt30WhiteLatoReg"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -249,10 +251,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/constraintLayout3">
+        app:layout_constraintTop_toBottomOf="@id/layoutPatientTotal">
 
         <ImageButton
-            android:id="@+id/history_button"
+            android:id="@+id/btnHistoryMain"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:background="@null"
@@ -261,7 +263,7 @@
             android:src="@drawable/ic_history_menu" />
 
         <ImageButton
-            android:id="@+id/home_button"
+            android:id="@+id/btnHomeMain"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginHorizontal="30dp"
@@ -271,7 +273,7 @@
             android:src="@drawable/ic_home_menu" />
 
         <ImageButton
-            android:id="@+id/profile_button"
+            android:id="@+id/btnProfileMain"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:background="@null"

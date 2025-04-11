@@ -40,7 +40,7 @@
 
     <!-- Garis Horizontal -->
     <TextView
-        android:id="@+id/textTitle"
+        android:id="@+id/tvTitleLandingReg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageDoctor"
@@ -57,7 +57,7 @@
         android:id="@+id/horizontalLine"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:layout_below="@id/textTitle"
+        android:layout_below="@id/tvTitleLandingReg"
         android:layout_marginStart="77dp"
         android:layout_marginEnd="77dp"
         android:layout_marginTop="8dp"
@@ -65,7 +65,7 @@
 
     <!-- Deskripsi -->
     <TextView
-        android:id="@+id/textDescription"
+        android:id="@+id/tvDescLanding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/horizontalLine"
@@ -82,7 +82,7 @@
     <!-- Tombol -->
 
     <Button
-        android:id="@+id/buttonNext"
+        android:id="@+id/btnNextLanding"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

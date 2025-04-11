@@ -9,7 +9,7 @@
     android:paddingTop="16dp">
 
         <ImageView
-            android:id="@+id/imageLogo"
+            android:id="@+id/icAppLogoReg"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
@@ -21,11 +21,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textTitle"
+            android:id="@+id/tvTitleLandingReg"
             style="@style/Txt30PoppinsBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imageLogo"
+            android:layout_below="@id/icAppLogoReg"
             android:layout_marginHorizontal="65dp"
             android:gravity="start"
             android:clickable="true"
@@ -35,13 +35,13 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageLogo" />
+            app:layout_constraintTop_toBottomOf="@+id/icAppLogoReg" />
 
         <TextView
-            android:id="@+id/textSubtitle"
+            android:id="@+id/tvNoteLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textTitle"
+            android:layout_below="@id/tvTitleLandingReg"
             android:layout_marginHorizontal="65dp"
             android:layout_marginTop="4dp"
             android:gravity="center"
@@ -52,14 +52,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.418"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleLandingReg" />
 
         <TextView
-            android:id="@+id/textEmail"
+            android:id="@+id/tvEmailLogin"
             style="@style/Txt115AbuLatoReg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textSubtitle"
+            android:layout_below="@id/tvNoteLogin"
             android:layout_marginHorizontal="65dp"
             android:layout_marginTop="20dp"
             android:gravity="center"
@@ -68,13 +68,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textSubtitle" />
+            app:layout_constraintTop_toBottomOf="@+id/tvNoteLogin" />
 
         <EditText
-            android:id="@+id/editEmail"
+            android:id="@+id/inputEmailReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textEmail"
+            android:layout_below="@id/tvEmailLogin"
             android:layout_marginHorizontal="65dp"
             android:layout_marginTop="4dp"
             android:textColor="@color/abu_abu_landing"
@@ -85,31 +85,31 @@
             android:textAppearance="@style/Txt115Lato"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/tvEmailLogin" />
 
 
         <TextView
-            android:id="@+id/textPassword"
+            android:id="@+id/tvPasswordReg"
             style="@style/Txt115AbuLatoReg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editEmail"
+            android:layout_below="@id/inputEmailReg"
             android:layout_marginHorizontal="65dp"
             android:gravity="center"
             android:text="@string/password"
             android:textColor="@color/abu_abu_landing"
-            app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
+            app:layout_constraintBottom_toTopOf="@+id/btnRegister"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.003"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editEmail"
+            app:layout_constraintTop_toBottomOf="@+id/inputEmailReg"
             app:layout_constraintVertical_bias="0.051" />
 
         <EditText
-            android:id="@+id/editPassword"
+            android:id="@+id/inputPasswordReg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textPassword"
+            android:layout_below="@id/tvPasswordReg"
             android:layout_marginHorizontal="65dp"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
@@ -120,13 +120,13 @@
             android:textAppearance="@style/Txt115Lato"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/tvPasswordReg" />
 
         <TextView
-            android:id="@+id/textForgotPassword"
+            android:id="@+id/tvForgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editPassword"
+            android:layout_below="@id/inputPasswordReg"
             android:layout_marginTop="12dp"
             android:text="@string/lupa_password"
             android:textColor="#004AAD"
@@ -134,13 +134,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.219"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/inputPasswordReg" />
 
         <Button
-            android:id="@+id/buttonLogin"
+            android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textForgotPassword"
+            android:layout_below="@id/tvForgotPassword"
             android:layout_marginHorizontal="65dp"
             android:layout_marginTop="32dp"
             android:backgroundTint="#004AAD"
@@ -151,7 +151,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.507"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textForgotPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/tvForgotPassword" />
 
 
         <LinearLayout
@@ -161,12 +161,12 @@
             android:layout_marginTop="5dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
-            app:layout_constraintStart_toStartOf="@+id/buttonLogin"
-            app:layout_constraintTop_toBottomOf="@+id/buttonLogin">
+            app:layout_constraintEnd_toEndOf="@+id/btnRegister"
+            app:layout_constraintStart_toStartOf="@+id/btnRegister"
+            app:layout_constraintTop_toBottomOf="@+id/btnRegister">
 
             <TextView
-                android:id="@+id/textRegister"
+                android:id="@+id/tvDisRegister"
                 style="@style/Txt115Lato"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -175,7 +175,7 @@
                 android:text="@string/belum_punya_akun_daftar_di_sini" />
 
             <TextView
-                android:id="@+id/textlinkreg"
+                android:id="@+id/tvRegister"
                 style="@style/Txt115Lato"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

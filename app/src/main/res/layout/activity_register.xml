@@ -18,7 +18,7 @@
 
         <!-- Logo atau Icon di Bagian Atas -->
         <ImageView
-            android:id="@+id/imageLogo"
+            android:id="@+id/icAppLogoReg"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
@@ -30,190 +30,190 @@
 
         <!-- Teks Judul -->
         <TextView
-            android:id="@+id/textTitle"
+            android:id="@+id/tvTitleLandingReg"
             style="@style/Txt48PoppinsBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imageLogo"
+            android:layout_below="@id/icAppLogoReg"
             android:layout_centerHorizontal="true"
             android:text="@string/buat_akun_baru"
             android:textColor="#004AAD"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageLogo" />
+            app:layout_constraintTop_toBottomOf="@+id/icAppLogoReg" />
 
         <TextView
-            android:id="@+id/textName"
+            android:id="@+id/tvName"
             style="@style/Txt115AbuLatoReg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textTitle"
+            android:layout_below="@id/tvTitleLandingReg"
             android:layout_marginTop="12dp"
             android:gravity="center"
             android:text="Nama"
-            app:layout_constraintStart_toStartOf="@+id/textTitle"
-            app:layout_constraintTop_toBottomOf="@+id/textTitle" />
+            app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitleLandingReg" />
 
         <EditText
-            android:id="@+id/editName"
+            android:id="@+id/inputNameReg"
             android:layout_width="255dp"
             android:layout_height="25dp"
-            android:layout_below="@id/textName"
+            android:layout_below="@id/tvName"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
             android:padding="10dp"
             android:textAppearance="@style/Txt115AbuLatoReg"
-            app:layout_constraintEnd_toEndOf="@+id/textTitle"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitleLandingReg"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textTitle"
-            app:layout_constraintTop_toBottomOf="@+id/textName" />
+            app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
+            app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
         <TextView
-            android:id="@+id/textEmail"
+            android:id="@+id/tvEmailLogin"
             style="@style/Txt115AbuLatoReg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editName"
+            android:layout_below="@id/inputNameReg"
             android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="Email"
-            app:layout_constraintStart_toStartOf="@+id/textTitle"
-            app:layout_constraintTop_toBottomOf="@+id/editName" />
+            app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
+            app:layout_constraintTop_toBottomOf="@+id/inputNameReg" />
 
         <EditText
-            android:id="@+id/editEmail"
+            android:id="@+id/inputEmailReg"
             android:layout_width="255dp"
             android:layout_height="25dp"
-            android:layout_below="@id/textEmail"
+            android:layout_below="@id/tvEmailLogin"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
             android:inputType="textEmailAddress"
             android:padding="10dp"
             android:textAppearance="@style/Txt115AbuLatoReg"
-            app:layout_constraintEnd_toEndOf="@+id/textTitle"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitleLandingReg"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textTitle"
-            app:layout_constraintTop_toBottomOf="@+id/textEmail" />
+            app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmailLogin" />
 
         <TextView
             android:id="@+id/textPhone"
             style="@style/Txt115AbuLatoReg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editEmail"
+            android:layout_below="@id/inputEmailReg"
             android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="No. HP"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textTitle"
-            app:layout_constraintTop_toBottomOf="@+id/editEmail" />
+            app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
+            app:layout_constraintTop_toBottomOf="@+id/inputEmailReg" />
 
         <EditText
-            android:id="@+id/editPhone"
+            android:id="@+id/inputPhoneReg"
             android:layout_width="255dp"
             android:layout_height="25dp"
             android:layout_below="@id/textPhone"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
-            android:inputType="number"
+            android:inputType="phone"
             android:padding="10dp"
             android:textAppearance="@style/Txt115AbuLatoReg"
-            app:layout_constraintEnd_toEndOf="@+id/textTitle"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitleLandingReg"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textTitle"
+            app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
             app:layout_constraintTop_toBottomOf="@+id/textPhone" />
 
         <TextView
-            android:id="@+id/textPassword"
+            android:id="@+id/tvPasswordReg"
             style="@style/Txt115AbuLatoReg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editPhone"
+            android:layout_below="@id/inputPhoneReg"
             android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="@string/password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textTitle"
-            app:layout_constraintTop_toBottomOf="@+id/editPhone" />
+            app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
+            app:layout_constraintTop_toBottomOf="@+id/inputPhoneReg" />
 
         <EditText
-            android:id="@+id/editPassword"
+            android:id="@+id/inputPasswordReg"
             android:layout_width="255dp"
             android:layout_height="25dp"
-            android:layout_below="@id/textPassword"
+            android:layout_below="@id/tvPasswordReg"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
             android:inputType="textPassword"
             android:padding="10dp"
             android:textAppearance="@style/Txt115AbuLatoReg"
-            app:layout_constraintEnd_toEndOf="@+id/textTitle"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitleLandingReg"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textTitle"
-            app:layout_constraintTop_toBottomOf="@+id/textPassword" />
+            app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
+            app:layout_constraintTop_toBottomOf="@+id/tvPasswordReg" />
 
         <TextView
-            android:id="@+id/textConfirmPass"
+            android:id="@+id/tvConfirmPass"
             style="@style/Txt115AbuLatoReg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editPassword"
+            android:layout_below="@id/inputPasswordReg"
             android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="@string/konfirmasi_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/editPassword"
-            app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+            app:layout_constraintStart_toStartOf="@+id/inputPasswordReg"
+            app:layout_constraintTop_toBottomOf="@+id/inputPasswordReg" />
 
         <EditText
-            android:id="@+id/editConfirmPass"
+            android:id="@+id/inputConfirmPass"
             android:layout_width="255dp"
             android:layout_height="25dp"
-            android:layout_below="@id/textConfirmPass"
+            android:layout_below="@id/tvConfirmPass"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
             android:padding="10dp"
             android:textAppearance="@style/Txt115AbuLatoReg"
-            app:layout_constraintEnd_toEndOf="@+id/textTitle"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitleLandingReg"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textTitle"
-            app:layout_constraintTop_toBottomOf="@+id/textConfirmPass" />
+            app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
+            app:layout_constraintTop_toBottomOf="@+id/tvConfirmPass" />
 
         <TextView
-            android:id="@+id/textToken"
+            android:id="@+id/tvToken"
             style="@style/Txt115AbuLatoReg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editConfirmPass"
+            android:layout_below="@id/inputConfirmPass"
             android:layout_marginTop="8dp"
             android:gravity="center"
             android:text="@string/token"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textTitle"
-            app:layout_constraintTop_toBottomOf="@+id/editConfirmPass" />
+            app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
+            app:layout_constraintTop_toBottomOf="@+id/inputConfirmPass" />
 
         <EditText
             android:id="@+id/editToken"
             android:layout_width="255dp"
             android:layout_height="25dp"
-            android:layout_below="@id/textToken"
+            android:layout_below="@id/tvToken"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
             android:inputType="number"
             android:padding="10dp"
             android:textAppearance="@style/Txt115AbuLatoReg"
-            app:layout_constraintEnd_toEndOf="@+id/textTitle"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitleLandingReg"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textTitle"
-            app:layout_constraintTop_toBottomOf="@+id/textToken" />
+            app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
+            app:layout_constraintTop_toBottomOf="@+id/tvToken" />
 
 
         <TextView
-            android:id="@+id/textTokenInfo"
+            android:id="@+id/tvTokenInfo"
             style="@style/TextSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -226,25 +226,25 @@
 
 
         <CheckBox
-            android:id="@+id/textEULA"
+            android:id="@+id/tvEULA"
             style="@style/Txt115Lato"
             android:layout_width="255dp"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/buttonLogin"
+            android:layout_above="@+id/btnRegister"
             android:layout_alignStart="@+id/editToken"
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="12dp"
             android:layoutDirection="rtl"
             android:text="@string/eula"
             android:textColor="#888888"
-            app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
+            app:layout_constraintBottom_toTopOf="@+id/btnRegister"
             app:layout_constraintEnd_toEndOf="@+id/editToken"
             app:layout_constraintStart_toStartOf="@+id/editToken"
-            app:layout_constraintTop_toBottomOf="@+id/textTokenInfo"
+            app:layout_constraintTop_toBottomOf="@+id/tvTokenInfo"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/buttonLogin"
+            android:id="@+id/btnRegister"
             android:layout_width="255dp"
             android:layout_height="30dp"
             android:layout_alignParentStart="true"

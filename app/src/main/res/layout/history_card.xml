@@ -10,7 +10,7 @@
     >
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/tvRecyclerDisPatient"
         style="@style/Txt18LatoBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
         app:layout_constraintVertical_bias="0.192" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/tvRecyclerPatient"
         style="@style/Txt18LatoBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,12 +33,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toTopOf="@+id/textView14"
+        app:layout_constraintStart_toEndOf="@+id/tvRecyclerDisPatient"
+        app:layout_constraintTop_toTopOf="@+id/tvRecyclerDisPatient"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/tvRecyclerDisOfficer"
         style="@style/Txt115LatoBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,11 +47,11 @@
         android:textColor="@color/blue_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintStart_toStartOf="@+id/tvRecyclerDisPatient"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecyclerDisPatient" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/tvRecyclerOfficer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -60,11 +60,11 @@
         style="@style/Txt115LatoBold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintStart_toStartOf="@+id/tvRecyclerDisOfficer"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecyclerDisOfficer" />
 
     <TextView
-        android:id="@+id/textView18"
+        android:id="@+id/tvRecyclerDisDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tanggal Tindakan"
@@ -72,19 +72,20 @@
         android:textColor="@color/blue_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.777"
-        app:layout_constraintStart_toEndOf="@+id/textView15"
-        app:layout_constraintTop_toTopOf="@+id/textView15" />
+        app:layout_constraintStart_toEndOf="@+id/tvRecyclerDisOfficer"
+        app:layout_constraintTop_toTopOf="@+id/tvRecyclerDisOfficer" />
 
     <TextView
+        android:id="@+id/tvRecyclerDate"
         style="@style/Txt115LatoBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="01/01/09000"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/textView18"
+        app:layout_constraintEnd_toEndOf="@+id/tvRecyclerDisDate"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toTopOf="@+id/textView16" />
+        app:layout_constraintStart_toEndOf="@+id/tvRecyclerOfficer"
+        app:layout_constraintTop_toTopOf="@+id/tvRecyclerOfficer" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

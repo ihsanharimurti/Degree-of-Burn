@@ -1,14 +1,11 @@
 package com.example.degreeofburn.ui
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowInsets
-import android.view.WindowManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -124,7 +121,7 @@ class LoginFragment : BottomSheetDialogFragment() {
         }
 
         // Set up login button
-        val loginButton = view.findViewById<Button>(R.id.buttonLogin)
+        val loginButton = view.findViewById<Button>(R.id.btnRegister)
         loginButton.setOnClickListener {
             Log.d("BtnLog", "Btn link clicked")
             Toast.makeText(requireContext(), "Login Button Clicked", Toast.LENGTH_SHORT).show()
@@ -138,7 +135,7 @@ class LoginFragment : BottomSheetDialogFragment() {
         }
 
         // Set up registration link with debug toast
-        val textLinkReg = view.findViewById<TextView>(R.id.textlinkreg)
+        val textLinkReg = view.findViewById<TextView>(R.id.tvRegister)
         textLinkReg.setOnClickListener {
             Log.d("TextLinkReg", "Text link clicked")
             Toast.makeText(requireContext(), "Registration Link Clicked", Toast.LENGTH_SHORT).show()

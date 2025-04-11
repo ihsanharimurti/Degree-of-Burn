@@ -21,7 +21,7 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <ImageButton
-            android:id="@+id/backButton"
+            android:id="@+id/btnBackInput"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@null"
@@ -30,7 +30,7 @@
 
 
         <TextView
-            android:id="@+id/toolbar_title"
+            android:id="@+id/tvTitleProfile"
             style="@style/TextBigBlueStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -56,12 +56,13 @@
         app:layout_constraintTop_toBottomOf="@+id/my_toolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutOfficer"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/tvDisOfficerName"
                 style="@style/TextSubMainTitleBlue"
-                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Petugas :"
@@ -70,6 +71,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tvOfficerName"
                 style="@style/TextSubMainTitleWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -77,7 +79,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.046"
-                app:layout_constraintStart_toEndOf="@+id/textView"
+                app:layout_constraintStart_toEndOf="@+id/tvDisOfficerName"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.512" />
 
@@ -91,8 +93,8 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
+                    android:id="@+id/tvDisDate"
                     style="@style/TextSubMainTitleBlue"
-                    android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
@@ -101,6 +103,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/tvDate"
                     style="@style/TextSubMainTitleWhite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -118,7 +121,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvPatientName"
         style="@style/TextSubMainTitleBlue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -130,7 +133,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <EditText
-        android:id="@+id/Input"
+        android:id="@+id/inputPatientName"
         android:layout_width="350dp"
         android:layout_height="30dp"
         android:layout_marginTop="4dp"
@@ -139,23 +142,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/tvPatientName"
+        app:layout_constraintTop_toBottomOf="@+id/tvPatientName"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/inputPatientWeight"
         android:layout_width="150dp"
         android:layout_height="30dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/bg_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintStart_toStartOf="@+id/tvPatientWeight"
+        app:layout_constraintTop_toBottomOf="@+id/tvPatientWeight" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvPatientWeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -163,11 +166,11 @@
         style="@style/TextSubMainTitleBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/Input"
-        app:layout_constraintTop_toBottomOf="@+id/Input" />
+        app:layout_constraintStart_toStartOf="@+id/inputPatientName"
+        app:layout_constraintTop_toBottomOf="@+id/inputPatientName" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/inputPatientHeight"
         android:layout_width="151dp"
         android:layout_height="30dp"
         android:background="@drawable/bg_edittext"
@@ -175,22 +178,22 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.657"
-        app:layout_constraintStart_toEndOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintStart_toEndOf="@+id/inputPatientWeight"
+        app:layout_constraintTop_toTopOf="@+id/inputPatientWeight" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tvPatientHeight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tinggi Badan"
         style="@style/TextSubMainTitleBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextText"
-        app:layout_constraintTop_toTopOf="@+id/textView4" />
+        app:layout_constraintStart_toStartOf="@+id/inputPatientHeight"
+        app:layout_constraintTop_toTopOf="@+id/tvPatientWeight" />
 
     <EditText
-        android:id="@+id/editTextText9"
+        android:id="@+id/inputPatientBlood"
         android:layout_width="151dp"
         android:layout_height="30dp"
         android:background="@drawable/bg_edittext"
@@ -198,11 +201,11 @@
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.657"
-        app:layout_constraintStart_toEndOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="@+id/editText0" />
+        app:layout_constraintStart_toEndOf="@+id/inputPatientWeight"
+        app:layout_constraintTop_toTopOf="@+id/inputPatientAge" />
 
     <TextView
-        android:id="@+id/textView0"
+        android:id="@+id/tvPatientAge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -210,33 +213,33 @@
         style="@style/TextSubMainTitleBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toStartOf="@+id/inputPatientWeight"
+        app:layout_constraintTop_toBottomOf="@+id/inputPatientWeight" />
 
     <EditText
-        android:id="@+id/editText0"
+        android:id="@+id/inputPatientAge"
         android:layout_width="151dp"
         android:layout_height="30dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/bg_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView0"
-        app:layout_constraintTop_toBottomOf="@+id/textView0" />
+        app:layout_constraintStart_toStartOf="@+id/tvPatientAge"
+        app:layout_constraintTop_toBottomOf="@+id/tvPatientAge" />
 
     <TextView
-        android:id="@+id/textView59"
+        android:id="@+id/tvPatientBlood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Golongan Darah"
         style="@style/TextSubMainTitleBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextText9"
-        app:layout_constraintTop_toTopOf="@+id/textView0" />
+        app:layout_constraintStart_toStartOf="@+id/inputPatientBlood"
+        app:layout_constraintTop_toTopOf="@+id/tvPatientAge" />
 
     <LinearLayout
-        android:id="@+id/linearLayout5"
+        android:id="@+id/layoutDisplayGuide"
         android:layout_width="349dp"
         android:layout_height="228dp"
         android:layout_marginTop="20dp"
@@ -244,8 +247,8 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.03"
-        app:layout_constraintStart_toStartOf="@+id/editText0"
-        app:layout_constraintTop_toBottomOf="@+id/editText0">
+        app:layout_constraintStart_toStartOf="@+id/inputPatientAge"
+        app:layout_constraintTop_toBottomOf="@+id/inputPatientAge">
 
         <TextView
             style="@style/Txt48BluePoppinsBold"
@@ -256,6 +259,7 @@
             android:text="Distribusi Presentase Luka Bakar" />
 
         <ImageView
+            android:id="@+id/imgGuide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -271,12 +275,12 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout5"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+        app:layout_constraintStart_toStartOf="@+id/layoutDisplayGuide"
+        app:layout_constraintTop_toBottomOf="@+id/layoutDisplayGuide"
         app:layout_constraintVertical_bias="0.0">
 
         <Button
-            android:id="@+id/button7"
+            android:id="@+id/btnTorso"
             style="@style/BtnBody"
             android:layout_width="80dp"
             android:layout_height="40dp"
@@ -285,12 +289,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.289"
-            app:layout_constraintStart_toEndOf="@+id/button5"
-            app:layout_constraintTop_toTopOf="@+id/button5"
+            app:layout_constraintStart_toEndOf="@+id/btnHead"
+            app:layout_constraintTop_toTopOf="@+id/btnHead"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/btnHead"
             style="@style/BtnBody"
             android:layout_width="80dp"
             android:layout_height="40dp"
@@ -304,7 +308,7 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/btnArm"
             style="@style/BtnBody"
             android:layout_width="80dp"
             android:layout_height="40dp"
@@ -313,12 +317,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/button7"
-            app:layout_constraintTop_toTopOf="@+id/button5"
+            app:layout_constraintStart_toEndOf="@+id/btnTorso"
+            app:layout_constraintTop_toTopOf="@+id/btnHead"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:id="@+id/button8"
+            android:id="@+id/btnGenital"
             style="@style/BtnBody"
             android:layout_width="80dp"
             android:layout_height="40dp"
@@ -327,12 +331,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/button5"
-            app:layout_constraintTop_toBottomOf="@+id/button5"
+            app:layout_constraintStart_toStartOf="@+id/btnHead"
+            app:layout_constraintTop_toBottomOf="@+id/btnHead"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/button9"
+            android:id="@+id/btnLeg"
             style="@style/BtnBody"
             android:layout_width="80dp"
             android:layout_height="40dp"
@@ -341,12 +345,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/button7"
-            app:layout_constraintTop_toTopOf="@+id/button8"
+            app:layout_constraintStart_toStartOf="@+id/btnTorso"
+            app:layout_constraintTop_toTopOf="@+id/btnGenital"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:id="@+id/button10"
+            android:id="@+id/btnPalm"
             style="@style/BtnBody"
             android:layout_width="80dp"
             android:layout_height="40dp"
@@ -355,15 +359,15 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/button6"
-            app:layout_constraintTop_toTopOf="@+id/button8"
+            app:layout_constraintStart_toStartOf="@+id/btnArm"
+            app:layout_constraintTop_toTopOf="@+id/btnGenital"
             app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnInputNext"
         android:layout_width="350dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"

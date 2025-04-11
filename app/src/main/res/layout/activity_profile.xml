@@ -18,25 +18,25 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        tools:layout_editor_absoluteX="43dp">
+        tools:layout_editor_absoluteX="0dp">
 
         <ImageButton
+            android:id="@+id/btnBackProfile"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@null"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_arrow_back"
-            />
+            android:src="@drawable/ic_arrow_back" />
 
 
         <TextView
-            android:id="@+id/toolbar_title"
+            android:id="@+id/tvTitleProfile"
+            style="@style/Txt30PoppinsBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profil Anda"
-            style="@style/Txt30PoppinsBold"
-            android:textColor="@color/blue_start"
             android:layout_gravity="center"
+            android:text="Profil Anda"
+            android:textColor="@color/blue_start"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="19dp" />
 

@@ -7,13 +7,10 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.degreeofburn.R
 import com.example.degreeofburn.databinding.ActivityLandingBinding
-import com.example.degreeofburn.databinding.FragmentLoginBinding
-import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class LandingActivity : AppCompatActivity() {
 
@@ -41,7 +38,7 @@ class LandingActivity : AppCompatActivity() {
                     )
         }
         // Ambil TextView dari layout
-        val textView: TextView = findViewById(R.id.textTitle)
+        val textView: TextView = findViewById(R.id.tvTitleLandingReg)
 
         // Terapkan LinearGradient pada teks
         val textShader = LinearGradient(
@@ -55,7 +52,7 @@ class LandingActivity : AppCompatActivity() {
         )
         textView.paint.shader = textShader
 
-        binding.buttonNext.setOnClickListener{
+        binding.btnNextLanding.setOnClickListener{
             showBottomSheet()
         }
 
