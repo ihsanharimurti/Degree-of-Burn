@@ -40,18 +40,18 @@ class InputActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
         // Access the back button directly by ID
-        binding.backButton.setOnClickListener {
+        binding.btnBackInput.setOnClickListener {
             onBackPressed()
         }
     }
     private fun setupBodyPartButtons() {
         // Setup individual body part buttons with click listeners
-        val headButton = binding.button5
-        val chestButton = binding.button7
-        val armsButton = binding.button6
-        val genitalButton = binding.button8
-        val legsButton = binding.button9
-        val palmButton = binding.button10
+        val headButton = binding.btnHead
+        val chestButton = binding.btnTorso
+        val armsButton = binding.btnArm
+        val genitalButton = binding.btnGenital
+        val legsButton = binding.btnLeg
+        val palmButton = binding.btnLeg
 
         // Create a list of all body part buttons for easier management
         val bodyPartButtons = listOf(headButton, chestButton, armsButton, genitalButton, legsButton, palmButton)
@@ -85,7 +85,7 @@ class InputActivity : AppCompatActivity() {
     }
 
     private fun setupNextButton() {
-        binding.button2.setOnClickListener {
+        binding.btnInputNext.setOnClickListener {
             if (validateInputs()) {
                 // Save all the input data
                 savePatientData()
@@ -100,32 +100,32 @@ class InputActivity : AppCompatActivity() {
 
     private fun validateInputs(): Boolean {
         // Validate patient name
-        if (binding.Input.text.toString().trim().isEmpty()) {
-            binding.Input.error = "Nama pasien harus diisi"
+        if (binding.inputPatientName.text.toString().trim().isEmpty()) {
+            binding.inputPatientName.error = "Nama pasien harus diisi"
             return false
         }
 
         // Validate weight
-        if (binding.editText.text.toString().trim().isEmpty()) {
-            binding.editText.error = "Berat badan harus diisi"
+        if (binding.inputPatientWeight.text.toString().trim().isEmpty()) {
+            binding.inputPatientWeight.error = "Berat badan harus diisi"
             return false
         }
 
         // Validate height
-        if (binding.editTextText.text.toString().trim().isEmpty()) {
-            binding.editTextText.error = "Tinggi badan harus diisi"
+        if (binding.inputPatientHeight.text.toString().trim().isEmpty()) {
+            binding.inputPatientHeight.error = "Tinggi badan harus diisi"
             return false
         }
 
         // Validate age
-        if (binding.editText0.text.toString().trim().isEmpty()) {
-            binding.editText0.error = "Umur harus diisi"
+        if (binding.inputPatientAge.text.toString().trim().isEmpty()) {
+            binding.inputPatientAge.error = "Umur harus diisi"
             return false
         }
 
         // Validate blood type
-        if (binding.editTextText9.text.toString().trim().isEmpty()) {
-            binding.editTextText9.error = "Golongan darah harus diisi"
+        if (binding.inputPatientBlood.text.toString().trim().isEmpty()) {
+            binding.inputPatientBlood.error = "Golongan darah harus diisi"
             return false
         }
 
@@ -141,11 +141,11 @@ class InputActivity : AppCompatActivity() {
 
     private fun savePatientData() {
         val patientData = hashMapOf(
-            "name" to binding.Input.text.toString(),
-            "weight" to binding.editText.text.toString(),
-            "height" to binding.editTextText.text.toString(),
-            "age" to binding.editText0.text.toString(),
-            "bloodType" to binding.editTextText9.text.toString(),
+            "name" to binding.inputPatientName.text.toString(),
+            "weight" to binding.inputPatientWeight.text.toString(),
+            "height" to binding.inputPatientHeight.text.toString(),
+            "age" to binding.inputPatientAge.text.toString(),
+            "bloodType" to binding.inputPatientBlood.text.toString(),
             "selectedBodyParts" to selectedBodyParts.toList()
         )
 

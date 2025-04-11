@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.degreeofburn.R
 import com.example.degreeofburn.databinding.ActivityLandingBinding
+import com.example.degreeofburn.ui.login.LoginFragment
 
 class LandingActivity : AppCompatActivity() {
 

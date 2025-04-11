@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.degreeofburn.R
+import com.example.degreeofburn.utils.SessionManager
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +39,15 @@ class SplashActivity : AppCompatActivity() {
         }
 
         Handler().postDelayed({
-            val intent= Intent(this@SplashActivity, LandingActivity::class.java)
+            val sessionManager = SessionManager(this)
+            val intent = if (sessionManager.isSessionValid()) {
+                Intent(this@SplashActivity, MainActivity::class.java)
+            } else {
+                Intent(this@SplashActivity, LandingActivity::class.java)
+            }
             startActivity(intent)
+            finish() // optional, biar splash nggak bisa di-back
         }, 3000)
+
     }
 }
