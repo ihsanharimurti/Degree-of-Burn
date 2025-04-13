@@ -17,18 +17,21 @@
 
 
         <!-- Logo atau Icon di Bagian Atas -->
+
+        <!-- Teks Judul -->
+
         <ImageView
             android:id="@+id/icAppLogoReg"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="16dp"
             android:src="@drawable/ic_logo"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Teks Judul -->
         <TextView
             android:id="@+id/tvTitleLandingReg"
             style="@style/Txt48PoppinsBold"
@@ -51,18 +54,19 @@
             android:layout_below="@id/tvTitleLandingReg"
             android:layout_marginTop="12dp"
             android:gravity="center"
-            android:text="Nama"
+            android:text="@string/nama"
             app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
             app:layout_constraintTop_toBottomOf="@+id/tvTitleLandingReg" />
 
         <EditText
             android:id="@+id/inputNameReg"
-            android:layout_width="255dp"
-            android:layout_height="25dp"
+            android:layout_width="260dp"
+            android:layout_height="32dp"
             android:layout_below="@id/tvName"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
             android:padding="10dp"
+            android:hint="Nama Anda"
             android:textAppearance="@style/Txt115AbuLatoReg"
             app:layout_constraintEnd_toEndOf="@+id/tvTitleLandingReg"
             app:layout_constraintHorizontal_bias="0.0"
@@ -83,11 +87,13 @@
 
         <EditText
             android:id="@+id/inputEmailReg"
-            android:layout_width="255dp"
-            android:layout_height="25dp"
+            android:layout_width="260dp"
+            android:layout_height="32dp"
             android:layout_below="@id/tvEmailLogin"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
+
+            android:hint="@string/email_no_hp"
             android:inputType="textEmailAddress"
             android:padding="10dp"
             android:textAppearance="@style/Txt115AbuLatoReg"
@@ -112,13 +118,14 @@
 
         <EditText
             android:id="@+id/inputPhoneReg"
-            android:layout_width="255dp"
-            android:layout_height="25dp"
+            android:layout_width="260dp"
+            android:layout_height="32dp"
             android:layout_below="@id/textPhone"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
             android:inputType="phone"
             android:padding="10dp"
+            android:hint="@string/hint_phone"
             android:textAppearance="@style/Txt115AbuLatoReg"
             app:layout_constraintEnd_toEndOf="@+id/tvTitleLandingReg"
             app:layout_constraintHorizontal_bias="0.0"
@@ -141,12 +148,13 @@
 
         <EditText
             android:id="@+id/inputPasswordReg"
-            android:layout_width="255dp"
-            android:layout_height="25dp"
+            android:layout_width="260dp"
+            android:layout_height="32dp"
             android:layout_below="@id/tvPasswordReg"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
             android:inputType="textPassword"
+            android:hint="@string/password"
             android:padding="10dp"
             android:textAppearance="@style/Txt115AbuLatoReg"
             app:layout_constraintEnd_toEndOf="@+id/tvTitleLandingReg"
@@ -170,12 +178,13 @@
 
         <EditText
             android:id="@+id/inputConfirmPass"
-            android:layout_width="255dp"
-            android:layout_height="25dp"
+            android:layout_width="260dp"
+            android:layout_height="32dp"
             android:layout_below="@id/tvConfirmPass"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
             android:padding="10dp"
+            android:hint="@string/password"
             android:textAppearance="@style/Txt115AbuLatoReg"
             app:layout_constraintEnd_toEndOf="@+id/tvTitleLandingReg"
             app:layout_constraintHorizontal_bias="0.0"
@@ -199,10 +208,11 @@
         <EditText
             android:id="@+id/editToken"
             android:layout_width="255dp"
-            android:layout_height="25dp"
+            android:layout_height="32dp"
             android:layout_below="@id/tvToken"
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
+            android:hint="@string/xxxx"
             android:inputType="number"
             android:padding="10dp"
             android:textAppearance="@style/Txt115AbuLatoReg"

@@ -135,8 +135,10 @@
     <EditText
         android:id="@+id/inputPatientName"
         android:layout_width="350dp"
-        android:layout_height="30dp"
+        android:layout_height="32dp"
         android:layout_marginTop="4dp"
+        android:padding="10dp"
+        android:hint="Nama Pasien"
         android:background="@drawable/bg_edittext"
         android:textAppearance="@style/Txt115AbuLatoReg"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -146,16 +148,35 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPatientName"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/inputPatientWeight"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
+    <LinearLayout
+        android:id="@+id/layoutPatientWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
         android:layout_marginTop="4dp"
+        android:orientation="horizontal"
         android:background="@drawable/bg_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvPatientWeight"
-        app:layout_constraintTop_toBottomOf="@+id/tvPatientWeight" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPatientWeight">
+
+        <EditText
+            android:id="@+id/inputPatientWeight"
+            android:layout_width="130dp"
+            android:layout_height="match_parent"
+            android:hint="xx"
+            android:padding="8dp"
+            android:inputType="numberDecimal"
+            style="@style/Txt115AbuLatoReg"
+            android:background="@null" />
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:text="kg"
+            android:gravity="center_vertical"
+            style="@style/Txt115AbuLatoReg" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvPatientWeight"
@@ -169,17 +190,37 @@
         app:layout_constraintStart_toStartOf="@+id/inputPatientName"
         app:layout_constraintTop_toBottomOf="@+id/inputPatientName" />
 
-    <EditText
-        android:id="@+id/inputPatientHeight"
-        android:layout_width="151dp"
+    <LinearLayout
+        android:id="@+id/layoutPatientHeight"
+        android:layout_width="150dp"
         android:layout_height="30dp"
+        android:orientation="horizontal"
         android:background="@drawable/bg_edittext"
-        android:ems="10"
-        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.657"
-        app:layout_constraintStart_toEndOf="@+id/inputPatientWeight"
-        app:layout_constraintTop_toTopOf="@+id/inputPatientWeight" />
+        app:layout_constraintStart_toEndOf="@+id/layoutPatientWeight"
+        app:layout_constraintTop_toTopOf="@+id/layoutPatientWeight">
+
+        <EditText
+            android:id="@+id/inputPatientHeight"
+            android:layout_width="0dp"
+            android:layout_weight="0.8"
+            android:layout_height="match_parent"
+            android:hint="xxx"
+            android:ems="10"
+            android:inputType="number"
+            android:padding="8dp"
+            android:background="@null"
+            style="@style/Txt115AbuLatoReg" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.2"
+            android:layout_height="match_parent"
+            android:text="cm"
+            android:gravity="center_vertical"
+            style="@style/Txt115AbuLatoReg" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvPatientHeight"
@@ -189,20 +230,38 @@
         style="@style/TextSubMainTitleBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputPatientHeight"
+        app:layout_constraintStart_toStartOf="@+id/layoutPatientHeight"
         app:layout_constraintTop_toTopOf="@+id/tvPatientWeight" />
 
-    <EditText
-        android:id="@+id/inputPatientBlood"
-        android:layout_width="151dp"
-        android:layout_height="30dp"
+    <LinearLayout
+        android:id="@+id/layoutPatientBlood"
+        android:layout_width="150dp"
+        android:layout_height="32dp"
+        android:orientation="horizontal"
         android:background="@drawable/bg_edittext"
-        android:ems="10"
-        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.657"
-        app:layout_constraintStart_toEndOf="@+id/inputPatientWeight"
-        app:layout_constraintTop_toTopOf="@+id/inputPatientAge" />
+        app:layout_constraintStart_toEndOf="@+id/layoutPatientWeight"
+        app:layout_constraintTop_toTopOf="@+id/layoutPatientAge">
+
+        <AutoCompleteTextView
+            android:id="@+id/inputPatientBlood"
+            android:layout_width="0dp"
+            android:layout_weight="0.7"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:padding="10dp"
+            android:inputType="text"
+            android:focusable="true"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:hint="Pilih Golongan Darah"
+            android:drawableEnd="@drawable/ic_arrow_dropdown"
+            style="@style/Txt115AbuLatoReg"
+            android:dropDownHeight="wrap_content"
+            android:dropDownVerticalOffset="10dp"
+            android:dropDownHorizontalOffset="0dp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvPatientAge"
@@ -213,19 +272,40 @@
         style="@style/TextSubMainTitleBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputPatientWeight"
-        app:layout_constraintTop_toBottomOf="@+id/inputPatientWeight" />
+        app:layout_constraintStart_toStartOf="@+id/layoutPatientWeight"
+        app:layout_constraintTop_toBottomOf="@+id/layoutPatientWeight" />
 
-    <EditText
-        android:id="@+id/inputPatientAge"
-        android:layout_width="151dp"
-        android:layout_height="30dp"
+    <LinearLayout
+        android:id="@+id/layoutPatientAge"
+        android:layout_width="150dp"
+        android:layout_height="32dp"
         android:layout_marginTop="4dp"
+        android:orientation="horizontal"
         android:background="@drawable/bg_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvPatientAge"
-        app:layout_constraintTop_toBottomOf="@+id/tvPatientAge" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPatientAge">
+
+        <EditText
+            android:id="@+id/inputPatientAge"
+            android:layout_width="0dp"
+            android:layout_weight="0.77"
+            android:layout_height="match_parent"
+            android:hint="xx"
+            android:inputType="number"
+            android:padding="8dp"
+            android:background="@null"
+            style="@style/Txt115AbuLatoReg" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.23"
+            android:layout_height="match_parent"
+            android:text="tahun"
+            android:gravity="center_vertical"
+            style="@style/Txt115AbuLatoReg" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvPatientBlood"
@@ -235,7 +315,7 @@
         style="@style/TextSubMainTitleBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputPatientBlood"
+        app:layout_constraintStart_toStartOf="@+id/layoutPatientBlood"
         app:layout_constraintTop_toTopOf="@+id/tvPatientAge" />
 
     <LinearLayout
@@ -247,8 +327,8 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.03"
-        app:layout_constraintStart_toStartOf="@+id/inputPatientAge"
-        app:layout_constraintTop_toBottomOf="@+id/inputPatientAge">
+        app:layout_constraintStart_toStartOf="@+id/layoutPatientAge"
+        app:layout_constraintTop_toBottomOf="@+id/layoutPatientAge">
 
         <TextView
             style="@style/Txt48BluePoppinsBold"

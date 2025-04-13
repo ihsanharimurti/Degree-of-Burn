@@ -1,20 +1,12 @@
 package com.example.degreeofburn.ui
 
-import android.graphics.Color
-import android.graphics.LinearGradient
-import android.graphics.Shader
-import android.os.Build
 import android.os.Bundle
-import android.view.View
-import android.view.WindowInsets
-import android.view.WindowInsetsController
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
 
 import android.content.Intent
 import com.example.degreeofburn.databinding.ActivityMainBinding
+import com.example.degreeofburn.ui.input.InputActivity
 
 class MainActivity : AppCompatActivity() {
 

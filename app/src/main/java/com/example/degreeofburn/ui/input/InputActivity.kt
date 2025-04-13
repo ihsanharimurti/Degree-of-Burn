@@ -1,10 +1,7 @@
-package com.example.degreeofburn.ui
+package com.example.degreeofburn.ui.input
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.degreeofburn.R
 
 //class InputActivity : AppCompatActivity() {
@@ -17,13 +14,15 @@ import com.example.degreeofburn.R
 
 
 import android.content.Intent
-import android.widget.Button
+import android.widget.ArrayAdapter
 import com.example.degreeofburn.databinding.ActivityInputBinding
+import com.example.degreeofburn.ui.CameraActivity
 
 class InputActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityInputBinding
     private val selectedBodyParts = mutableSetOf<String>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +32,18 @@ class InputActivity : AppCompatActivity() {
         setupToolbar()
         setupBodyPartButtons()
         setupNextButton()
-    }
 
+        val bloodTypes = listOf("A", "B", "AB", "O")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, bloodTypes)
+        binding.inputPatientBlood.setAdapter(adapter)
+        binding.inputPatientBlood.threshold = 1
+        binding.inputPatientBlood.isFocusableInTouchMode = true
+
+        // This forces the dropdown to show on click
+        binding.inputPatientBlood.setOnClickListener {
+            binding.inputPatientBlood.showDropDown()
+        }
+    }
     private fun setupToolbar() {
         setSupportActionBar(binding.myToolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -51,7 +60,7 @@ class InputActivity : AppCompatActivity() {
         val armsButton = binding.btnArm
         val genitalButton = binding.btnGenital
         val legsButton = binding.btnLeg
-        val palmButton = binding.btnLeg
+        val palmButton = binding.btnPalm
 
         // Create a list of all body part buttons for easier management
         val bodyPartButtons = listOf(headButton, chestButton, armsButton, genitalButton, legsButton, palmButton)

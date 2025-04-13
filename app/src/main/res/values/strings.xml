@@ -31,4 +31,7 @@
     <string name="token_hint">*Token didapatkan dengan menghubungi admin yang bertugas</string>
     <string name="daftar">Daftar</string>
     <string name="eula"><![CDATA[Dengan melanjutkan, Anda menyetujui Syarat & Ketentuan kami]]></string>
+    <string name="nama">Nama</string>
+    <string name="hint_phone">08XXXXXXXXXX</string>
+    <string name="xxxx">XXXX</string>
 </resources>

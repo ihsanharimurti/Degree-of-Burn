@@ -44,7 +44,7 @@
             android:name=".ui.CameraActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.InputActivity"
+            android:name=".ui.input.InputActivity"
             android:exported="false" />
         <activity
             android:name=".ui.LandingActivity"

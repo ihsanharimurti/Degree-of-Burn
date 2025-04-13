@@ -60,6 +60,8 @@ dependencies {
     implementation (libs.kotlinx.coroutines.core)
     implementation (libs.androidx.activity.ktx)
     implementation (libs.androidx.fragment.ktx)
+    implementation (libs.androidx.room.runtime)
+    annotationProcessor (libs.androidx.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
