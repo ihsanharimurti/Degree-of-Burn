@@ -6,7 +6,7 @@
 //import android.content.Intent
 //import android.widget.ArrayAdapter
 //import com.example.degreeofburn.databinding.ActivityInputBinding
-//import com.example.degreeofburn.ui.CameraActivity
+//import com.example.degreeofburn.ui.camera.CameraActivity
 //
 //class InputActivity : AppCompatActivity() {
 //
@@ -166,7 +166,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.degreeofburn.data.local.PatientDatabase
 import com.example.degreeofburn.data.repository.PatientRepository
 import com.example.degreeofburn.databinding.ActivityInputBinding
-import com.example.degreeofburn.ui.CameraActivity
+import com.example.degreeofburn.ui.camera.CameraActivity
 
 
 class InputActivity : AppCompatActivity() {

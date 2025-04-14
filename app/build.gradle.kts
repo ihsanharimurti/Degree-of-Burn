@@ -64,7 +64,6 @@ dependencies {
     implementation (libs.androidx.fragment.ktx)
     implementation (libs.androidx.room.runtime)
     implementation (libs.gson)
-
     implementation (libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
     testImplementation(libs.junit)

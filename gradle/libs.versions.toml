@@ -1,6 +1,8 @@
 [versions]
 activityKtx = "1.10.1"
 agp = "8.3.1"
+androidImageCropper = "2.8.0"
+androidImageCropperVersion = "4.3.2"
 converterGson = "2.9.0"
 fragmentKtx = "1.8.6"
 gson = "2.10.1"
@@ -27,6 +29,7 @@ roomKtx = "2.6.0"
 roomRuntime = "2.6.0"
 
 [libraries]
+android-image-cropper = { module = "com.theartofdev.edmodo:android-image-cropper", version.ref = "androidImageCropper" }
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }
