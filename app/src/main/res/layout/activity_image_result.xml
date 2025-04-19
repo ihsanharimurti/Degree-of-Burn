@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_img_rslt_act"
-    tools:context=".ui.ImageResultActivity">
+    tools:context=".ui.imageprev.ImageResultActivity">
 
     <TextView
         android:id="@+id/tvTitleImageResult"

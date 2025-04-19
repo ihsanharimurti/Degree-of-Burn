@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_input_act"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.home.MainActivity">
 
 
     <androidx.appcompat.widget.Toolbar
@@ -75,7 +75,7 @@
                 style="@style/TextSubMainTitleWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nama Pasien"
+                android:text="Siva Maharani"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.046"
@@ -150,7 +150,7 @@
 
     <LinearLayout
         android:id="@+id/layoutPatientWeight"
-        android:layout_width="wrap_content"
+        android:layout_width="65dp"
         android:layout_height="32dp"
         android:layout_marginTop="4dp"
         android:orientation="horizontal"
@@ -162,7 +162,7 @@
 
         <EditText
             android:id="@+id/inputPatientWeight"
-            android:layout_width="130dp"
+            android:layout_width="45dp"
             android:layout_height="match_parent"
             android:hint="xx"
             android:padding="8dp"
@@ -171,7 +171,7 @@
             android:background="@null" />
 
         <TextView
-            android:layout_width="20dp"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
             android:text="kg"
             android:gravity="center_vertical"
@@ -192,34 +192,72 @@
 
     <LinearLayout
         android:id="@+id/layoutPatientHeight"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:orientation="horizontal"
+        android:layout_width="65dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="5dp"
         android:background="@drawable/bg_edittext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.657"
-        app:layout_constraintStart_toEndOf="@+id/layoutPatientWeight"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/layoutPatientAge"
         app:layout_constraintTop_toTopOf="@+id/layoutPatientWeight">
 
         <EditText
             android:id="@+id/inputPatientHeight"
-            android:layout_width="0dp"
-            android:layout_weight="0.8"
+            style="@style/Txt115AbuLatoReg"
+            android:layout_width="45dp"
             android:layout_height="match_parent"
-            android:hint="xxx"
-            android:ems="10"
-            android:inputType="number"
-            android:padding="8dp"
             android:background="@null"
-            style="@style/Txt115AbuLatoReg" />
+            android:ems="10"
+            android:hint="xxx"
+            android:inputType="number"
+            android:padding="8dp" />
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_weight="0.2"
+            style="@style/Txt115AbuLatoReg"
+            android:layout_width="25dp"
             android:layout_height="match_parent"
-            android:text="cm"
             android:gravity="center_vertical"
-            style="@style/Txt115AbuLatoReg" />
+            android:text="cm" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tvPatientSex"
+        style="@style/TextSubMainTitleBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jenis Kelamin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/layoutPatientSex"
+        app:layout_constraintTop_toTopOf="@+id/tvPatientHeight" />
+
+    <LinearLayout
+        android:id="@+id/layoutPatientSex"
+        android:layout_width="150dp"
+        android:layout_height="32dp"
+        android:background="@drawable/bg_edittext"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/inputPatientName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/tvPatientSex">
+
+        <AutoCompleteTextView
+            android:id="@+id/inputPatientSex"
+            style="@style/Txt115AbuLatoReg"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:background="@null"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:drawableEnd="@drawable/ic_arrow_dropdown"
+            android:dropDownHeight="wrap_content"
+            android:dropDownHorizontalOffset="0dp"
+            android:dropDownVerticalOffset="10dp"
+            android:focusable="true"
+            android:hint="Pilih Jenis Kelamin"
+            android:inputType="none"
+            android:padding="10dp" />
     </LinearLayout>
 
     <TextView
@@ -237,30 +275,29 @@
         android:id="@+id/layoutPatientBlood"
         android:layout_width="150dp"
         android:layout_height="32dp"
-        android:orientation="horizontal"
         android:background="@drawable/bg_edittext"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintHorizontal_bias="0.657"
-        app:layout_constraintStart_toEndOf="@+id/layoutPatientWeight"
+        app:layout_constraintStart_toStartOf="@+id/layoutPatientSex"
         app:layout_constraintTop_toTopOf="@+id/layoutPatientAge">
 
         <AutoCompleteTextView
             android:id="@+id/inputPatientBlood"
+            style="@style/Txt115AbuLatoReg"
             android:layout_width="0dp"
-            android:layout_weight="0.7"
             android:layout_height="match_parent"
+            android:layout_weight="0.7"
             android:background="@null"
-            android:padding="10dp"
-            android:inputType="text"
-            android:focusable="true"
             android:clickable="true"
             android:cursorVisible="false"
-            android:hint="Pilih Golongan Darah"
             android:drawableEnd="@drawable/ic_arrow_dropdown"
-            style="@style/Txt115AbuLatoReg"
             android:dropDownHeight="wrap_content"
+            android:dropDownHorizontalOffset="0dp"
             android:dropDownVerticalOffset="10dp"
-            android:dropDownHorizontalOffset="0dp" />
+            android:focusable="true"
+            android:hint="Pilih Golongan Darah"
+            android:inputType="none"
+            android:padding="10dp" />
     </LinearLayout>
 
     <TextView
@@ -309,10 +346,10 @@
 
     <TextView
         android:id="@+id/tvPatientBlood"
+        style="@style/TextSubMainTitleBlue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Golongan Darah"
-        style="@style/TextSubMainTitleBlue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/layoutPatientBlood"

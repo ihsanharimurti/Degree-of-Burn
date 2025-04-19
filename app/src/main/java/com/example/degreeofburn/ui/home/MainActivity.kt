@@ -1,11 +1,17 @@
-package com.example.degreeofburn.ui
+package com.example.degreeofburn.ui.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
 
 import android.content.Intent
+import android.view.View
+import androidx.activity.enableEdgeToEdge
 import com.example.degreeofburn.databinding.ActivityMainBinding
+import com.example.degreeofburn.ui.HistoryActivity
+import com.example.degreeofburn.ui.ProfileActivity
+import com.example.degreeofburn.ui.ResultActivity
+import com.example.degreeofburn.ui.camera.CameraActivity
 import com.example.degreeofburn.ui.input.InputActivity
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +21,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         // Initialize binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -63,7 +68,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupClickListeners() {
         // Add Patient button
         binding.btnAddPatient.setOnClickListener {
-            val intent = Intent(this, InputActivity::class.java)
+            val intent = Intent(this, CameraActivity::class.java)
             startActivity(intent)
         }
 

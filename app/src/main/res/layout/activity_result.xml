@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_result_act"
@@ -11,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="90dp"
         android:background="@drawable/bg_profile_toolbar_result"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,13 +80,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="120dp"
         android:layout_height="110dp"
+        android:background="@drawable/bg_rect_result"
         app:layout_constraintBottom_toBottomOf="@+id/tvAddPatient"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.892"
-        android:background="@drawable/bg_rect_result"
+        app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toEndOf="@+id/tvAddPatient"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="@+id/tvAddPatient"
+        app:layout_constraintVertical_bias="0.0">
 
 
         <TextView
@@ -105,13 +104,13 @@
 
         <TextView
             android:id="@+id/textView36"
+            style="@style/Txt115LatoBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="end"
             android:layout_marginTop="2dp"
+            android:gravity="end"
             android:text="Siva Maharani"
             android:textColor="@color/white"
-            style="@style/Txt115LatoBold"
             app:layout_constraintEnd_toEndOf="@+id/textView24"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -122,8 +121,8 @@
             style="@style/Txt115Lato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tanggal Tindakan"
             android:layout_marginBottom="2dp"
+            android:text="Tanggal Tindakan"
             android:textColor="@color/blue_start"
             app:layout_constraintBottom_toTopOf="@+id/textView37"
             app:layout_constraintEnd_toEndOf="@+id/textView24"
@@ -134,12 +133,12 @@
 
         <TextView
             android:id="@+id/textView37"
+            style="@style/Txt115LatoBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="18/01/2024"
             android:textColor="@color/white"
-            style="@style/Txt115LatoBold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textView26" />
 
@@ -227,7 +226,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
+        android:layout_height="260dp"
         android:orientation="horizontal"
         android:background="@drawable/bg_rect_big_result"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -236,6 +235,7 @@
         tools:layout_editor_absoluteX="0dp">
 
         <LinearLayout
+            android:id="@+id/linearLayoutResult"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -389,10 +389,10 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView25">
 
         <ImageButton
             android:id="@+id/btnHistoryMain"

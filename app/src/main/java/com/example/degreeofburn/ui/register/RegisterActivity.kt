@@ -1,4 +1,4 @@
-package com.example.degreeofburn.ui
+package com.example.degreeofburn.ui.register
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

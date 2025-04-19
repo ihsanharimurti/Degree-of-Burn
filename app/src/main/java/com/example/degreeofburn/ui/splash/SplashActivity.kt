@@ -1,4 +1,4 @@
-package com.example.degreeofburn.ui
+package com.example.degreeofburn.ui.splash
 
 import android.content.Intent
 import android.os.Build
@@ -9,9 +9,9 @@ import android.view.WindowInsets
 import android.view.WindowInsetsController
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.degreeofburn.R
+import com.example.degreeofburn.ui.home.MainActivity
+import com.example.degreeofburn.ui.landing.LandingActivity
 import com.example.degreeofburn.utils.SessionManager
 
 class SplashActivity : AppCompatActivity() {

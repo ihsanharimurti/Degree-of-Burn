@@ -11,8 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.degreeofburn.R
 import com.example.degreeofburn.data.repository.LoginRepository
 import com.example.degreeofburn.databinding.FragmentLoginBinding
-import com.example.degreeofburn.ui.MainActivity
-import com.example.degreeofburn.ui.RegisterActivity
+import com.example.degreeofburn.ui.home.MainActivity
+import com.example.degreeofburn.ui.register.RegisterActivity
 import com.example.degreeofburn.utils.Resource
 import com.example.degreeofburn.utils.SessionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior

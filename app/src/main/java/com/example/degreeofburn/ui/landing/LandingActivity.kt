@@ -1,4 +1,4 @@
-package com.example.degreeofburn.ui
+package com.example.degreeofburn.ui.landing
 
 import android.graphics.LinearGradient
 import android.graphics.Shader
