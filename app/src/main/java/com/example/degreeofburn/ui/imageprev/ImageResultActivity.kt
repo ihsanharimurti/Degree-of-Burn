@@ -1,16 +1,22 @@
 package com.example.degreeofburn.ui.imageprev
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.example.degreeofburn.R
 import com.example.degreeofburn.databinding.ActivityImageResultBinding
 import com.example.degreeofburn.ui.ResultActivity
 import com.example.degreeofburn.ui.camera.CameraActivity
+import com.example.degreeofburn.ui.home.MainActivity
 
 
 class ImageResultActivity : AppCompatActivity() {
@@ -42,6 +48,39 @@ class ImageResultActivity : AppCompatActivity() {
         // Set up button click listeners
         setupButtonListeners()
     }
+
+
+    @SuppressLint("MissingSuperCall")
+    override fun onBackPressed() {
+        // Create a custom dialog
+        val dialog = AlertDialog.Builder(this, R.style.CustomAlertDialog)
+            .setMessage("Apakah Anda yakin ingin kembali ke menu utama? Semua data yang telah diisi akan hilang.")
+            .setPositiveButton("Ya") { _, _ ->
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+                finish()
+            }
+            .setNegativeButton("Batal", null)
+            .create()
+
+        // Set custom background
+        dialog.window?.setBackgroundDrawableResource(R.drawable.custom_dialog_background)
+
+        // Show the dialog
+        dialog.show()
+
+        // Style the buttons
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).apply {
+            setTextColor(ContextCompat.getColor(context, R.color.blue_start))
+            setTypeface(typeface, Typeface.BOLD)
+        }
+
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).apply {
+            setTextColor(ContextCompat.getColor(context, R.color.red_logout))
+        }
+    }
+
 
     private fun setupButtonListeners() {
         // Retry button - go back to camera

@@ -53,18 +53,35 @@
         app:srcCompat="@drawable/ic_profile_pic" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="250dp"
+        android:id="@+id/btnEditProfile"
+        android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginBottom="36dp"
-        android:background="@drawable/bg_btn_gradient"
-        android:text="Selanjutnya"
+        android:background="@drawable/bg_btn_gradient_editprf"
+        android:text="Edit Profil"
         android:textAllCaps="false"
         android:textAppearance="@style/Txt115AbuLatoReg"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="36dp"
+        android:background="@drawable/bg_btn_gradient_logout"
+        android:text="Logout"
+        android:textAllCaps="false"
+        android:textAppearance="@style/Txt115AbuLatoReg"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
         app:layout_constraintVertical_bias="1.0" />

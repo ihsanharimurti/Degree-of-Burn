@@ -12,6 +12,7 @@ import com.example.degreeofburn.ui.HistoryActivity
 import com.example.degreeofburn.ui.ProfileActivity
 import com.example.degreeofburn.ui.ResultActivity
 import com.example.degreeofburn.ui.camera.CameraActivity
+import com.example.degreeofburn.ui.imageprev.ImageResultActivity
 import com.example.degreeofburn.ui.input.InputActivity
 
 class MainActivity : AppCompatActivity() {
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupClickListeners() {
         // Add Patient button
         binding.btnAddPatient.setOnClickListener {
-            val intent = Intent(this, CameraActivity::class.java)
+            val intent = Intent(this, ResultActivity::class.java)
             startActivity(intent)
         }
 

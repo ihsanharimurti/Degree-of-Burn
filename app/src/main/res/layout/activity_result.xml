@@ -45,17 +45,17 @@
 
         <TextView
             android:id="@+id/tvOfficerAccMain"
+            style="@style/Txt18PoppinsBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="4dp"
-            android:text="Susi Susanti"
-            style="@style/Txt18PoppinsBold"
-            android:textStyle="bold"
+            android:text="Siva Maharani"
             android:textColor="@color/blue_start"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/icOfficerProfileMain"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.016"
-            app:layout_constraintStart_toEndOf="@+id/icOfficerProfileMain"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvWelcomeMain"
             app:layout_constraintTop_toBottomOf="@+id/tvWelcomeMain"
             app:layout_constraintVertical_bias="1.0" />
 
@@ -300,10 +300,10 @@
                     style="@style/Txt48PoppinsBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="18%"
                     android:lineSpacingMultiplier="0.7"
+                    android:text="18%"
                     android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.504"
                     app:layout_constraintStart_toStartOf="parent"
@@ -389,10 +389,12 @@
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="8dp"
-        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView25">
+        app:layout_constraintTop_toBottomOf="@+id/textView25"
+        app:layout_constraintVertical_bias="0.666">
 
         <ImageButton
             android:id="@+id/btnHistoryMain"

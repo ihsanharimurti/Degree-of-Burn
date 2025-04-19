@@ -235,6 +235,7 @@
 package com.example.degreeofburn.ui.camera
 
 import android.Manifest
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -261,6 +262,7 @@ import androidx.core.net.toUri
 import com.example.degreeofburn.R
 import com.example.degreeofburn.data.model.PatientDTO
 import com.example.degreeofburn.databinding.ActivityCameraBinding
+import com.example.degreeofburn.ui.home.MainActivity
 import com.example.degreeofburn.ui.imageprev.ImageResultActivity
 import java.io.File
 import java.io.FileOutputStream
@@ -306,6 +308,22 @@ class CameraActivity : AppCompatActivity() {
 
         // Observe viewModel states
         observeViewModel()
+    }
+
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        AlertDialog.Builder(this)
+            .setTitle("Konfirmasi")
+            .setMessage("Apakah Anda yakin ingin kembali ke menu utama? Semua data yang telah diisi akan hilang.")
+            .setPositiveButton("Ya") { _, _ ->
+                val intent = Intent(this, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+                finish()
+            }
+            .setNegativeButton("Batal", null)
+            .show()
     }
 
     private fun setupTransparentHole() {
