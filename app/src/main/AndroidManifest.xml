@@ -36,7 +36,7 @@
             android:name=".ui.ProfileEditActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.ProfileActivity"
+            android:name=".ui.profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.ResultActivity"

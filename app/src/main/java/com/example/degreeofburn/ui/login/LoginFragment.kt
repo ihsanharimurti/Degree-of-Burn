@@ -44,6 +44,9 @@ class LoginFragment : BottomSheetDialogFragment() {
 
         // Initialize SessionManager
         sessionManager = SessionManager(requireContext())
+        val dummyToken = "dummy_token_123"
+        val dummyUserId = "user_001"
+        val dummyUserName= "Siva Maharani"
 
         // Initialize ViewModel
         val repository = LoginRepository()
@@ -80,6 +83,10 @@ class LoginFragment : BottomSheetDialogFragment() {
 
                         // Save user data to session
                         sessionManager.setLoggedIn(true)
+                        sessionManager.saveAuthToken(dummyToken)
+                        sessionManager.saveUserId(dummyUserId)
+                        sessionManager.saveUserName(dummyUserName)
+
                         loginSuccessful = true
 
                         // Handle navigation separately

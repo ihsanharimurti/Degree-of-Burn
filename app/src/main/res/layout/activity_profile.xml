@@ -6,7 +6,7 @@
     android:background="@drawable/bg_prfl_act"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ProfileActivity">
+    tools:context=".ui.profile.ProfileActivity">
 
 
     <androidx.appcompat.widget.Toolbar

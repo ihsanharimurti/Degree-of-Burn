@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -17,6 +18,7 @@ import com.example.degreeofburn.databinding.ActivityImageResultBinding
 import com.example.degreeofburn.ui.ResultActivity
 import com.example.degreeofburn.ui.camera.CameraActivity
 import com.example.degreeofburn.ui.home.MainActivity
+import java.io.File
 
 
 class ImageResultActivity : AppCompatActivity() {
@@ -39,6 +41,16 @@ class ImageResultActivity : AppCompatActivity() {
                 .load(imageUri)
                 .centerCrop()
                 .into(binding.icImagePreview)
+
+            val file = File(imageUri.path ?: "")
+            if (file.exists()) {
+                val fileSizeInKB = file.length() / 1024
+                val fileSizeInMB = fileSizeInKB / 1024
+                Log.d("ImageSize", "Ukuran file: $fileSizeInKB KB ($fileSizeInMB MB)")
+            } else {
+                Log.d("ImageSize", "File tidak ditemukan di path: ${imageUri.path}")
+            }
+
         } else {
             Toast.makeText(this, "Tidak ada gambar yang diterima", Toast.LENGTH_SHORT).show()
             finish()

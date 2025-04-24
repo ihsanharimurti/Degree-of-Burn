@@ -186,49 +186,17 @@
             app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
             app:layout_constraintTop_toBottomOf="@+id/tvConfirmPass" />
 
-        <TextView
-            android:id="@+id/tvToken"
-            style="@style/Txt115AbuLatoReg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/inputConfirmPass"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:text="@string/token"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
-            app:layout_constraintTop_toBottomOf="@+id/inputConfirmPass" />
-
-        <EditText
-            android:id="@+id/editToken"
-            android:layout_width="255dp"
-            android:layout_height="32dp"
-            android:layout_below="@id/tvToken"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/bg_edittext"
-            android:hint="@string/xxxx"
-            android:inputType="number"
-            android:padding="10dp"
-            android:textAppearance="@style/Txt115AbuLatoReg"
-            app:layout_constraintEnd_toEndOf="@+id/tvTitleLandingReg"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
-            app:layout_constraintTop_toBottomOf="@+id/tvToken" />
-
 
         <TextView
             android:id="@+id/tvTokenInfo"
             style="@style/TextSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editToken"
             android:layout_marginTop="4dp"
             android:text="@string/token_hint"
             android:textColor="#888888"
-            app:layout_constraintStart_toStartOf="@+id/editToken"
-            app:layout_constraintTop_toBottomOf="@+id/editToken" />
-
+            app:layout_constraintStart_toStartOf="@+id/inputConfirmPass"
+            app:layout_constraintTop_toBottomOf="@+id/inputConfirmPass" />
 
         <CheckBox
             android:id="@+id/tvEULA"
@@ -236,15 +204,14 @@
             android:layout_width="255dp"
             android:layout_height="wrap_content"
             android:layout_above="@+id/btnLogin"
-            android:layout_alignStart="@+id/editToken"
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="12dp"
             android:layoutDirection="rtl"
             android:text="@string/eula"
             android:textColor="#888888"
             app:layout_constraintBottom_toTopOf="@+id/btnLogin"
-            app:layout_constraintEnd_toEndOf="@+id/editToken"
-            app:layout_constraintStart_toStartOf="@+id/editToken"
+            app:layout_constraintEnd_toEndOf="@+id/inputConfirmPass"
+            app:layout_constraintStart_toStartOf="@+id/inputConfirmPass"
             app:layout_constraintTop_toBottomOf="@+id/tvTokenInfo"
             app:layout_constraintVertical_bias="1.0" />
 
@@ -255,16 +222,16 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginBottom="40dp"
             android:background="@drawable/bg_button_darkblue"
             android:backgroundTint="#004AAD"
-            android:layout_marginBottom="40dp"
             android:text="@string/daftar"
             android:textAllCaps="false"
             android:textAppearance="@style/Txt115AbuLatoReg"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/editToken"
-            app:layout_constraintStart_toStartOf="@+id/editToken" />
+            app:layout_constraintEnd_toEndOf="@+id/tvEULA"
+            app:layout_constraintStart_toStartOf="@+id/tvEULA" />
 
 
         <!-- Button (Contoh yang sempat dikomen) -->

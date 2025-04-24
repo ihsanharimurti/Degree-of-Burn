@@ -11,6 +11,7 @@ class SessionManager(context: Context) {
     companion object {
         const val PREF_NAME = "DegreeOfBurnPrefs"
         const val USER_TOKEN = "user_token"
+        const val USER_NAME = "user_name"
         const val USER_ID = "user_id"
         const val IS_LOGGED_IN = "is_logged_in"
         const val LOGIN_TIME = "login_time"
@@ -25,6 +26,11 @@ class SessionManager(context: Context) {
 
     fun saveUserId(userId: String) {
         editor.putString(USER_ID, userId)
+        editor.apply()
+    }
+
+    fun saveUserName(userName: String) {
+        editor.putString(USER_NAME, userName)
         editor.apply()
     }
 

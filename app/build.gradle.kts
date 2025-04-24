@@ -65,12 +65,14 @@ dependencies {
     implementation (libs.androidx.room.runtime)
     implementation (libs.gson)
     implementation (libs.androidx.room.ktx)
+    implementation (libs.androidx.datastore.preferences)
     implementation(libs.glide)
     ksp(libs.compiler)
     ksp(libs.androidx.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 
 
 
