@@ -40,7 +40,7 @@ class ProfileActivity : AppCompatActivity() {
     private fun setupClickListeners() {
         binding.btnBackProfile.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+            finish()
         }
 
         // Add Patient button
