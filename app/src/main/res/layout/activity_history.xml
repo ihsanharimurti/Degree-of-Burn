@@ -1,62 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bg_history_act"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.history.HistoryActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:background="@drawable/bg_history_act"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ui.HistoryActivity"
-        >
+        android:layout_height="85dp"
+        android:elevation="4dp"
+        android:padding="24dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        tools:layout_editor_absoluteX="0dp">
 
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/my_toolbar"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:elevation="4dp"
-            android:padding="24dp"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:layout_constraintTop_toTopOf="parent"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            tools:layout_editor_absoluteX="43dp">
+            android:layout_height="match_parent">
 
             <ImageButton
                 android:id="@+id/btnBackHistory"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
                 android:background="@null"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_arrow_back"
-                />
-
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/tvTitleProfile"
+                android:id="@+id/tvTitleHistory"
+                style="@style/Txt30PoppinsBold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:text="Riwayat Tindakan"
                 android:textColor="@color/blue_start"
-                style="@style/Txt30PoppinsBold"
-                android:layout_gravity="center"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="19dp" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/btnBackHistory"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.appcompat.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:nestedScrollingEnabled="false"
-            android:overScrollMode="never"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
-            tools:listitem="@layout/history_card"
-            android:scrollbarAlwaysDrawVerticalTrack="true"
-            />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:nestedScrollingEnabled="false"
+        android:overScrollMode="never"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
+        tools:listitem="@layout/history_card" />
 
+    <!-- Include Empty State Layout -->
+    <include
+        android:id="@+id/emptyStateLayout"
+        layout="@layout/empty_state_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_toolbar"
+        app:layout_constraintVertical_bias="0.386" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

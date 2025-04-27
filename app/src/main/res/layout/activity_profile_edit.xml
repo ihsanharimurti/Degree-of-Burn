@@ -21,6 +21,7 @@
         tools:layout_editor_absoluteX="43dp">
 
         <ImageButton
+            android:id="@+id/btnBackEditProfile"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@null"
@@ -99,6 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="No. HP"
+        android:inputType="text"
         style="@style/Txt115LatoBold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -112,6 +114,7 @@
         android:layout_marginTop="4dp"
         android:background="@drawable/bg_edittext"
         android:padding="10dp"
+        android:inputType="phone"
         android:textAppearance="@style/Txt115AbuLatoReg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -137,6 +140,7 @@
         android:layout_marginTop="4dp"
         android:background="@drawable/bg_edittext"
         android:padding="10dp"
+        android:inputType="textPassword"
         android:textAppearance="@style/Txt115AbuLatoReg"
         android:drawableEnd="@drawable/ic_eye"
         app:layout_constraintEnd_toEndOf="parent"
@@ -157,11 +161,13 @@
         app:layout_constraintTop_toBottomOf="@+id/editText4" />
 
     <EditText
+        android:id="@+id/editText5"
         android:layout_width="250dp"
         android:layout_height="29dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/bg_edittext_greyed"
         android:padding="10dp"
+        android:inputType="textPassword"
         android:drawableEnd="@drawable/ic_eye"
         android:textAppearance="@style/Txt115AbuLatoReg"
         app:layout_constraintEnd_toEndOf="parent"

@@ -6,9 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 
 import android.content.Intent
 import com.example.degreeofburn.databinding.ActivityMainBinding
-import com.example.degreeofburn.ui.HistoryActivity
+import com.example.degreeofburn.ui.history.HistoryActivity
 import com.example.degreeofburn.ui.profile.ProfileActivity
-import com.example.degreeofburn.ui.ResultActivity
 import com.example.degreeofburn.ui.input.InputActivity
 
 class MainActivity : AppCompatActivity() {

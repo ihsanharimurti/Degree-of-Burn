@@ -162,7 +162,7 @@
 
         <EditText
             android:id="@+id/inputPatientWeight"
-            android:layout_width="45dp"
+            android:layout_width="43dp"
             android:layout_height="match_parent"
             android:hint="xx"
             android:padding="8dp"
@@ -171,7 +171,7 @@
             android:background="@null" />
 
         <TextView
-            android:layout_width="25dp"
+            android:layout_width="22dp"
             android:layout_height="match_parent"
             android:text="kg"
             android:gravity="center_vertical"
@@ -203,7 +203,7 @@
         <EditText
             android:id="@+id/inputPatientHeight"
             style="@style/Txt115AbuLatoReg"
-            android:layout_width="45dp"
+            android:layout_width="43dp"
             android:layout_height="match_parent"
             android:background="@null"
             android:ems="10"
@@ -213,7 +213,7 @@
 
         <TextView
             style="@style/Txt115AbuLatoReg"
-            android:layout_width="25dp"
+            android:layout_width="22dp"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:text="cm" />
