@@ -1,7 +1,7 @@
 package com.example.degreeofburn.data.repository
 
-import com.example.degreeofburn.data.model.LoginRequest
-import com.example.degreeofburn.data.model.LoginResponse
+import com.example.degreeofburn.data.model.request.LoginRequest
+import com.example.degreeofburn.data.model.response.LoginResponse
 import com.example.degreeofburn.data.remote.ApiClient
 import com.example.degreeofburn.utils.Resource
 import kotlinx.coroutines.Dispatchers

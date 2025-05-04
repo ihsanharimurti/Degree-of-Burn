@@ -8,6 +8,16 @@
     android:background="@drawable/bg_curved_fragment"
     android:paddingTop="16dp">
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
         <ImageView
             android:id="@+id/icAppLogoReg"
             android:layout_width="80dp"
@@ -114,6 +124,7 @@
             android:layout_marginTop="4dp"
             android:background="@drawable/bg_edittext"
             android:hint="@string/password"
+            android:drawableEnd="@drawable/ic_eye_open"
             android:textColor="@color/abu_abu_landing"
             android:inputType="textPassword"
             android:padding="10dp"

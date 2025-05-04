@@ -15,8 +15,7 @@ class SessionManager(context: Context) {
         const val USER_ID = "user_id"
         const val IS_LOGGED_IN = "is_logged_in"
         const val LOGIN_TIME = "login_time"
-        private const val ONE_YEAR_MS = 365L * 24 * 60 * 60 * 1000 // 1 tahun
-
+        private const val ONE_YEAR_MS = 30L * 24 * 60 * 60 * 1000 // 1 tahun
     }
 
     fun saveAuthToken(token: String) {
@@ -59,6 +58,10 @@ class SessionManager(context: Context) {
         return prefs.getString(USER_ID, null)
     }
 
+    fun getUserName(): String? {
+        return prefs.getString(USER_NAME, null)
+    }
+
     fun isLoggedIn(): Boolean {
         return prefs.getBoolean(IS_LOGGED_IN, false)
     }
@@ -67,6 +70,4 @@ class SessionManager(context: Context) {
         editor.clear()
         editor.apply()
     }
-
-
 }

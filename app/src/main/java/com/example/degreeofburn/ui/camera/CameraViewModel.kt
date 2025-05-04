@@ -1,52 +1,15 @@
-//package com.example.degreeofburn.ui.camera
-//
-//
-//import android.net.Uri
-//import androidx.lifecycle.LiveData
-//import androidx.lifecycle.MutableLiveData
-//import androidx.lifecycle.ViewModel
-//
-//class CameraViewModel : ViewModel() {
-//
-//    // Capture status to track photo capture results
-//    sealed class CaptureStatus {
-//        data class Success(val uri: Uri) : CaptureStatus()
-//        data class Error(val message: String) : CaptureStatus()
-//    }
-//
-//    private val _captureStatus = MutableLiveData<CaptureStatus?>()
-//    val captureStatus: LiveData<CaptureStatus?> = _captureStatus
-//
-//    fun onPhotoCapture(uri: Uri?) {
-//        uri?.let {
-//            _captureStatus.value = CaptureStatus.Success(it)
-//        } ?: run {
-//            _captureStatus.value = CaptureStatus.Error("Failed to save image")
-//        }
-//    }
-//
-//    fun onCaptureFailed(message: String) {
-//        _captureStatus.value = CaptureStatus.Error(message)
-//    }
-//
-//    fun resetCaptureStatus() {
-//        _captureStatus.value = null
-//    }
-//}
-
-
-
 package com.example.degreeofburn.ui.camera
 
+import android.app.Application
 import android.net.Uri
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.degreeofburn.data.model.PatientDTO
-import com.example.degreeofburn.data.model.PatientRequest
-import com.example.degreeofburn.data.model.PatientResponse
+import com.example.degreeofburn.data.model.request.PatientRequest
+import com.example.degreeofburn.data.model.response.PatientResponse
 import com.example.degreeofburn.data.remote.ApiClient
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -54,7 +17,8 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class CameraViewModel : ViewModel() {
+// Changed to AndroidViewModel to have access to application context
+class CameraViewModel(application: Application) : AndroidViewModel(application) {
 
     // Capture status to track photo capture results
     sealed class CaptureStatus {
@@ -99,7 +63,7 @@ class CameraViewModel : ViewModel() {
             viewModelScope.launch {
                 try {
                     // Hard-coded Firebase UID as requested
-                    val firebaseUid = "aBu2PZPsx2PDRhawNBROiuQUYVU2"
+                    val firebaseUid = "GlEtLKQS0bhbnNBRZIdJcoytP7g2"
 
                     // Get today's date for tanggal_masuk
                     val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
@@ -117,8 +81,8 @@ class CameraViewModel : ViewModel() {
                         tb = it.height
                     )
 
-                    // Use the ApiClient.apiService property directly
-                    val response = ApiClient.apiService.createPatient(patientRequest)
+                    // Use the application context from AndroidViewModel
+                    val response = ApiClient.getAuthenticatedClient(getApplication()).createPatient(patientRequest)
 
                     handleApiResponse(response)
 
@@ -151,5 +115,3 @@ class CameraViewModel : ViewModel() {
         _apiStatus.value = ApiStatus.None
     }
 }
-
-// Data classes for API request and response

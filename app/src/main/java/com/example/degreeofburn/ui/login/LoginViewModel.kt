@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.degreeofburn.data.model.LoginResponse
+import com.example.degreeofburn.data.model.response.LoginResponse
 import com.example.degreeofburn.data.repository.LoginRepository
 import com.example.degreeofburn.utils.Resource
 import kotlinx.coroutines.launch

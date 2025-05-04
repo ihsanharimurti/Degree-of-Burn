@@ -1,4 +1,4 @@
-package com.example.degreeofburn.data.model
+package com.example.degreeofburn.data.model.request
 
 data class PatientRequest(
     val firebase_uid: String,

@@ -1,4 +1,4 @@
-package com.example.degreeofburn.data.model
+package com.example.degreeofburn.data.model.response
 
 data class RegisterResponse(
     val success: Boolean,

@@ -1,10 +1,10 @@
 package com.example.degreeofburn.data.repository
 
 
-import com.example.degreeofburn.data.model.OtpRequest
-import com.example.degreeofburn.data.model.OtpResponse
-import com.example.degreeofburn.data.model.RegisterRequest
-import com.example.degreeofburn.data.model.RegisterResponse
+import com.example.degreeofburn.data.model.request.OtpRequest
+import com.example.degreeofburn.data.model.response.OtpResponse
+import com.example.degreeofburn.data.model.request.RegisterRequest
+import com.example.degreeofburn.data.model.response.RegisterResponse
 import com.example.degreeofburn.data.remote.ApiService
 import com.example.degreeofburn.utils.Resource
 

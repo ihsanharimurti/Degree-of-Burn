@@ -64,7 +64,7 @@ class HistoryActivity : AppCompatActivity() {
 
     private fun getDummyHistoryData(): List<HistoryModel> {
         // Change to true to show empty state placeholder
-        val showEmptyState = false
+        val showEmptyState = true
 
         return if (showEmptyState) {
             emptyList()
