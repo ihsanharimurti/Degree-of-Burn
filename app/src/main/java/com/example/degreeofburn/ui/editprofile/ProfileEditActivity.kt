@@ -4,34 +4,50 @@ import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.MotionEvent
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.ViewModelProvider
 import com.example.degreeofburn.R
 import com.example.degreeofburn.databinding.ActivityProfileEditBinding
+import com.example.degreeofburn.utils.Resource
 
 class ProfileEditActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfileEditBinding
-
-    // Default correct password for demonstration
-    private val correctPassword = "password123"
+    private lateinit var viewModel: ProfileEditViewModel
 
     // Password visibility flags
     private var isOldPasswordVisible = false
     private var isNewPasswordVisible = false
+    private var isConfirmPasswordVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Initialize with the new password field disabled
-        binding.editText5.isEnabled = false
-        binding.editText5.setBackgroundResource(R.drawable.bg_edittext_greyed)
+        // Initialize ViewModel
+        viewModel = ViewModelProvider(this)[ProfileEditViewModel::class.java]
 
+        // Initialize UI
+        setupInitialState()
         setupClickListeners()
         setupPasswordVisibilityToggles()
         setupPasswordValidation()
+        observeViewModel()
+
+        // Load user data
+        viewModel.getUserDetails()
+    }
+
+    private fun setupInitialState() {
+        // Initialize with the new password fields disabled
+        binding.inputNewPasswordEdit.isEnabled = false
+        binding.inputConfirmPasswordEdit.isEnabled = false
+        binding.inputNewPasswordEdit.setBackgroundResource(R.drawable.bg_edittext_greyed)
+        binding.inputConfirmPasswordEdit.setBackgroundResource(R.drawable.bg_edittext_greyed)
     }
 
     private fun setupClickListeners() {
@@ -41,18 +57,18 @@ class ProfileEditActivity : AppCompatActivity() {
         }
 
         // Set up save button click listener
-        binding.button4.setOnClickListener {
+        binding.btnSave.setOnClickListener {
             saveProfileChanges()
         }
     }
 
     private fun setupPasswordVisibilityToggles() {
         // Set up old password visibility toggle
-        binding.editText4.setOnTouchListener { view, event ->
+        binding.inputOldPasswordEdit.setOnTouchListener { view, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 // Check if touch was on the drawable (eye icon)
                 val drawableRight = 2
-                if (event.rawX >= (binding.editText4.right - binding.editText4.compoundDrawables[drawableRight].bounds.width())) {
+                if (event.rawX >= (binding.inputOldPasswordEdit.right - binding.inputOldPasswordEdit.compoundDrawables[drawableRight].bounds.width())) {
                     toggleOldPasswordVisibility()
                     return@setOnTouchListener true
                 }
@@ -61,12 +77,25 @@ class ProfileEditActivity : AppCompatActivity() {
         }
 
         // Set up new password visibility toggle
-        binding.editText5.setOnTouchListener { view, event ->
+        binding.inputNewPasswordEdit.setOnTouchListener { view, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 // Check if touch was on the drawable (eye icon)
                 val drawableRight = 2
-                if (event.rawX >= (binding.editText5.right - binding.editText5.compoundDrawables[drawableRight].bounds.width())) {
+                if (event.rawX >= (binding.inputNewPasswordEdit.right - binding.inputNewPasswordEdit.compoundDrawables[drawableRight].bounds.width())) {
                     toggleNewPasswordVisibility()
+                    return@setOnTouchListener true
+                }
+            }
+            return@setOnTouchListener false
+        }
+
+        // Set up confirm password visibility toggle
+        binding.inputConfirmPasswordEdit.setOnTouchListener { view, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                // Check if touch was on the drawable (eye icon)
+                val drawableRight = 2
+                if (event.rawX >= (binding.inputConfirmPasswordEdit.right - binding.inputConfirmPasswordEdit.compoundDrawables[drawableRight].bounds.width())) {
+                    toggleConfirmPasswordVisibility()
                     return@setOnTouchListener true
                 }
             }
@@ -76,12 +105,84 @@ class ProfileEditActivity : AppCompatActivity() {
 
     private fun setupPasswordValidation() {
         // Monitor old password changes to enable/disable new password field
-        binding.editText4.addTextChangedListener {
-            val oldPassword = binding.editText4.text.toString()
-            if (oldPassword == correctPassword) {
+        binding.inputOldPasswordEdit.addTextChangedListener {
+            val oldPassword = binding.inputOldPasswordEdit.text.toString()
+            if (oldPassword.isNotEmpty()) {
+                viewModel.validateOldPassword(oldPassword)
+            } else {
+                disableNewPasswordField()
+            }
+        }
+    }
+
+    private fun observeViewModel() {
+        // Observe user details
+        viewModel.userDetailState.observe(this) { result ->
+            when (result) {
+                is Resource.Success -> {
+                    val userData = result.data
+                    userData?.let {
+                        binding.inputNameEdit.setText(it.nama)
+                        binding.inputNoHPEdit.setText(it.nomor_telepon)
+                    }
+                }
+                is Resource.Error -> {
+                    Toast.makeText(this, "Error: ${result.message}", Toast.LENGTH_SHORT).show()
+                }
+                is Resource.Loading -> {
+                    // Show loading if needed
+                }
+            }
+        }
+
+        // Observe profile update result
+        viewModel.updateProfileState.observe(this) { result ->
+            when (result) {
+                is Resource.Success -> {
+                    Toast.makeText(this, "Profile updated successfully", Toast.LENGTH_SHORT).show()
+                    // If no password change, finish activity
+                    if (binding.inputOldPasswordEdit.text.toString().isEmpty()) {
+                        finish()
+                    }
+                }
+                is Resource.Error -> {
+                    Toast.makeText(this, "Error updating profile: ${result.message}", Toast.LENGTH_SHORT).show()
+                }
+                is Resource.Loading -> {
+                    // Show loading if needed
+                }
+            }
+        }
+
+        // Observe password change result
+        viewModel.changePasswordState.observe(this) { result ->
+            when (result) {
+                is Resource.Success -> {
+                    Toast.makeText(this, "Password changed successfully", Toast.LENGTH_SHORT).show()
+                    finish()
+                }
+                is Resource.Error -> {
+                    Toast.makeText(this, "Error changing password: ${result.message}", Toast.LENGTH_SHORT).show()
+                }
+                is Resource.Loading -> {
+                    // Show loading if needed
+                }
+            }
+        }
+
+        // Observe old password validation
+        viewModel.isOldPasswordCorrect.observe(this) { isCorrect ->
+            if (isCorrect) {
                 enableNewPasswordField()
             } else {
                 disableNewPasswordField()
+            }
+        }
+
+        // Observe password match validation
+        viewModel.isPasswordsMatch.observe(this) { isMatch ->
+            if (!isMatch) {
+                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -91,15 +192,15 @@ class ProfileEditActivity : AppCompatActivity() {
 
         // Change transformation method to show/hide password
         if (isOldPasswordVisible) {
-            binding.editText4.transformationMethod = HideReturnsTransformationMethod.getInstance()
-            binding.editText4.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_open, 0)
+            binding.inputOldPasswordEdit.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            binding.inputOldPasswordEdit.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_open, 0)
         } else {
-            binding.editText4.transformationMethod = PasswordTransformationMethod.getInstance()
-            binding.editText4.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye, 0)
+            binding.inputOldPasswordEdit.transformationMethod = PasswordTransformationMethod.getInstance()
+            binding.inputOldPasswordEdit.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye, 0)
         }
 
         // Move cursor to the end of text
-        binding.editText4.setSelection(binding.editText4.text.length)
+        binding.inputOldPasswordEdit.setSelection(binding.inputOldPasswordEdit.text.length)
     }
 
     private fun toggleNewPasswordVisibility() {
@@ -107,60 +208,75 @@ class ProfileEditActivity : AppCompatActivity() {
 
         // Change transformation method to show/hide password
         if (isNewPasswordVisible) {
-            binding.editText5.transformationMethod = HideReturnsTransformationMethod.getInstance()
-            binding.editText5.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_open, 0)
+            binding.inputNewPasswordEdit.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            binding.inputNewPasswordEdit.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_open, 0)
         } else {
-            binding.editText5.transformationMethod = PasswordTransformationMethod.getInstance()
-            binding.editText5.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye, 0)
+            binding.inputNewPasswordEdit.transformationMethod = PasswordTransformationMethod.getInstance()
+            binding.inputNewPasswordEdit.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye, 0)
         }
 
         // Move cursor to the end of text
-        binding.editText5.setSelection(binding.editText5.text.length)
+        binding.inputNewPasswordEdit.setSelection(binding.inputNewPasswordEdit.text.length)
+    }
+
+    private fun toggleConfirmPasswordVisibility() {
+        isConfirmPasswordVisible = !isConfirmPasswordVisible
+
+        // Change transformation method to show/hide password
+        if (isConfirmPasswordVisible) {
+            binding.inputConfirmPasswordEdit.transformationMethod = HideReturnsTransformationMethod.getInstance()
+            binding.inputConfirmPasswordEdit.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_open, 0)
+        } else {
+            binding.inputConfirmPasswordEdit.transformationMethod = PasswordTransformationMethod.getInstance()
+            binding.inputConfirmPasswordEdit.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye, 0)
+        }
+
+        // Move cursor to the end of text
+        binding.inputConfirmPasswordEdit.setSelection(binding.inputConfirmPasswordEdit.text.length)
     }
 
     private fun enableNewPasswordField() {
-        binding.editText5.isEnabled = true
-        binding.editText5.setBackgroundResource(R.drawable.bg_edittext)
+        binding.inputNewPasswordEdit.isEnabled = true
+        binding.inputNewPasswordEdit.setBackgroundResource(R.drawable.bg_edittext)
+        binding.inputConfirmPasswordEdit.isEnabled = true
+        binding.inputConfirmPasswordEdit.setBackgroundResource(R.drawable.bg_edittext)
     }
 
     private fun disableNewPasswordField() {
-        binding.editText5.isEnabled = false
-        binding.editText5.setBackgroundResource(R.drawable.bg_edittext_greyed)
-        binding.editText5.text.clear()
+        binding.inputNewPasswordEdit.isEnabled = false
+        binding.inputNewPasswordEdit.setBackgroundResource(R.drawable.bg_edittext_greyed)
+        binding.inputNewPasswordEdit.text.clear()
+        binding.inputConfirmPasswordEdit.isEnabled = false
+        binding.inputConfirmPasswordEdit.setBackgroundResource(R.drawable.bg_edittext_greyed)
+        binding.inputConfirmPasswordEdit.text.clear()
     }
 
     private fun saveProfileChanges() {
         // Get values from fields
-        val name = binding.editText2.text.toString()
-        val phone = binding.editText3.text.toString()
-        val oldPassword = binding.editText4.text.toString()
-        val newPassword = binding.editText5.text.toString()
+        val name = binding.inputNameEdit.text.toString()
+        val phone = binding.inputNoHPEdit.text.toString()
+        val oldPassword = binding.inputOldPasswordEdit.text.toString()
+        val newPassword = binding.inputNewPasswordEdit.text.toString()
+        val confirmPassword = binding.inputConfirmPasswordEdit.text.toString()
 
         // Validate input
-        if (name.isEmpty() || phone.isEmpty()) {
-            // Show error message
-            // You can implement this based on your app's design
+        if (!viewModel.validateForm(name, phone)) {
+            Toast.makeText(this, "Please fill all required fields", Toast.LENGTH_SHORT).show()
             return
         }
 
+        // Update profile info
+        viewModel.updateUserProfile(name, phone)
+
         // Check if user wants to change password
         if (oldPassword.isNotEmpty()) {
-            if (oldPassword != correctPassword) {
-                // Show incorrect password error
-                return
-            }
-
             if (newPassword.isEmpty()) {
-                // Show new password required error
+                Toast.makeText(this, "Please enter a new password", Toast.LENGTH_SHORT).show()
                 return
             }
 
-            // Update password logic here
+            // Change password
+            viewModel.changePassword(oldPassword, newPassword, confirmPassword)
         }
-
-        // Save profile changes logic here
-
-        // Show success message and navigate back
-        finish()
     }
 }
