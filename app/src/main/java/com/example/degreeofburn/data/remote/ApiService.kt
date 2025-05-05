@@ -6,11 +6,13 @@ import com.example.degreeofburn.data.model.response.LoginResponse
 import com.example.degreeofburn.data.model.request.OtpRequest
 import com.example.degreeofburn.data.model.response.OtpResponse
 import com.example.degreeofburn.data.model.request.PatientRequest
-import com.example.degreeofburn.data.model.response.PatientResponse
+import com.example.degreeofburn.data.model.response.PatientPostResponse
 import com.example.degreeofburn.data.model.request.RegisterRequest
 import com.example.degreeofburn.data.model.request.UpdateUserRequest
 import com.example.degreeofburn.data.model.response.ChangePasswordResponse
+import com.example.degreeofburn.data.model.response.MedicalRecordResponse
 import com.example.degreeofburn.data.model.response.PatientCountResponse
+import com.example.degreeofburn.data.model.response.PatientResponse
 import com.example.degreeofburn.data.model.response.RegisterResponse
 import com.example.degreeofburn.data.model.response.UpdateUserResponse
 import com.example.degreeofburn.data.model.response.UserDetailResponse
@@ -33,7 +35,7 @@ interface ApiService {
     suspend fun verifyOtp(@Body request: OtpRequest): Response<OtpResponse>
 
     @POST("pasien")
-    suspend fun createPatient(@Body patientRequest: PatientRequest): Response<PatientResponse>
+    suspend fun createPatient(@Body patientRequest: PatientRequest): Response<PatientPostResponse>
 
 
     @GET("pasien/count/user")
@@ -52,6 +54,12 @@ interface ApiService {
     suspend fun changePassword(
         @Body changePasswordRequest: ChangePasswordRequest
     ): Response<ChangePasswordResponse>
+
+    @GET("pasien")
+    suspend fun getAllPatients(): Response<List<PatientResponse>>
+
+    @GET("rekammedis")
+    suspend fun getAllMedicalRecords(): Response<List<MedicalRecordResponse>>
 }
 
 

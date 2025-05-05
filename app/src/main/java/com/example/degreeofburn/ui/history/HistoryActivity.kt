@@ -2,17 +2,20 @@ package com.example.degreeofburn.ui.history
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.degreeofburn.R
-import com.example.degreeofburn.data.model.HistoryModel
 import com.example.degreeofburn.databinding.ActivityHistoryBinding
 import com.example.degreeofburn.ui.history.adapter.HistoryAdapter
+import com.example.degreeofburn.utils.Resource
 
 class HistoryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHistoryBinding
     private lateinit var historyAdapter: HistoryAdapter
+    private lateinit var viewModel: HistoryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,14 +23,19 @@ class HistoryActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setupUI()
+        setupViewModel()
         setupRecyclerView()
-        loadDummyData()
+        observeData()
     }
 
     private fun setupUI() {
         binding.btnBackHistory.setOnClickListener {
             finish()
         }
+    }
+
+    private fun setupViewModel() {
+        viewModel = ViewModelProvider(this)[HistoryViewModel::class.java]
     }
 
     private fun setupRecyclerView() {
@@ -38,17 +46,38 @@ class HistoryActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadDummyData() {
-        val dummyData = getDummyHistoryData()
-
-        if (dummyData.isEmpty()) {
-            // Show placeholder when there's no data
-            showEmptyState(true)
-        } else {
-            showEmptyState(false)
-            historyAdapter.setHistoryList(dummyData)
+    private fun observeData() {
+        viewModel.historyItems.observe(this) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    showLoading(true)
+                }
+                is Resource.Success -> {
+                    showLoading(false)
+                    if (resource.data?.isEmpty() == true) {
+                        showEmptyState(true)
+                    } else {
+                        showEmptyState(false)
+                        resource.data?.let { historyAdapter.setHistoryList(it) }
+                    }
+                }
+                is Resource.Error -> {
+                    showLoading(false)
+                    showEmptyState(true)
+                    Toast.makeText(this, resource.message, Toast.LENGTH_LONG).show()
+                }
+            }
         }
+
+        // For demo purposes, you can switch between real data and dummy data
+        // Uses real API data
+        viewModel.loadHistoryData()
+
+        // OR use dummy data if you're testing without API
+        // viewModel.loadDummyData()
     }
+
+
 
     private fun showEmptyState(isEmpty: Boolean) {
         val emptyStateLayout = findViewById<View>(R.id.emptyStateLayout)
@@ -62,65 +91,13 @@ class HistoryActivity : AppCompatActivity() {
         }
     }
 
-    private fun getDummyHistoryData(): List<HistoryModel> {
-        // Change to true to show empty state placeholder
-        val showEmptyState = true
-
-        return if (showEmptyState) {
-            emptyList()
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loadingOverlay.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.VISIBLE
         } else {
-            // Dummy data
-            listOf(
-                HistoryModel(
-                    id = "1",
-                    patientName = "Ahmad Setiawan",
-                    officerName = "dr. Budi Santoso",
-                    actionDate = "25/04/2025"
-                ),
-                HistoryModel(
-                    id = "2",
-                    patientName = "Siti Rahayu",
-                    officerName = "dr. Ani Wijaya",
-                    actionDate = "24/04/2025"
-                ),
-                HistoryModel(
-                    id = "3",
-                    patientName = "Doni Kurniawan",
-                    officerName = "dr. Linda Susanti",
-                    actionDate = "23/04/2025"
-                ),
-                HistoryModel(
-                    id = "4",
-                    patientName = "Maya Putri",
-                    officerName = "dr. Rini Agustina",
-                    actionDate = "22/04/2025"
-                ),
-                HistoryModel(
-                    id = "5",
-                    patientName = "Rudi Hermawan",
-                    officerName = "dr. Hadi Prasetyo",
-                    actionDate = "21/04/2025"
-                ),
-                HistoryModel(
-                    id = "6",
-                    patientName = "Doni Kurniawan",
-                    officerName = "dr. Linda Susanti",
-                    actionDate = "23/04/2025"
-                ),
-                HistoryModel(
-                    id = "7",
-                    patientName = "Maya Putri",
-                    officerName = "dr. Rini Agustina",
-                    actionDate = "22/04/2025"
-                ),
-                HistoryModel(
-                    id = "8",
-                    patientName = "Rudi Hermawan",
-                    officerName = "dr. Hadi Prasetyo",
-                    actionDate = "21/04/2025"
-                )
-
-            )
+            binding.loadingOverlay.visibility = View.GONE
+            binding.progressBar.visibility = View.GONE
         }
     }
 }

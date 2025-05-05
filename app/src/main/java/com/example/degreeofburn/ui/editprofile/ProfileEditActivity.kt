@@ -38,6 +38,9 @@ class ProfileEditActivity : AppCompatActivity() {
         setupPasswordValidation()
         observeViewModel()
 
+        // Show loading overlay
+        showLoading(true)
+
         // Load user data
         viewModel.getUserDetails()
     }
@@ -64,11 +67,17 @@ class ProfileEditActivity : AppCompatActivity() {
 
     private fun setupPasswordVisibilityToggles() {
         // Set up old password visibility toggle
+// Di dalam setupPasswordVisibilityToggles()
         binding.inputOldPasswordEdit.setOnTouchListener { view, event ->
             if (event.action == MotionEvent.ACTION_UP) {
-                // Check if touch was on the drawable (eye icon)
+                // Perluas area klik dengan menambah offset
                 val drawableRight = 2
-                if (event.rawX >= (binding.inputOldPasswordEdit.right - binding.inputOldPasswordEdit.compoundDrawables[drawableRight].bounds.width())) {
+                val drawableWidth = binding.inputOldPasswordEdit.compoundDrawables[drawableRight].bounds.width()
+
+                // Tambahkan extra padding (40dp) untuk memperbesar area klik
+                val extraPadding = 40 * resources.displayMetrics.density
+
+                if (event.rawX >= (binding.inputOldPasswordEdit.right - drawableWidth - extraPadding)) {
                     toggleOldPasswordVisibility()
                     return@setOnTouchListener true
                 }
@@ -76,12 +85,14 @@ class ProfileEditActivity : AppCompatActivity() {
             return@setOnTouchListener false
         }
 
-        // Set up new password visibility toggle
+// Terapkan juga ke dua field password lainnya dengan cara yang sama
         binding.inputNewPasswordEdit.setOnTouchListener { view, event ->
             if (event.action == MotionEvent.ACTION_UP) {
-                // Check if touch was on the drawable (eye icon)
                 val drawableRight = 2
-                if (event.rawX >= (binding.inputNewPasswordEdit.right - binding.inputNewPasswordEdit.compoundDrawables[drawableRight].bounds.width())) {
+                val drawableWidth = binding.inputNewPasswordEdit.compoundDrawables[drawableRight].bounds.width()
+                val extraPadding = 40 * resources.displayMetrics.density
+
+                if (event.rawX >= (binding.inputNewPasswordEdit.right - drawableWidth - extraPadding)) {
                     toggleNewPasswordVisibility()
                     return@setOnTouchListener true
                 }
@@ -89,12 +100,13 @@ class ProfileEditActivity : AppCompatActivity() {
             return@setOnTouchListener false
         }
 
-        // Set up confirm password visibility toggle
         binding.inputConfirmPasswordEdit.setOnTouchListener { view, event ->
             if (event.action == MotionEvent.ACTION_UP) {
-                // Check if touch was on the drawable (eye icon)
                 val drawableRight = 2
-                if (event.rawX >= (binding.inputConfirmPasswordEdit.right - binding.inputConfirmPasswordEdit.compoundDrawables[drawableRight].bounds.width())) {
+                val drawableWidth = binding.inputConfirmPasswordEdit.compoundDrawables[drawableRight].bounds.width()
+                val extraPadding = 40 * resources.displayMetrics.density
+
+                if (event.rawX >= (binding.inputConfirmPasswordEdit.right - drawableWidth - extraPadding)) {
                     toggleConfirmPasswordVisibility()
                     return@setOnTouchListener true
                 }
@@ -120,6 +132,7 @@ class ProfileEditActivity : AppCompatActivity() {
         viewModel.userDetailState.observe(this) { result ->
             when (result) {
                 is Resource.Success -> {
+                    showLoading(false)
                     val userData = result.data
                     userData?.let {
                         binding.inputNameEdit.setText(it.nama)
@@ -127,10 +140,11 @@ class ProfileEditActivity : AppCompatActivity() {
                     }
                 }
                 is Resource.Error -> {
+                    showLoading(false)
                     Toast.makeText(this, "Error: ${result.message}", Toast.LENGTH_SHORT).show()
                 }
                 is Resource.Loading -> {
-                    // Show loading if needed
+                    showLoading(true)
                 }
             }
         }
@@ -139,6 +153,7 @@ class ProfileEditActivity : AppCompatActivity() {
         viewModel.updateProfileState.observe(this) { result ->
             when (result) {
                 is Resource.Success -> {
+                    showLoading(false)
                     Toast.makeText(this, "Profile updated successfully", Toast.LENGTH_SHORT).show()
                     // If no password change, finish activity
                     if (binding.inputOldPasswordEdit.text.toString().isEmpty()) {
@@ -146,10 +161,11 @@ class ProfileEditActivity : AppCompatActivity() {
                     }
                 }
                 is Resource.Error -> {
+                    showLoading(false)
                     Toast.makeText(this, "Error updating profile: ${result.message}", Toast.LENGTH_SHORT).show()
                 }
                 is Resource.Loading -> {
-                    // Show loading if needed
+                    showLoading(true)
                 }
             }
         }
@@ -158,14 +174,16 @@ class ProfileEditActivity : AppCompatActivity() {
         viewModel.changePasswordState.observe(this) { result ->
             when (result) {
                 is Resource.Success -> {
+                    showLoading(false)
                     Toast.makeText(this, "Password changed successfully", Toast.LENGTH_SHORT).show()
                     finish()
                 }
                 is Resource.Error -> {
+                    showLoading(false)
                     Toast.makeText(this, "Error changing password: ${result.message}", Toast.LENGTH_SHORT).show()
                 }
                 is Resource.Loading -> {
-                    // Show loading if needed
+                    showLoading(true)
                 }
             }
         }
@@ -265,18 +283,33 @@ class ProfileEditActivity : AppCompatActivity() {
             return
         }
 
+        // Show loading overlay
+        showLoading(true)
+
         // Update profile info
         viewModel.updateUserProfile(name, phone)
 
         // Check if user wants to change password
         if (oldPassword.isNotEmpty()) {
             if (newPassword.isEmpty()) {
+                showLoading(false)
                 Toast.makeText(this, "Please enter a new password", Toast.LENGTH_SHORT).show()
                 return
             }
 
             // Change password
             viewModel.changePassword(oldPassword, newPassword, confirmPassword)
+        }
+    }
+
+    // Show or hide loading overlay
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loadingOverlay.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.loadingOverlay.visibility = View.GONE
+            binding.progressBar.visibility = View.GONE
         }
     }
 }

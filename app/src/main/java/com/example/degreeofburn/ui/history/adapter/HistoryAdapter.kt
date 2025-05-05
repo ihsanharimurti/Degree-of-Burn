@@ -2,6 +2,7 @@ package com.example.degreeofburn.ui.history.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.degreeofburn.data.model.HistoryModel
 import com.example.degreeofburn.databinding.HistoryCardBinding
@@ -32,6 +33,15 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
             binding.tvRecyclerPatient.text = history.patientName
             binding.tvRecyclerOfficer.text = history.officerName
             binding.tvRecyclerDate.text = history.actionDate
+
+            // Set click listener to show toast with rekam medis ID
+            itemView.setOnClickListener {
+                Toast.makeText(
+                    itemView.context,
+                    "ID Rekam Medis: ${history.id}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 }

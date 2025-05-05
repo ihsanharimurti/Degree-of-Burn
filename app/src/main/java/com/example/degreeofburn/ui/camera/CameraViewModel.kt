@@ -9,7 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.degreeofburn.data.model.PatientDTO
 import com.example.degreeofburn.data.model.request.PatientRequest
-import com.example.degreeofburn.data.model.response.PatientResponse
+import com.example.degreeofburn.data.model.response.PatientPostResponse
 import com.example.degreeofburn.data.remote.ApiClient
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -96,7 +96,7 @@ class CameraViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-    private fun handleApiResponse(response: Response<PatientResponse>) {
+    private fun handleApiResponse(response: Response<PatientPostResponse>) {
         if (response.isSuccessful) {
             response.body()?.let {
                 Log.d("PostPatient", "Success: ${it.message}")
