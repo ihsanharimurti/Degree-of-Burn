@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.degreeofburn.R
+import com.example.degreeofburn.data.model.PatientDTO
 import com.example.degreeofburn.databinding.ActivityImageResultBinding
 import com.example.degreeofburn.ui.ResultActivity
 import com.example.degreeofburn.ui.camera.CameraActivity
@@ -24,11 +25,14 @@ import java.io.File
 class ImageResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityImageResultBinding
     private val viewModel: ImageResultViewModel by viewModels()
+    private var patientData: PatientDTO? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityImageResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        patientData = intent.getParcelableExtra("PATIENT_DATA")
 
         // Get image URI from intent
         val imageUriString = intent.getStringExtra(CameraActivity.KEY_IMAGE_URI)
@@ -94,10 +98,39 @@ class ImageResultActivity : AppCompatActivity() {
     }
 
 
+//    private fun setupButtonListeners() {
+//        // Retry button - go back to camera
+//        binding.btnRetry.setOnClickListener {
+//            val intent = Intent(this, CameraActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }
+//
+//        // Next button - continue to analysis
+//        binding.btnNext.setOnClickListener {
+//            viewModel.imageUri.value?.let { uri ->
+//                // Navigate to the next screen with the image
+//                val intent = Intent(this, ResultActivity::class.java).apply {
+//                    putExtra(KEY_IMAGE_URI, uri.toString())
+//                }
+//                startActivity(intent)
+//            } ?: run {
+//                Toast.makeText(this, "Tidak dapat memproses gambar", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//    }
+
+    // Di ImageResultActivity.kt
     private fun setupButtonListeners() {
-        // Retry button - go back to camera
+        // Retry button - go back to camera with patientData
         binding.btnRetry.setOnClickListener {
-            val intent = Intent(this, CameraActivity::class.java)
+            // Mendapatkan patientData dari intent yang diterima sebelumnya
+            val patientData = intent.getParcelableExtra<PatientDTO>("PATIENT_DATA")
+
+            val intent = Intent(this, CameraActivity::class.java).apply {
+                // Mengirim kembali patientData ke CameraActivity
+                putExtra("PATIENT_DATA", patientData)
+            }
             startActivity(intent)
             finish()
         }
@@ -105,9 +138,12 @@ class ImageResultActivity : AppCompatActivity() {
         // Next button - continue to analysis
         binding.btnNext.setOnClickListener {
             viewModel.imageUri.value?.let { uri ->
-                // Navigate to the next screen with the image
+                // Dapatkan patientData untuk diteruskan ke ResultActivity
+                val patientData = intent.getParcelableExtra<PatientDTO>("PATIENT_DATA")
+
                 val intent = Intent(this, ResultActivity::class.java).apply {
                     putExtra(KEY_IMAGE_URI, uri.toString())
+                    putExtra("PATIENT_DATA", patientData)
                 }
                 startActivity(intent)
             } ?: run {
@@ -115,7 +151,6 @@ class ImageResultActivity : AppCompatActivity() {
             }
         }
     }
-
     companion object {
         const val KEY_IMAGE_URI = "key_image_uri"
     }

@@ -2,6 +2,7 @@ package com.example.degreeofburn.data.repository
 
 import android.content.Context
 import com.example.degreeofburn.data.model.response.PatientCountResponse
+import com.example.degreeofburn.data.model.response.PatientResponse
 import com.example.degreeofburn.data.model.response.UserDetailResponse
 import com.example.degreeofburn.data.remote.ApiClient
 import com.example.degreeofburn.utils.Resource
@@ -59,6 +60,24 @@ class HomeRepository(private val context: Context) {
             } catch (e: Exception) {
                 return@withContext Resource.Error("Network error: ${e.message}")
             }
+        }
+    }
+
+    suspend fun getPatients(): Resource<List<PatientResponse>> = withContext(Dispatchers.IO) {
+        try {
+            val response = apiService.getAllPatients() // Ganti dengan endpoint API yang sesuai
+            if (response.isSuccessful) {
+                val patients = response.body()
+                if (patients != null) {
+                    Resource.Success(patients)
+                } else {
+                    Resource.Error("Data pasien kosong")
+                }
+            } else {
+                Resource.Error("Gagal memuat data: ${response.message()}")
+            }
+        } catch (e: Exception) {
+            Resource.Error(e.message ?: "Terjadi kesalahan tidak diketahui")
         }
     }
 }

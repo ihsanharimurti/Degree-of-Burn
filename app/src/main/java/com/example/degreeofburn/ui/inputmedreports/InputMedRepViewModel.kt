@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.degreeofburn.data.model.response.PatientResponse
 import com.example.degreeofburn.data.model.response.UserDetailResponse
 import com.example.degreeofburn.data.repository.HomeRepository
 import com.example.degreeofburn.utils.Resource
@@ -21,6 +22,10 @@ class InputMedRepViewModel (
     private val _userDetail = MutableLiveData<Resource<UserDetailResponse>>()
     val userDetail: LiveData<Resource<UserDetailResponse>> = _userDetail
 
+    private val _patientsList = MutableLiveData<Resource<List<PatientResponse>>>()
+    val patientsList: LiveData<Resource<List<PatientResponse>>> = _patientsList
+
+
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
@@ -35,6 +40,22 @@ class InputMedRepViewModel (
                 _userDetail.postValue(Resource.Error("User ID not found"))
             }
             _isLoading.value = false
+        }
+    }
+
+    fun getPatients() {
+        viewModelScope.launch {
+            _isLoading.value = true
+            _patientsList.value = Resource.Loading()
+
+            try {
+                val result = repository.getPatients()
+                _patientsList.value = result
+            } catch (e: Exception) {
+                _patientsList.value = Resource.Error(e.message ?: "Gagal memuat data pasien")
+            } finally {
+                _isLoading.value = false
+            }
         }
     }
 

@@ -133,13 +133,19 @@
         app:layout_constraintStart_toStartOf="@+id/linearLayout4"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/inputPatientName"
         android:layout_width="350dp"
         android:layout_height="32dp"
         android:layout_marginTop="4dp"
         android:padding="10dp"
         android:hint="Nama Pasien"
+        android:dropDownHeight="wrap_content"
+        android:dropDownHorizontalOffset="0dp"
+        android:dropDownVerticalOffset="10dp"
+        android:focusable="true"
+        android:clickable="true"
+        android:cursorVisible="false"
         android:drawableEnd="@drawable/ic_arrow_dropdown"
         android:background="@drawable/bg_edittext"
         android:textAppearance="@style/Txt115AbuLatoReg"

@@ -17,8 +17,24 @@ import kotlinx.parcelize.Parcelize
 //    var burnPercentage: Double = 0.0
 //) : Parcelable
 
+
+
+//data class PatientDTO(
+//    val name: String,
+//    val selectedBodyParts: ArrayList<String>,
+//    var imageUri: String = "",
+//) : Parcelable
+
+//
+//import android.os.Parcelable
+//import kotlinx.parcelize.Parcelize
+//
+//@Parcelize
 data class PatientDTO(
-    val name: String,
-    val selectedBodyParts: ArrayList<String>,
-    var imageUri: String = "",
+    val name: String = "",
+    val patientId: Int = 0,
+    val weight: String = "",
+    val selectedBodyParts: ArrayList<String> = arrayListOf(),
+    var imageUri: String = ""
+
 ) : Parcelable
