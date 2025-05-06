@@ -6,7 +6,7 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -19,7 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ui.optioninput.OptionInputActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.inputpatients.InputPatientsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.inputmedreports.InputMedicReportsActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.splash.SplashActivity"
             android:exported="true">
@@ -41,8 +49,7 @@
         <activity
             android:name=".ui.ResultActivity"
             android:exported="false"
-            android:theme="@style/Theme.DegreeOfBurn"
-            />
+            android:theme="@style/Theme.DegreeOfBurn" />
         <activity
             android:name=".ui.imageprev.ImageResultActivity"
             android:exported="false" />

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/bg_newpatient_polos_act"
+    tools:context=".ui.inputpatients.InputPatientsActivity">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:elevation="4dp"
+        android:padding="24dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <ImageButton
+            android:id="@+id/btnBackInputNew"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_arrow_back" />
+
+
+        <TextView
+            android:id="@+id/tvTitleNewPatient"
+            style="@style/TextBigBlueStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Pasien Baru"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="19dp" />
+
+    </androidx.appcompat.widget.Toolbar>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:background="@drawable/ic_layoutnewpatient"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="36dp"
+            android:src="@drawable/ic_newpatient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/Txt115LatoBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Isi Data Lengkap Pasien pada Form Ini"
+            android:textColor="@color/blue_start"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout6"
+            android:layout_width="240dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/blue_end"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/tvPatientName"
+            style="@style/TextSubMainTitleBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="Nama Pasien Baru"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/inputPatientName"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout6" />
+
+        <EditText
+            android:id="@+id/inputPatientName"
+            android:layout_width="300dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_edittext_blue"
+            android:hint="Nama Pasien"
+            android:padding="10dp"
+            android:textAppearance="@style/Txt115AbuLatoReg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPatientName"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvPatientSex"
+            style="@style/TextSubMainTitleBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Jenis Kelamin Pasien"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/inputPatientName"
+            app:layout_constraintTop_toBottomOf="@+id/inputPatientName" />
+
+        <AutoCompleteTextView
+            android:id="@+id/inputPatientSex"
+            android:layout_width="300dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="4dp"
+            android:clickable="true"
+            android:background="@drawable/bg_edittext_blue"
+            android:hint="Pilih Jenis Kelamin"
+            android:drawableEnd="@drawable/ic_arrow_dropdown_blue"
+            android:padding="10dp"
+            android:textAppearance="@style/Txt115AbuLatoReg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPatientSex"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvPatientAge"
+            style="@style/TextSubMainTitleBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Umur Pasien"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/inputPatientSex"
+            app:layout_constraintTop_toBottomOf="@+id/inputPatientSex" />
+
+        <LinearLayout
+            android:id="@+id/layoutPatientAge"
+            android:layout_width="120dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_edittext_blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvPatientAge"
+            app:layout_constraintTop_toBottomOf="@+id/tvPatientAge">
+
+            <EditText
+                android:id="@+id/inputPatientAge"
+                android:layout_width="0dp"
+                android:layout_weight="0.75"
+                android:layout_height="match_parent"
+                android:hint="xx"
+                android:inputType="number"
+                android:padding="8dp"
+                android:background="@null"
+                style="@style/Txt115AbuLatoReg" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_gravity="center"
+                android:layout_height="match_parent"
+                android:text="tahun"
+                android:gravity="center_vertical"
+                style="@style/Txt115AbuLatoReg" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvPatientBlood"
+            style="@style/TextSubMainTitleBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Golongan Darah Pasien"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/layoutPatientBlood"
+            app:layout_constraintTop_toTopOf="@+id/tvPatientAge" />
+
+        <LinearLayout
+            android:id="@+id/layoutPatientBlood"
+            android:layout_width="120dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/bg_edittext_blue"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/inputPatientSex"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPatientBlood">
+
+            <AutoCompleteTextView
+                android:id="@+id/inputPatientBlood"
+                style="@style/Txt115AbuLatoReg"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.75"
+                android:background="@null"
+                android:hint="Pilih Gol. Darah"
+                android:inputType="number"
+                android:drawableEnd="@drawable/ic_arrow_dropdown_blue"
+                android:padding="8dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvPatientHeight"
+            style="@style/TextSubMainTitleBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tinggi Badan Pasien"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/inputPatientSex"
+            app:layout_constraintTop_toBottomOf="@+id/layoutPatientBlood" />
+
+        <LinearLayout
+            android:id="@+id/layoutPatientHeight"
+            android:layout_width="120dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_edittext_blue"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvPatientHeight"
+            app:layout_constraintTop_toBottomOf="@+id/tvPatientHeight">
+
+            <EditText
+                android:id="@+id/inputPatientHeight"
+                style="@style/Txt115AbuLatoReg"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.75"
+                android:background="@null"
+                android:hint="xx"
+                android:inputType="number"
+                android:padding="8dp" />
+
+            <TextView
+                style="@style/Txt115AbuLatoReg"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:gravity="center_vertical"
+                android:text="cm" />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tvPatientWeight"
+            style="@style/TextSubMainTitleBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Berat Badan Pasien"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/layoutPatientBlood"
+            app:layout_constraintTop_toBottomOf="@+id/layoutPatientBlood" />
+
+        <LinearLayout
+            android:id="@+id/layoutPatientWeight"
+            android:layout_width="120dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_edittext_blue"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tvPatientWeight"
+            app:layout_constraintTop_toBottomOf="@+id/tvPatientWeight">
+
+            <EditText
+                android:id="@+id/inputPatientWeight"
+                style="@style/Txt115AbuLatoReg"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.75"
+                android:background="@null"
+                android:hint="xx"
+                android:inputType="number"
+                android:padding="8dp" />
+
+            <TextView
+                style="@style/Txt115AbuLatoReg"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.25"
+                android:gravity="center_vertical"
+                android:text="kg" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btnInputNext"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_btn_gradient"
+        android:text="Selanjutnya"
+        android:layout_marginBottom="20dp"
+        android:textAllCaps="false"
+        android:textAppearance="@style/Txt115AbuLatoReg"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <View
+        android:id="@+id/loadingOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- ProgressBar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

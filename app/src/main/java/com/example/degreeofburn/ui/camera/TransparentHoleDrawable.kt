@@ -22,7 +22,7 @@ class TransparentHoleDrawable(
 ) : Drawable() {
 
     private val overlayPaint = Paint().apply {
-        color = Color.argb(153, 128, 128, 128)  // Semi-transparent grey (#99808080)
+        color = Color.argb(153, 0, 0, 0)  // Semi-transparent grey (#99808080)
         style = Paint.Style.FILL
     }
 

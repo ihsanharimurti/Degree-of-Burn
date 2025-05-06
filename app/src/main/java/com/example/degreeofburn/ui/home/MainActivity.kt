@@ -10,6 +10,7 @@ import com.example.degreeofburn.data.repository.HomeRepository
 import com.example.degreeofburn.databinding.ActivityMainBinding
 import com.example.degreeofburn.ui.history.HistoryActivity
 import com.example.degreeofburn.ui.input.InputActivity
+import com.example.degreeofburn.ui.optioninput.OptionInputActivity
 import com.example.degreeofburn.ui.profile.ProfileActivity
 import com.example.degreeofburn.utils.Resource
 import com.example.degreeofburn.utils.SessionManager
@@ -139,18 +140,18 @@ class MainActivity : AppCompatActivity() {
     private fun setupClickListeners() {
         // Add Patient button
         binding.btnAddPatient.setOnClickListener {
-            val intent = Intent(this, InputActivity::class.java)
+            val intent = Intent(this, OptionInputActivity::class.java)
             startActivity(intent)
         }
 
         // Also make the "Click Here" text and whole right side clickable
         binding.tvClickHere.setOnClickListener {
-            val intent = Intent(this, InputActivity::class.java)
+            val intent = Intent(this, OptionInputActivity::class.java)
             startActivity(intent)
         }
 
         binding.kanan.setOnClickListener {
-            val intent = Intent(this, InputActivity::class.java)
+            val intent = Intent(this, OptionInputActivity::class.java)
             startActivity(intent)
         }
 

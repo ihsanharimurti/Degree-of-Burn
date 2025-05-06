@@ -342,45 +342,12 @@ class CameraActivity : AppCompatActivity() {
         }
     }
 
-//    private fun observeViewModel() {
-//        viewModel.captureStatus.observe(this) { status ->
-//            when (status) {
-//                is CameraViewModel.CaptureStatus.Success -> {
-//                    // Navigate to your ImageResultActivity with the captured image URI
-//                    navigateToImageResult(status.uri)
-//                    // Reset status after handling
-//                    viewModel.resetCaptureStatus()
-//                }
-//                is CameraViewModel.CaptureStatus.Error -> {
-//                    Toast.makeText(this, "Photo capture failed: ${status.message}", Toast.LENGTH_SHORT).show()
-//                }
-//                null -> { /* Ignore */ }
-//                else -> {}
-//            }
-//        }
-//    }
-//
-//    private fun navigateToImageResult(imageUri: Uri) {
-//        patientData?.imageUri = imageUri.toString()
-//
-//        val intent = Intent(this, ImageResultActivity::class.java).apply {
-//            putExtra(KEY_IMAGE_URI, imageUri.toString())
-//            putExtra("PATIENT_DATA", patientData)
-//        }
-//        startActivity(intent)
-//        Log.d("TempPatientData", patientData.toString())
-//    }
-
-
     private fun observeViewModel() {
         viewModel.captureStatus.observe(this) { status ->
             when (status) {
                 is CameraViewModel.CaptureStatus.Success -> {
-                    // Send image URI to viewModel and trigger API call
-                    patientData?.imageUri = status.uri.toString()
-                    viewModel.postPatientData(patientData)
-
-                    // Navigate to result screen will happen after observing apiStatus
+                    // Navigate to your ImageResultActivity with the captured image URI
+                    navigateToImageResult(status.uri)
                     // Reset status after handling
                     viewModel.resetCaptureStatus()
                 }
@@ -391,65 +358,98 @@ class CameraActivity : AppCompatActivity() {
                 else -> {}
             }
         }
-
-        viewModel.apiStatus.observe(this) { status ->
-            when (status) {
-                is CameraViewModel.ApiStatus.Loading -> {
-                    // Show loading indicator if needed
-                    binding.progressBar.visibility = View.VISIBLE
-                }
-                is CameraViewModel.ApiStatus.Success -> {
-                    binding.progressBar.visibility = View.GONE
-                    Toast.makeText(this, status.message, Toast.LENGTH_SHORT).show()
-
-                    // Now navigate to image result after successful API call
-                    patientData?.let {
-                        val intent = Intent(this, ImageResultActivity::class.java).apply {
-                            putExtra(KEY_IMAGE_URI, it.imageUri)
-                            putExtra("PATIENT_DATA", patientData)
-                        }
-                        startActivity(intent)
-                        Log.d("TempPatientData", patientData.toString())
-                    }
-
-                    // Reset API status
-                    viewModel.resetApiStatus()
-                }
-                is CameraViewModel.ApiStatus.Error -> {
-                    binding.progressBar.visibility = View.GONE
-                    Toast.makeText(this, status.message, Toast.LENGTH_SHORT).show()
-
-                    // Even if API call fails, still navigate to image result
-                    patientData?.let {
-                        val intent = Intent(this, ImageResultActivity::class.java).apply {
-                            putExtra(KEY_IMAGE_URI, it.imageUri)
-                            putExtra("PATIENT_DATA", patientData)
-                        }
-                        startActivity(intent)
-                        Log.d("TempPatientData", patientData.toString())
-                    }
-
-                    // Reset API status
-                    viewModel.resetApiStatus()
-                }
-                is CameraViewModel.ApiStatus.None -> {
-                    // Initial state, do nothing
-                }
-            }
-        }
     }
 
     private fun navigateToImageResult(imageUri: Uri) {
-        // Set the URI in patient data
         patientData?.imageUri = imageUri.toString()
 
-        // The API call is now handled by the ViewModel after captureStatus.Success
-        // We don't need to do anything here as the navigation will happen
-        // after the API call completes (in the apiStatus observer)
-
-        // For backward compatibility, log the data
+        val intent = Intent(this, ImageResultActivity::class.java).apply {
+            putExtra(KEY_IMAGE_URI, imageUri.toString())
+            putExtra("PATIENT_DATA", patientData)
+        }
+        startActivity(intent)
         Log.d("TempPatientData", patientData.toString())
     }
+
+
+//    private fun observeViewModel() {
+//        viewModel.captureStatus.observe(this) { status ->
+//            when (status) {
+//                is CameraViewModel.CaptureStatus.Success -> {
+//                    // Send image URI to viewModel and trigger API call
+//                    patientData?.imageUri = status.uri.toString()
+////                    viewModel.postPatientData(patientData)
+//
+//                    // Navigate to result screen will happen after observing apiStatus
+//                    // Reset status after handling
+//                    viewModel.resetCaptureStatus()
+//                }
+//                is CameraViewModel.CaptureStatus.Error -> {
+//                    Toast.makeText(this, "Photo capture failed: ${status.message}", Toast.LENGTH_SHORT).show()
+//                }
+//                null -> { /* Ignore */ }
+//                else -> {}
+//            }
+//        }
+//
+//        viewModel.apiStatus.observe(this) { status ->
+//            when (status) {
+//                is CameraViewModel.ApiStatus.Loading -> {
+//                    // Show loading indicator if needed
+//                    binding.progressBar.visibility = View.VISIBLE
+//                }
+//                is CameraViewModel.ApiStatus.Success -> {
+//                    binding.progressBar.visibility = View.GONE
+//                    Toast.makeText(this, status.message, Toast.LENGTH_SHORT).show()
+//
+//                    // Now navigate to image result after successful API call
+//                    patientData?.let {
+//                        val intent = Intent(this, ImageResultActivity::class.java).apply {
+//                            putExtra(KEY_IMAGE_URI, it.imageUri)
+//                            putExtra("PATIENT_DATA", patientData)
+//                        }
+//                        startActivity(intent)
+//                        Log.d("TempPatientData", patientData.toString())
+//                    }
+//
+//                    // Reset API status
+//                    viewModel.resetApiStatus()
+//                }
+//                is CameraViewModel.ApiStatus.Error -> {
+//                    binding.progressBar.visibility = View.GONE
+//                    Toast.makeText(this, status.message, Toast.LENGTH_SHORT).show()
+//
+//                    // Even if API call fails, still navigate to image result
+//                    patientData?.let {
+//                        val intent = Intent(this, ImageResultActivity::class.java).apply {
+//                            putExtra(KEY_IMAGE_URI, it.imageUri)
+//                            putExtra("PATIENT_DATA", patientData)
+//                        }
+//                        startActivity(intent)
+//                        Log.d("TempPatientData", patientData.toString())
+//                    }
+//
+//                    // Reset API status
+//                    viewModel.resetApiStatus()
+//                }
+//                is CameraViewModel.ApiStatus.None -> {
+//                    // Initial state, do nothing
+//                }
+//            }
+//        }
+//    }
+
+//    private fun navigateToImageResult(imageUri: Uri) {
+//        // Set the URI in patient data
+//        patientData?.imageUri = imageUri.toString()
+//
+//        // The API call is now handled by the ViewModel after captureStatus.Success
+//        // We don't need to do anything here as the navigation will happen
+//        // after the API call completes (in the apiStatus observer)
+//
+//        // For backward compatibility, log the data
+//        Log.d("TempPatientData", patientData.toString())
+//    }
 
     private fun takePhoto() {
         val imageCapture = imageCapture ?: return

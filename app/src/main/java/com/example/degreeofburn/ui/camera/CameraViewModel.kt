@@ -56,62 +56,56 @@ class CameraViewModel(application: Application) : AndroidViewModel(application) 
         _captureStatus.value = null
     }
 
-    fun postPatientData(patientData: PatientDTO?) {
-        patientData?.let {
-            _apiStatus.value = ApiStatus.Loading
+//    fun postPatientData(patientData: PatientDTO?) {
+//        patientData?.let {
+//            _apiStatus.value = ApiStatus.Loading
+//
+//            viewModelScope.launch {
+//                try {
+//                    // Hard-coded Firebase UID as requested
+//                    val firebaseUid = "GlEtLKQS0bhbnNBRZIdJcoytP7g2"
+//
+//                    // Get today's date for tanggal_masuk
+//                    val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+//                    val today = dateFormat.format(Date())
+//
+//                    // Create the request object
+//                    val patientRequest = PatientRequest(
+//                        nama = it.name,
+//
+//                    )
+//
+//                    // Use the application context from AndroidViewModel
+//                    val response = ApiClient.getAuthenticatedClient(getApplication()).createPatient(patientRequest)
+//
+//                    handleApiResponse(response)
+//
+//                } catch (e: Exception) {
+//                    Log.e("PostPatient", "Exception: ${e.message}", e)
+//                    _apiStatus.value = ApiStatus.Error("Terjadi kesalahan: ${e.message}")
+//                }
+//            }
+//        } ?: run {
+//            _apiStatus.value = ApiStatus.Error("Patient data is null")
+//        }
+//    }
 
-            viewModelScope.launch {
-                try {
-                    // Hard-coded Firebase UID as requested
-                    val firebaseUid = "GlEtLKQS0bhbnNBRZIdJcoytP7g2"
+//    private fun handleApiResponse(response: Response<PatientPostResponse>) {
+//        if (response.isSuccessful) {
+//            response.body()?.let {
+//                Log.d("PostPatient", "Success: ${it.message}")
+//                _apiStatus.value = ApiStatus.Success(it.message)
+//            } ?: run {
+//                _apiStatus.value = ApiStatus.Error("Response body is null")
+//            }
+//        } else {
+//            val errorMsg = response.errorBody()?.string() ?: response.message()
+//            Log.e("PostPatient", "Error: ${response.code()} - $errorMsg")
+//            _apiStatus.value = ApiStatus.Error("Gagal menyimpan data pasien: ${response.code()}")
+//        }
+//    }
 
-                    // Get today's date for tanggal_masuk
-                    val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-                    val today = dateFormat.format(Date())
-
-                    // Create the request object
-                    val patientRequest = PatientRequest(
-                        firebase_uid = firebaseUid,
-                        nama = it.name,
-                        usia = it.age,
-                        jenis_kelamin = it.sex,
-                        tanggal_masuk = today,
-                        bb = it.weight.toDouble(),
-                        gol_darah = it.bloodType,
-                        tb = it.height
-                    )
-
-                    // Use the application context from AndroidViewModel
-                    val response = ApiClient.getAuthenticatedClient(getApplication()).createPatient(patientRequest)
-
-                    handleApiResponse(response)
-
-                } catch (e: Exception) {
-                    Log.e("PostPatient", "Exception: ${e.message}", e)
-                    _apiStatus.value = ApiStatus.Error("Terjadi kesalahan: ${e.message}")
-                }
-            }
-        } ?: run {
-            _apiStatus.value = ApiStatus.Error("Patient data is null")
-        }
-    }
-
-    private fun handleApiResponse(response: Response<PatientPostResponse>) {
-        if (response.isSuccessful) {
-            response.body()?.let {
-                Log.d("PostPatient", "Success: ${it.message}")
-                _apiStatus.value = ApiStatus.Success(it.message)
-            } ?: run {
-                _apiStatus.value = ApiStatus.Error("Response body is null")
-            }
-        } else {
-            val errorMsg = response.errorBody()?.string() ?: response.message()
-            Log.e("PostPatient", "Error: ${response.code()} - $errorMsg")
-            _apiStatus.value = ApiStatus.Error("Gagal menyimpan data pasien: ${response.code()}")
-        }
-    }
-
-    fun resetApiStatus() {
-        _apiStatus.value = ApiStatus.None
-    }
+//    fun resetApiStatus() {
+//        _apiStatus.value = ApiStatus.None
+//    }
 }

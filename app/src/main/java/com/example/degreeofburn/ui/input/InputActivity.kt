@@ -140,11 +140,11 @@ class InputActivity : AppCompatActivity() {
                 // Create DTO to pass to next activity
                 val patientDTO = PatientDTO(
                     name = binding.inputPatientName.text.toString(),
-                    weight = binding.inputPatientWeight.text.toString(),
-                    height = binding.inputPatientHeight.text.toString(),
-                    age = binding.inputPatientAge.text.toString(),
-                    sex = binding.inputPatientSex.text.toString(),
-                    bloodType = binding.inputPatientBlood.text.toString(),
+//                    weight = binding.inputPatientWeight.text.toString(),
+//                    height = binding.inputPatientHeight.text.toString(),
+//                    age = binding.inputPatientAge.text.toString(),
+//                    sex = binding.inputPatientSex.text.toString(),
+//                    bloodType = binding.inputPatientBlood.text.toString(),
                     selectedBodyParts = ArrayList(selectedBodyParts)
                 )
 
