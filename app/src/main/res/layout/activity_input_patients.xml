@@ -105,6 +105,8 @@
             android:background="@drawable/bg_edittext_blue"
             android:hint="Nama Pasien"
             android:padding="10dp"
+            android:singleLine="true"
+            android:inputType="text"
             android:textAppearance="@style/Txt115AbuLatoReg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

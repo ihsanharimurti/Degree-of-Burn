@@ -30,7 +30,6 @@ class InputActivity : AppCompatActivity() {
 
         setupToolbar()
         setupBodyPartButtons()
-        setupNextButton()
 
         val bloodTypes = listOf("A", "B", "AB", "O")
         val sexTypes = listOf("Laki-laki", "Perempuan")
@@ -134,30 +133,31 @@ class InputActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupNextButton() {
-        binding.btnInputNext.setOnClickListener {
-            if (validateInputs()) {
-                // Create DTO to pass to next activity
-                val patientDTO = PatientDTO(
-                    name = binding.inputPatientName.text.toString(),
-//                    weight = binding.inputPatientWeight.text.toString(),
-//                    height = binding.inputPatientHeight.text.toString(),
-//                    age = binding.inputPatientAge.text.toString(),
-//                    sex = binding.inputPatientSex.text.toString(),
-//                    bloodType = binding.inputPatientBlood.text.toString(),
-                    selectedBodyParts = ArrayList(selectedBodyParts)
-                )
-
-                // Navigate to Camera Activity with patient data
-                val intent = Intent(this, CameraActivity::class.java)
-                intent.putExtra("PATIENT_DATA", patientDTO)
-                startActivity(intent)
-
-                Log.d("TempPatientData", patientDTO.toString())
-
-            }
-        }
-    }
+//    private fun setupNextButton() {
+//        binding.btnInputNext.setOnClickListener {
+//            if (validateInputs()) {
+//                // Create DTO to pass to next activity
+//                val patientDTO = PatientDTO(
+//                    name = binding.inputPatientName.text.toString(),
+//                    patientId =
+////                    weight = binding.inputPatientWeight.text.toString(),
+////                    height = binding.inputPatientHeight.text.toString(),
+////                    age = binding.inputPatientAge.text.toString(),
+////                    sex = binding.inputPatientSex.text.toString(),
+////                    bloodType = binding.inputPatientBlood.text.toString(),
+//                    selectedBodyParts = ArrayList(selectedBodyParts)
+//                )
+//
+//                // Navigate to Camera Activity with patient data
+//                val intent = Intent(this, CameraActivity::class.java)
+//                intent.putExtra("PATIENT_DATA", patientDTO)
+//                startActivity(intent)
+//
+//                Log.d("TempPatientData", patientDTO.toString())
+//
+//            }
+//        }
+//    }
 
     private fun validateInputs(): Boolean {
         // Validate patient name

@@ -1,7 +1,8 @@
+// File: app/src/main/java/com/example/degreeofburn/ui/imageprev/ImageResultActivity.kt
 package com.example.degreeofburn.ui.imageprev
 
-
 import android.annotation.SuppressLint
+import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Typeface
 import android.net.Uri
@@ -19,13 +20,13 @@ import com.example.degreeofburn.databinding.ActivityImageResultBinding
 import com.example.degreeofburn.ui.ResultActivity
 import com.example.degreeofburn.ui.camera.CameraActivity
 import com.example.degreeofburn.ui.home.MainActivity
-import java.io.File
-
+import com.example.degreeofburn.utils.Resource
 
 class ImageResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityImageResultBinding
     private val viewModel: ImageResultViewModel by viewModels()
     private var patientData: PatientDTO? = null
+    private lateinit var progressDialog: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +34,12 @@ class ImageResultActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         patientData = intent.getParcelableExtra("PATIENT_DATA")
+
+        // Initialize progress dialog
+        progressDialog = ProgressDialog(this).apply {
+            setMessage("Memproses gambar...")
+            setCancelable(false)
+        }
 
         // Get image URI from intent
         val imageUriString = intent.getStringExtra(CameraActivity.KEY_IMAGE_URI)
@@ -45,26 +52,46 @@ class ImageResultActivity : AppCompatActivity() {
                 .load(imageUri)
                 .centerCrop()
                 .into(binding.icImagePreview)
-
-            val file = File(imageUri.path ?: "")
-            if (file.exists()) {
-                val fileSizeInKB = file.length() / 1024
-                val fileSizeInMB = fileSizeInKB / 1024
-                Log.d("ImageSize", "Ukuran file: $fileSizeInKB KB ($fileSizeInMB MB)")
-            } else {
-                Log.d("ImageSize", "File tidak ditemukan di path: ${imageUri.path}")
-            }
-
         } else {
             Toast.makeText(this, "Tidak ada gambar yang diterima", Toast.LENGTH_SHORT).show()
             finish()
             return
         }
 
+        // Setup observers
+        setupObservers()
+
         // Set up button click listeners
         setupButtonListeners()
     }
 
+    private fun setupObservers() {
+        viewModel.uploadStatus.observe(this) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    progressDialog.show()
+                }
+                is Resource.Success -> {
+                    progressDialog.dismiss()
+                    Log.d("ImageResultActivity", "ML API Response: ${resource.data}")
+                }
+                is Resource.Error -> {
+                    progressDialog.dismiss()
+                    Toast.makeText(this, "Error: ${resource.message}", Toast.LENGTH_LONG).show()
+                    Log.e("ImageResultActivity", "Upload error: ${resource.message}")
+                }
+            }
+        }
+
+        viewModel.patientWithMlResult.observe(this) { updatedPatient ->
+            // When we have the updated patient data with ML result, continue to ResultActivity
+            val intent = Intent(this, ResultActivity::class.java).apply {
+                putExtra(KEY_IMAGE_URI, updatedPatient.imageUri)
+                putExtra("PATIENT_DATA", updatedPatient)
+            }
+            startActivity(intent)
+        }
+    }
 
     @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
@@ -97,30 +124,6 @@ class ImageResultActivity : AppCompatActivity() {
         }
     }
 
-
-//    private fun setupButtonListeners() {
-//        // Retry button - go back to camera
-//        binding.btnRetry.setOnClickListener {
-//            val intent = Intent(this, CameraActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }
-//
-//        // Next button - continue to analysis
-//        binding.btnNext.setOnClickListener {
-//            viewModel.imageUri.value?.let { uri ->
-//                // Navigate to the next screen with the image
-//                val intent = Intent(this, ResultActivity::class.java).apply {
-//                    putExtra(KEY_IMAGE_URI, uri.toString())
-//                }
-//                startActivity(intent)
-//            } ?: run {
-//                Toast.makeText(this, "Tidak dapat memproses gambar", Toast.LENGTH_SHORT).show()
-//            }
-//        }
-//    }
-
-    // Di ImageResultActivity.kt
     private fun setupButtonListeners() {
         // Retry button - go back to camera with patientData
         binding.btnRetry.setOnClickListener {
@@ -135,22 +138,17 @@ class ImageResultActivity : AppCompatActivity() {
             finish()
         }
 
-        // Next button - continue to analysis
+        // Next button - upload image to ML API and then continue to analysis
         binding.btnNext.setOnClickListener {
-            viewModel.imageUri.value?.let { uri ->
-                // Dapatkan patientData untuk diteruskan ke ResultActivity
-                val patientData = intent.getParcelableExtra<PatientDTO>("PATIENT_DATA")
-
-                val intent = Intent(this, ResultActivity::class.java).apply {
-                    putExtra(KEY_IMAGE_URI, uri.toString())
-                    putExtra("PATIENT_DATA", patientData)
-                }
-                startActivity(intent)
+            patientData?.let { patient ->
+                // Upload the image and process the ML result
+                viewModel.uploadImageAndProcessResult(this, patient)
             } ?: run {
-                Toast.makeText(this, "Tidak dapat memproses gambar", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Data pasien tidak tersedia", Toast.LENGTH_SHORT).show()
             }
         }
     }
+
     companion object {
         const val KEY_IMAGE_URI = "key_image_uri"
     }

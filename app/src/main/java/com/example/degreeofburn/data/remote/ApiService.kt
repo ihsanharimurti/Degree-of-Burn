@@ -8,19 +8,25 @@ import com.example.degreeofburn.data.model.response.OtpResponse
 import com.example.degreeofburn.data.model.request.PatientRequest
 import com.example.degreeofburn.data.model.response.PatientPostResponse
 import com.example.degreeofburn.data.model.request.RegisterRequest
+import com.example.degreeofburn.data.model.request.RekamMedisRequest
 import com.example.degreeofburn.data.model.request.UpdateUserRequest
 import com.example.degreeofburn.data.model.response.ChangePasswordResponse
+import com.example.degreeofburn.data.model.response.MLResponse
 import com.example.degreeofburn.data.model.response.MedicalRecordResponse
 import com.example.degreeofburn.data.model.response.PatientCountResponse
 import com.example.degreeofburn.data.model.response.PatientResponse
 import com.example.degreeofburn.data.model.response.RegisterResponse
+import com.example.degreeofburn.data.model.response.RekamMedisResponse
 import com.example.degreeofburn.data.model.response.UpdateUserResponse
 import com.example.degreeofburn.data.model.response.UserDetailResponse
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -36,6 +42,9 @@ interface ApiService {
 
     @POST("pasien")
     suspend fun createPatient(@Body patientRequest: PatientRequest): Response<PatientPostResponse>
+
+    @POST("rekammedis")
+    suspend fun createRekamMedis(@Body rekammedisRequest: RekamMedisRequest): Response<RekamMedisResponse>
 
 
     @GET("pasien/count/user")
@@ -60,6 +69,13 @@ interface ApiService {
 
     @GET("rekammedis")
     suspend fun getAllMedicalRecords(): Response<List<MedicalRecordResponse>>
+
+    @Multipart
+    @POST("predict") // Make sure this endpoint matches what your API expects
+    suspend fun uploadImage(
+        @Part file: MultipartBody.Part // Changed from "image" to "file" - this should match what the server expects
+    ): Response<MLResponse>
+
 }
 
 
