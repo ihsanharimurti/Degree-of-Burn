@@ -89,6 +89,7 @@ class ImageResultActivity : AppCompatActivity() {
                 putExtra(KEY_IMAGE_URI, updatedPatient.imageUri)
                 putExtra("PATIENT_DATA", updatedPatient)
             }
+            Log.d("TempPatientDataML", updatedPatient.toString())
             startActivity(intent)
         }
     }
@@ -134,6 +135,7 @@ class ImageResultActivity : AppCompatActivity() {
                 // Mengirim kembali patientData ke CameraActivity
                 putExtra("PATIENT_DATA", patientData)
             }
+
             startActivity(intent)
             finish()
         }

@@ -16,7 +16,7 @@ import com.example.degreeofburn.data.model.response.MedicalRecordResponse
 import com.example.degreeofburn.data.model.response.PatientCountResponse
 import com.example.degreeofburn.data.model.response.PatientResponse
 import com.example.degreeofburn.data.model.response.RegisterResponse
-import com.example.degreeofburn.data.model.response.RekamMedisResponse
+import com.example.degreeofburn.data.model.response.RekamMedisPostResponse
 import com.example.degreeofburn.data.model.response.UpdateUserResponse
 import com.example.degreeofburn.data.model.response.UserDetailResponse
 import okhttp3.MultipartBody
@@ -44,7 +44,7 @@ interface ApiService {
     suspend fun createPatient(@Body patientRequest: PatientRequest): Response<PatientPostResponse>
 
     @POST("rekammedis")
-    suspend fun createRekamMedis(@Body rekammedisRequest: RekamMedisRequest): Response<RekamMedisResponse>
+    suspend fun createRekamMedis(@Body rekammedisRequest: RekamMedisRequest): Response<RekamMedisPostResponse>
 
 
     @GET("pasien/count/user")

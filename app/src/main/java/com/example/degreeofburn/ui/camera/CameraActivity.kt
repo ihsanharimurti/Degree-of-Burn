@@ -137,32 +137,34 @@ class CameraActivity : AppCompatActivity() {
         Log.d("TempPatientData", patientData.toString())
     }
 
-
     private fun takePhoto() {
         val imageCapture = imageCapture ?: return
 
-        // Create a timestamped file
-        val photoFile = File(
-            outputDirectory,
-            SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(System.currentTimeMillis()) + ".jpg"
-        )
+        // Wait until layout is stable before capturing
+        binding.root.post {
+            // Create a timestamped file
+            val photoFile = File(
+                outputDirectory,
+                SimpleDateFormat(FILENAME_FORMAT, Locale.US).format(System.currentTimeMillis()) + ".jpg"
+            )
 
-        val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
+            val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile).build()
 
-        imageCapture.takePicture(
-            outputOptions,
-            ContextCompat.getMainExecutor(this),
-            object : ImageCapture.OnImageSavedCallback {
-                override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                    // We need to crop the taken photo to match the center square preview
-                    cropCapturedImage(photoFile)
+            imageCapture.takePicture(
+                outputOptions,
+                ContextCompat.getMainExecutor(this),
+                object : ImageCapture.OnImageSavedCallback {
+                    override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                        // We need to crop the taken photo to match the center square preview
+                        cropCapturedImage(photoFile)
+                    }
+
+                    override fun onError(exception: ImageCaptureException) {
+                        viewModel.onCaptureFailed(exception.message ?: "Unknown error")
+                    }
                 }
-
-                override fun onError(exception: ImageCaptureException) {
-                    viewModel.onCaptureFailed(exception.message ?: "Unknown error")
-                }
-            }
-        )
+            )
+        }
     }
 
     private fun cropCapturedImage(photoFile: File) {
@@ -192,52 +194,52 @@ class CameraActivity : AppCompatActivity() {
                 true
             )
 
-            // Get the preview view dimensions
-            val previewWidth = binding.centerPreviewContainer.width
-            val previewHeight = binding.centerPreviewContainer.height
-
-            // Calculate the scaling factors
-            val scaleX = rotatedBitmap.width.toFloat() / binding.fullScreenPreview.width
-            val scaleY = rotatedBitmap.height.toFloat() / binding.fullScreenPreview.height
-
-            // Get the preview hole position relative to the full screen preview
+            // Get the preview hole and preview container positions and dimensions
             val previewHoleBounds = Rect()
             binding.centerPreviewContainer.getGlobalVisibleRect(previewHoleBounds)
 
-            val fullScreenBounds = Rect()
-            binding.fullScreenPreview.getGlobalVisibleRect(fullScreenBounds)
+            val previewContainerBounds = Rect()
+            binding.fullScreenPreview.getGlobalVisibleRect(previewContainerBounds)
 
-            // Calculate the hole's position relative to the full screen
-            val holeLeftInPreview = previewHoleBounds.left - fullScreenBounds.left
-            val holeTopInPreview = previewHoleBounds.top - fullScreenBounds.top
+            // Calculate the center point of the preview hole
+            val centerX = previewHoleBounds.centerX() - previewContainerBounds.left
+            val centerY = previewHoleBounds.centerY() - previewContainerBounds.top
 
-            // Calculate the corresponding coordinates in the actual image
-            val cropLeft = (holeLeftInPreview * scaleX).toInt()
-            val cropTop = (holeTopInPreview * scaleY).toInt()
-            val cropWidth = (previewWidth * scaleX).toInt()
-            val cropHeight = (previewHeight * scaleY).toInt()
+            // Calculate the ratio of the preview hole to the preview container
+            val relativeX = centerX.toFloat() / previewContainerBounds.width()
+            val relativeY = centerY.toFloat() / previewContainerBounds.height()
+
+            // Calculate zoom factor - adjust this value to increase/decrease zoom level
+            val zoomFactor = 0.4f // Lower value = more zoom
+
+            // Calculate the crop width and height with zoom applied
+            val cropWidth = (rotatedBitmap.width * zoomFactor).toInt()
+            val cropHeight = (rotatedBitmap.height * zoomFactor).toInt()
+
+            // Calculate the top-left corner of the crop area, centered around the relative position
+            val cropLeft = (rotatedBitmap.width * relativeX - cropWidth / 2).toInt()
+            val cropTop = (rotatedBitmap.height * relativeY - cropHeight / 2).toInt()
 
             // Make sure the crop bounds are within the image dimensions
-            val safeLeft = cropLeft.coerceIn(0, rotatedBitmap.width - 1)
-            val safeTop = cropTop.coerceIn(0, rotatedBitmap.height - 1)
-            val safeWidth = cropWidth.coerceAtMost(rotatedBitmap.width - safeLeft)
-            val safeHeight = cropHeight.coerceAtMost(rotatedBitmap.height - safeTop)
+            val safeLeft = cropLeft.coerceIn(0, rotatedBitmap.width - cropWidth)
+            val safeTop = cropTop.coerceIn(0, rotatedBitmap.height - cropHeight)
 
             // Log the values for debugging
             Log.d("CameraActivity", "Original bitmap: ${fullBitmap.width}x${fullBitmap.height}")
             Log.d("CameraActivity", "Rotated bitmap: ${rotatedBitmap.width}x${rotatedBitmap.height}")
-            Log.d("CameraActivity", "Preview size: ${binding.fullScreenPreview.width}x${binding.fullScreenPreview.height}")
-            Log.d("CameraActivity", "Preview hole: ${previewWidth}x${previewHeight} at $holeLeftInPreview,$holeTopInPreview")
+            Log.d("CameraActivity", "Preview container: ${previewContainerBounds.width()}x${previewContainerBounds.height()}")
+            Log.d("CameraActivity", "Preview hole: ${previewHoleBounds.width()}x${previewHoleBounds.height()}")
+            Log.d("CameraActivity", "Relative position: $relativeX,$relativeY")
             Log.d("CameraActivity", "Crop dimensions: $cropLeft,$cropTop,$cropWidth,$cropHeight")
-            Log.d("CameraActivity", "Safe crop: $safeLeft,$safeTop,$safeWidth,$safeHeight")
+            Log.d("CameraActivity", "Safe crop: $safeLeft,$safeTop,$cropWidth,$cropHeight")
 
-            // Crop the bitmap to match the preview hole
+            // Crop the bitmap
             val croppedBitmap = Bitmap.createBitmap(
                 rotatedBitmap,
                 safeLeft,
                 safeTop,
-                safeWidth,
-                safeHeight
+                cropWidth,
+                cropHeight
             )
 
             // Save the cropped bitmap back to the file
