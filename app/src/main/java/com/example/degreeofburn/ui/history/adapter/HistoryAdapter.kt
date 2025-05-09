@@ -13,9 +13,10 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
 
     fun setHistoryList(historyList: List<HistoryModel>) {
         this.historyList.clear()
-        this.historyList.addAll(historyList)
+        this.historyList.addAll(historyList.sortedByDescending { it.id })
         notifyDataSetChanged()
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
         val binding = HistoryCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)

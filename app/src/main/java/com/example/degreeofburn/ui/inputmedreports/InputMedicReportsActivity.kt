@@ -50,32 +50,6 @@ class InputMedicReportsActivity : AppCompatActivity() {
         observeViewModel()
     }
 
-//    private fun setupAutoCompletePatients() {
-//        // Nonaktifkan input keyboard pada AutoCompleteTextView
-//        binding.inputPatientName.apply {
-//            isFocusable = true
-//            isFocusableInTouchMode = true
-//            isCursorVisible = false
-//            keyListener = null  // Prevent typing but allow focus
-//
-//            // Handle click to show dropdown
-//            setOnClickListener {
-//                if (text.isNotEmpty()) {
-//                    setText("")  // Clear text to reset selection state
-//                    selectedPatient = null  // Reset selected patient
-//                }
-//                showDropDown()
-//            }
-//
-//            // Set listener saat item dipilih
-//            onItemClickListener = AdapterView.OnItemClickListener { parent, _, position, _ ->
-//                val selectedItem = parent.getItemAtPosition(position) as PatientResponse
-//                selectedPatient = selectedItem
-//                setText(selectedItem.nama)
-//                Log.d("PatientSelected", "ID: ${selectedItem.idPasien}, Name: ${selectedItem.nama}, Weight: ${selectedItem.beratBadan}")
-//            }
-//        }
-//    }
 
     private fun setupAutoCompletePatients() {
         // Disable standard AutoComplete behavior
@@ -173,33 +147,6 @@ class InputMedicReportsActivity : AppCompatActivity() {
         }
     }
 
-//    private fun setupPatientAdapter(patients: List<PatientResponse>) {
-//        // Custom adapter untuk menampilkan nama pasien di dropdown
-//        val adapter = object : ArrayAdapter<PatientResponse>(
-//            this,
-//            android.R.layout.simple_dropdown_item_1line,
-//            patients
-//        ) {
-//            override fun getItemId(position: Int): Long {
-//                return patients[position].idPasien.toLong()
-//            }
-//
-//            override fun getItem(position: Int): PatientResponse {
-//                return patients[position]
-//            }
-//
-//            override fun getView(position: Int, convertView: android.view.View?, parent: android.view.ViewGroup): android.view.View {
-//                val view = super.getView(position, convertView, parent)
-//                val patient = getItem(position)
-//                val textView = view as android.widget.TextView
-//                textView.text = patient.nama
-//                return view
-//            }
-//        }
-//
-//        binding.inputPatientName.setAdapter(adapter)
-//    }
-
     private fun setupPatientAdapter(patients: List<PatientResponse>) {
         // Gunakan custom adapter
         val adapter = PatientAdapter(
@@ -228,6 +175,7 @@ class InputMedicReportsActivity : AppCompatActivity() {
                 val patientDTO = PatientDTO(
                     name = selectedPatient?.nama ?: "",
                     patientId = selectedPatient?.idPasien ?: 0,
+                    age= selectedPatient?.usia ?: 0,
                     weight = selectedPatient?.beratBadan ?: "",
                     selectedBodyParts = ArrayList(selectedBodyParts)
                 )

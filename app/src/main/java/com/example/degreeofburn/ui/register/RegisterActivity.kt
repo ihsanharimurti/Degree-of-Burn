@@ -1,8 +1,12 @@
 package com.example.degreeofburn.ui.register
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -19,6 +23,8 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
     private lateinit var viewModel: RegisterViewModel
+    private var isPasswordVisible = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +34,7 @@ class RegisterActivity : AppCompatActivity() {
         setupViewModel()
         setupClickListeners()
         observeViewModel()
+        setupPasswordToggle()
     }
 
     private fun setupViewModel() {
@@ -43,8 +50,9 @@ class RegisterActivity : AppCompatActivity() {
             val phone = binding.inputPhoneReg.text.toString().trim()
             val password = binding.inputPasswordReg.text.toString()
             val confirmPassword = binding.inputConfirmPass.text.toString()
+            val checkBox = binding.tvEULA
 
-            viewModel.registerDoctor(name, email, phone, password, confirmPassword)
+            viewModel.registerDoctor(name, email, phone, password, confirmPassword, checkBox)
         }
     }
 
@@ -52,14 +60,15 @@ class RegisterActivity : AppCompatActivity() {
         viewModel.registrationState.observe(this) { state ->
             when (state) {
                 is RegisterViewModel.RegistrationState.Loading -> {
-                    // Show loading indicator
-                    // You might want to disable the button or show a progress bar
+                    showLoading(true)
                 }
                 is RegisterViewModel.RegistrationState.Success -> {
+                    showLoading(false)
                     Toast.makeText(this, state.message, Toast.LENGTH_SHORT).show()
                     showOtpVerificationDialog()
                 }
                 is RegisterViewModel.RegistrationState.Error -> {
+                    showLoading(false)
                     Toast.makeText(this, state.message, Toast.LENGTH_LONG).show()
                 }
             }
@@ -68,21 +77,88 @@ class RegisterActivity : AppCompatActivity() {
         viewModel.otpState.observe(this) { state ->
             when (state) {
                 is RegisterViewModel.OtpState.Loading -> {
-                    // Show loading for OTP verification
+                    showLoading(true)
                 }
                 is RegisterViewModel.OtpState.Success -> {
+                    showLoading(false)
                     Toast.makeText(this, state.message, Toast.LENGTH_SHORT).show()
                     // Navigate to main app screen after successful verification
                     startActivity(Intent(this, LandingActivity::class.java))
                     finish()
                 }
                 is RegisterViewModel.OtpState.Error -> {
+                    showLoading(false)
                     Toast.makeText(this, state.message, Toast.LENGTH_LONG).show()
                 }
             }
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setupPasswordToggle() {
+        // Set initial state (password hidden)
+        binding.inputPasswordReg.transformationMethod = PasswordTransformationMethod.getInstance()
+        binding.inputPasswordReg.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye, 0)
+        binding.inputConfirmPass.transformationMethod = PasswordTransformationMethod.getInstance()
+        binding.inputConfirmPass.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye, 0)
+
+        // Set click listener dengan area yang lebih besar
+        binding.inputPasswordReg.setOnTouchListener { _, event ->
+            // Perluas area klik menjadi 48dp dari ujung kanan
+            val touchAreaWidthInPixels = (48 * resources.displayMetrics.density).toInt()
+
+            // Check if the touch was in the expanded touch area
+            if (event.action == android.view.MotionEvent.ACTION_UP) {
+                if (event.rawX >= (binding.inputPasswordReg.right - touchAreaWidthInPixels)) {
+                    // Toggle password visibility
+                    isPasswordVisible = !isPasswordVisible
+
+                    if (isPasswordVisible) {
+                        // Show password
+                        binding.inputPasswordReg.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                        binding.inputPasswordReg.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_open, 0)
+                    } else {
+                        // Hide password
+                        binding.inputPasswordReg.transformationMethod = PasswordTransformationMethod.getInstance()
+                        binding.inputPasswordReg.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye, 0)
+                    }
+
+                    // Maintain cursor position
+                    binding.inputPasswordReg.setSelection(binding.inputPasswordReg.text.length)
+                    return@setOnTouchListener true
+                }
+            }
+            return@setOnTouchListener false
+        }
+
+        binding.inputConfirmPass.setOnTouchListener { _, event ->
+            // Perluas area klik menjadi 48dp dari ujung kanan
+            val touchAreaWidthInPixels = (48 * resources.displayMetrics.density).toInt()
+
+            // Check if the touch was in the expanded touch area
+            if (event.action == android.view.MotionEvent.ACTION_UP) {
+                if (event.rawX >= (binding.inputConfirmPass.right - touchAreaWidthInPixels)) {
+                    // Toggle password visibility
+                    isPasswordVisible = !isPasswordVisible
+
+                    if (isPasswordVisible) {
+                        // Show password
+                        binding.inputConfirmPass.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                        binding.inputConfirmPass.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_open, 0)
+                    } else {
+                        // Hide password
+                        binding.inputConfirmPass.transformationMethod = PasswordTransformationMethod.getInstance()
+                        binding.inputConfirmPass.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye, 0)
+                    }
+
+                    // Maintain cursor position
+                    binding.inputConfirmPass.setSelection(binding.inputConfirmPass.text.length)
+                    return@setOnTouchListener true
+                }
+            }
+            return@setOnTouchListener false
+        }
+    }
     private fun showOtpVerificationDialog() {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_otp_verification, null)
         val otpEditText = dialogView.findViewById<EditText>(R.id.etOtp)
@@ -100,6 +176,12 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun showLoading(isLoading: Boolean) {
-        // Implement loading indicator
+        if (isLoading) {
+            binding.loadingOverlay.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.loadingOverlay.visibility = View.GONE
+            binding.progressBar.visibility = View.GONE
+        }
     }
 }

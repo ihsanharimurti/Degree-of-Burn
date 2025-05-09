@@ -1,6 +1,7 @@
 package com.example.degreeofburn.ui.register
 
 import android.util.Patterns
+import android.widget.CheckBox
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,8 +21,8 @@ class RegisterViewModel(private val repository: AuthRepository) : ViewModel() {
     // Store the registration token for OTP verification
     private var registrationToken: String? = null
 
-    fun registerDoctor(name: String, email: String, phone: String, password: String, confirmPassword: String) {
-        if (!validateRegistrationInput(name, email, phone, password, confirmPassword)) {
+    fun registerDoctor(name: String, email: String, phone: String, password: String, confirmPassword: String, checkBox: CheckBox) {
+        if (!validateRegistrationInput(name, email, phone, password, confirmPassword, checkBox)) {
             return
         }
 
@@ -75,7 +76,8 @@ class RegisterViewModel(private val repository: AuthRepository) : ViewModel() {
         email: String,
         phone: String,
         password: String,
-        confirmPassword: String
+        confirmPassword: String,
+        checkBox: CheckBox
     ): Boolean {
         if (name.isBlank() || email.isBlank() || phone.isBlank() || password.isBlank()) {
             _registrationState.value = RegistrationState.Error("All fields are required")
@@ -89,6 +91,11 @@ class RegisterViewModel(private val repository: AuthRepository) : ViewModel() {
 
         if (password != confirmPassword) {
             _registrationState.value = RegistrationState.Error("Passwords do not match")
+            return false
+        }
+
+        if (!checkBox.isChecked){
+            _registrationState.value = RegistrationState.Error("Harap Centang Persyaratan dan Ketentuan")
             return false
         }
 

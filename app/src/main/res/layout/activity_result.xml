@@ -90,7 +90,7 @@
 
 
         <TextView
-            android:id="@+id/textView24"
+            android:id="@+id/tvDisOfficerResult"
             style="@style/Txt115Lato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView36"
+            android:id="@+id/tvOfficerResult"
             style="@style/Txt115LatoBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -111,28 +111,28 @@
             android:gravity="end"
             android:text="Siva Maharani"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="@+id/textView24"
+            app:layout_constraintEnd_toEndOf="@+id/tvDisOfficerResult"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView24" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDisOfficerResult" />
 
         <TextView
-            android:id="@+id/textView26"
+            android:id="@+id/tvDisDateResult"
             style="@style/Txt115Lato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:text="Tanggal Tindakan"
             android:textColor="@color/blue_start"
-            app:layout_constraintBottom_toTopOf="@+id/textView37"
-            app:layout_constraintEnd_toEndOf="@+id/textView24"
+            app:layout_constraintBottom_toTopOf="@+id/tvDateResult"
+            app:layout_constraintEnd_toEndOf="@+id/tvDisOfficerResult"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView36"
+            app:layout_constraintTop_toBottomOf="@+id/tvOfficerResult"
             app:layout_constraintVertical_bias="1.0" />
 
         <TextView
-            android:id="@+id/textView37"
+            android:id="@+id/tvDateResult"
             style="@style/Txt115LatoBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
             android:text="18/01/2024"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/textView26" />
+            app:layout_constraintEnd_toEndOf="@+id/tvDisDateResult" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -154,11 +154,11 @@
         tools:layout_editor_absoluteX="0dp">
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/tvDisNameResult"
             style="@style/Txt18LatoBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nama : %s"
+            android:text="Nama :"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -168,58 +168,174 @@
             app:layout_constraintVertical_bias="0.181" />
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/tvNameResult"
+            style="@style/Txt18LatoBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="......................."
+            android:layout_marginStart="4dp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDisNameResult"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvDisNameResult"
+            app:layout_constraintTop_toTopOf="@+id/tvDisNameResult"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvDisWeightResult"
             style="@style/Txt115Lato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Berat Badan : %s"
+            android:text="Berat Badan :"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView20"
-            app:layout_constraintTop_toBottomOf="@+id/textView20"
+            app:layout_constraintStart_toStartOf="@+id/tvDisNameResult"
+            app:layout_constraintTop_toBottomOf="@+id/tvDisNameResult"
             app:layout_constraintVertical_bias="0.172" />
 
         <TextView
-            android:id="@+id/textView21"
+            android:id="@+id/tvWeightResult"
             style="@style/Txt115Lato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tinggi Badan : %s"
+            android:text="....."
+            android:layout_marginStart="4dp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDisWeightResult"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvDisWeightResult"
+            app:layout_constraintTop_toTopOf="@+id/tvDisWeightResult"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvKg"
+            style="@style/Txt115Lato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kg"
+            android:layout_marginStart="2dp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDisWeightResult"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvWeightResult"
+            app:layout_constraintTop_toTopOf="@+id/tvDisWeightResult"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvDisHeightResult"
+            style="@style/Txt115Lato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tinggi Badan :"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.674"
-            app:layout_constraintStart_toEndOf="@+id/textView19"
-            app:layout_constraintTop_toTopOf="@+id/textView19" />
+            app:layout_constraintStart_toEndOf="@+id/tvDisWeightResult"
+            app:layout_constraintTop_toTopOf="@+id/tvDisWeightResult" />
 
         <TextView
-            android:id="@+id/textView22"
+            android:id="@+id/tvHeightResult"
+            style="@style/Txt115Lato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="....."
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvDisHeightResult"
+            app:layout_constraintTop_toTopOf="@+id/tvDisHeightResult" />
+
+        <TextView
+            android:id="@+id/tvCm"
+            style="@style/Txt115Lato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="cm"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvHeightResult"
+            app:layout_constraintTop_toTopOf="@+id/tvHeightResult" />
+
+        <TextView
+            android:id="@+id/tvDisAgeResult"
             style="@style/Txt115Lato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Umur : %s"
+            android:text="Umur :"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView19"
-            app:layout_constraintTop_toBottomOf="@+id/textView19"
+            app:layout_constraintStart_toStartOf="@+id/tvDisWeightResult"
+            app:layout_constraintTop_toBottomOf="@+id/tvDisWeightResult"
             app:layout_constraintVertical_bias="0.384" />
 
         <TextView
-            android:id="@+id/textView23"
+            android:id="@+id/tvAgeResult"
+            style="@style/Txt115Lato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Golongan Darah : %s"
+            android:text="....."
+            android:layout_marginStart="4dp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDisAgeResult"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvDisAgeResult"
+            app:layout_constraintTop_toTopOf="@+id/tvDisAgeResult"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvTahun"
+            style="@style/Txt115Lato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tahun"
+            android:layout_marginStart="2dp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDisAgeResult"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvAgeResult"
+            app:layout_constraintTop_toTopOf="@+id/tvDisAgeResult"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvDisBloodResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Golongan Darah :"
             style="@style/Txt115Lato"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView21"
-            app:layout_constraintTop_toTopOf="@+id/textView22"
+            app:layout_constraintStart_toStartOf="@+id/tvDisHeightResult"
+            app:layout_constraintTop_toTopOf="@+id/tvDisAgeResult"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvBloodResult"
+            style="@style/Txt115Lato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="....."
+            android:layout_marginStart="4dp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDisBloodResult"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvDisBloodResult"
+            app:layout_constraintTop_toTopOf="@+id/tvDisBloodResult"
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -248,7 +364,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/textView27"
+                    android:id="@+id/tvDisTypeResult"
                     style="@style/Txt18LatoBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -270,7 +386,7 @@
                     android:textColor="@color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView27" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvDisTypeResult" />
 
                 <ImageView
                     android:id="@+id/imageView"
@@ -284,7 +400,7 @@
                     app:layout_constraintVertical_bias="0.046" />
 
                 <TextView
-                    android:id="@+id/textView29"
+                    android:id="@+id/tvDisPercenResult"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -296,7 +412,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
                 <TextView
-                    android:id="@+id/textView30"
+                    android:id="@+id/tvPercentResult"
                     style="@style/Txt48PoppinsBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -307,7 +423,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.504"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView29" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvDisPercenResult" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
@@ -323,7 +439,7 @@
 
 
                 <TextView
-                    android:id="@+id/textView31"
+                    android:id="@+id/tvDisWaterResult"
                     style="@style/Txt18LatoBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -337,7 +453,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView32"
+                    android:id="@+id/tvWaterResult"
                     style="@style/Txt48PoppinsBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -349,7 +465,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.453"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView31"
+                    app:layout_constraintTop_toBottomOf="@+id/tvDisWaterResult"
                     app:layout_constraintVertical_bias="0.271" />
 
                 <ImageView
@@ -360,7 +476,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView32"
+                    app:layout_constraintTop_toBottomOf="@+id/tvWaterResult"
                     app:layout_constraintVertical_bias="0.6" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -368,7 +484,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView25"
+        android:id="@+id/tvMessage"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -393,7 +509,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView25"
+        app:layout_constraintTop_toBottomOf="@+id/tvMessage"
         app:layout_constraintVertical_bias="0.666">
 
         <ImageButton

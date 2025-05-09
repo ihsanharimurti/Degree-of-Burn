@@ -1,4 +1,3 @@
-// File: app/src/main/java/com/example/degreeofburn/ui/imageprev/ImageResultActivity.kt
 package com.example.degreeofburn.ui.imageprev
 
 import android.annotation.SuppressLint
@@ -27,6 +26,7 @@ class ImageResultActivity : AppCompatActivity() {
     private val viewModel: ImageResultViewModel by viewModels()
     private var patientData: PatientDTO? = null
     private lateinit var progressDialog: ProgressDialog
+    private var mlProcessingComplete = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,13 +66,16 @@ class ImageResultActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
+        // Observe ML image processing status
         viewModel.uploadStatus.observe(this) { resource ->
             when (resource) {
                 is Resource.Loading -> {
+                    progressDialog.setMessage("Memproses gambar...")
                     progressDialog.show()
                 }
                 is Resource.Success -> {
-                    progressDialog.dismiss()
+                    // Don't dismiss progress dialog yet, as we'll continue with rekam medis upload
+                    mlProcessingComplete = true
                     Log.d("ImageResultActivity", "ML API Response: ${resource.data}")
                 }
                 is Resource.Error -> {
@@ -83,14 +86,47 @@ class ImageResultActivity : AppCompatActivity() {
             }
         }
 
+        // Observe updated patient data with ML result
         viewModel.patientWithMlResult.observe(this) { updatedPatient ->
-            // When we have the updated patient data with ML result, continue to ResultActivity
-            val intent = Intent(this, ResultActivity::class.java).apply {
-                putExtra(KEY_IMAGE_URI, updatedPatient.imageUri)
-                putExtra("PATIENT_DATA", updatedPatient)
-            }
             Log.d("TempPatientDataML", updatedPatient.toString())
-            startActivity(intent)
+
+            // Store updated patient data
+            patientData = updatedPatient
+
+            // Continue to upload rekam medis data
+            viewModel.uploadRekamMedis(this, updatedPatient)
+        }
+
+        // Observe rekam medis upload status
+        viewModel.rekamMedisUploadStatus.observe(this) { resource ->
+            when (resource) {
+                is Resource.Loading -> {
+                    progressDialog.setMessage("Menyimpan data rekam medis...")
+                    if (!progressDialog.isShowing) {
+                        progressDialog.show()
+                    }
+                }
+                is Resource.Success -> {
+                    progressDialog.dismiss()
+                    Log.d("ImageResultActivity", "Rekam Medis uploaded successfully: ${resource.data}")
+
+                    // Continue to ResultActivity with the updated patient data
+                    patientData?.let { patient ->
+                        val intent = Intent(this, ResultActivity::class.java).apply {
+                            putExtra(KEY_IMAGE_URI, patient.imageUri)
+                            putExtra("PATIENT_DATA", patient)
+                            // Include ID rekam medis from response
+                            resource.data?.let { putExtra("ID_REKAM_MEDIS", it.idRekamMedis) }
+                        }
+                        startActivity(intent)
+                    }
+                }
+                is Resource.Error -> {
+                    progressDialog.dismiss()
+                    Toast.makeText(this, "Error menyimpan data: ${resource.message}", Toast.LENGTH_LONG).show()
+                    Log.e("ImageResultActivity", "Rekam medis upload error: ${resource.message}")
+                }
+            }
         }
     }
 
@@ -143,8 +179,10 @@ class ImageResultActivity : AppCompatActivity() {
         // Next button - upload image to ML API and then continue to analysis
         binding.btnNext.setOnClickListener {
             patientData?.let { patient ->
-                // Upload the image and process the ML result
-                viewModel.uploadImageAndProcessResult(this, patient)
+                // Start with ML image processing
+                if (!mlProcessingComplete) {
+                    viewModel.uploadImageAndProcessResult(this, patient)
+                }
             } ?: run {
                 Toast.makeText(this, "Data pasien tidak tersedia", Toast.LENGTH_SHORT).show()
             }

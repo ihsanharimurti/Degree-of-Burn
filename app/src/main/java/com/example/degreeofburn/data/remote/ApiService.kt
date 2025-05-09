@@ -20,6 +20,7 @@ import com.example.degreeofburn.data.model.response.RekamMedisPostResponse
 import com.example.degreeofburn.data.model.response.UpdateUserResponse
 import com.example.degreeofburn.data.model.response.UserDetailResponse
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -42,9 +43,6 @@ interface ApiService {
 
     @POST("pasien")
     suspend fun createPatient(@Body patientRequest: PatientRequest): Response<PatientPostResponse>
-
-    @POST("rekammedis")
-    suspend fun createRekamMedis(@Body rekammedisRequest: RekamMedisRequest): Response<RekamMedisPostResponse>
 
 
     @GET("pasien/count/user")
@@ -76,6 +74,18 @@ interface ApiService {
         @Part file: MultipartBody.Part // Changed from "image" to "file" - this should match what the server expects
     ): Response<MLResponse>
 
+
+    @Multipart
+    @POST("rekammedis")
+    suspend fun uploadRekamMedis(
+        @Part("id_pasien") idPasien: RequestBody,
+        @Part("tanggal") tanggal: RequestBody,
+        @Part("diagnosa") diagnosa: RequestBody,
+        @Part imageLuka: MultipartBody.Part,
+        @Part("luas_luka") luasLuka: RequestBody,
+        @Part("derajat_luka") derajatLuka: RequestBody,
+        @Part("kebutuhan_cairan") kebutuhanCairan: RequestBody
+    ): RekamMedisPostResponse
 }
 
 

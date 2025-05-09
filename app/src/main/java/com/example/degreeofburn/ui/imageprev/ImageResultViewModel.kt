@@ -1,4 +1,3 @@
-// File: app/src/main/java/com/example/degreeofburn/ui/imageprev/ImageResultViewModel.kt
 package com.example.degreeofburn.ui.imageprev
 
 import android.content.Context
@@ -10,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.degreeofburn.data.model.PatientDTO
 import com.example.degreeofburn.data.model.response.MLResponse
+import com.example.degreeofburn.data.model.response.RekamMedisPostResponse
 import com.example.degreeofburn.data.repository.ImageRepository
 import com.example.degreeofburn.utils.Resource
 import kotlinx.coroutines.launch
@@ -26,6 +26,9 @@ class ImageResultViewModel : ViewModel() {
 
     private val _patientWithMlResult = MutableLiveData<PatientDTO>()
     val patientWithMlResult: LiveData<PatientDTO> = _patientWithMlResult
+
+    private val _rekamMedisUploadStatus = MutableLiveData<Resource<RekamMedisPostResponse>>()
+    val rekamMedisUploadStatus: LiveData<Resource<RekamMedisPostResponse>> = _rekamMedisUploadStatus
 
     fun setImageUri(uri: Uri) {
         _imageUri.value = uri
@@ -48,7 +51,7 @@ class ImageResultViewModel : ViewModel() {
                             _patientWithMlResult.postValue(updatedPatient)
 
                             Log.d("ImageResultViewModel", "ML processing successful: Class ID = ${mlResponse.classId}")
-                            Log.d("ImageResultViewModel", "ML processing successful: Class ID = ${mlResponse.confidence}")
+                            Log.d("ImageResultViewModel", "ML processing successful: Confidence = ${mlResponse.confidence}")
                         }
                     }
                     is Resource.Error -> {
@@ -56,6 +59,26 @@ class ImageResultViewModel : ViewModel() {
                     }
                     is Resource.Loading -> {
                         Log.d("ImageResultViewModel", "Upload in progress...")
+                    }
+                }
+            }
+        }
+    }
+
+    fun uploadRekamMedis(context: Context, patientData: PatientDTO) {
+        viewModelScope.launch {
+            imageRepository.uploadRekamMedis(context, patientData).collect { result ->
+                _rekamMedisUploadStatus.postValue(result)
+
+                when (result) {
+                    is Resource.Success -> {
+                        Log.d("ImageResultViewModel", "Rekam medis upload successful: ${result.data}")
+                    }
+                    is Resource.Error -> {
+                        Log.e("ImageResultViewModel", "Rekam medis upload failed: ${result.message}")
+                    }
+                    is Resource.Loading -> {
+                        Log.d("ImageResultViewModel", "Rekam medis upload in progress...")
                     }
                 }
             }
