@@ -1,7 +1,10 @@
 package com.example.degreeofburn.ui.landing
 
+import android.content.Intent
 import android.graphics.LinearGradient
 import android.graphics.Shader
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -12,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.degreeofburn.R
 import com.example.degreeofburn.databinding.ActivityLandingBinding
 import com.example.degreeofburn.ui.login.LoginFragment
+import com.example.degreeofburn.ui.nointernet.NoInternetActivity
 
 class LandingActivity : AppCompatActivity() {
 
@@ -19,6 +23,9 @@ class LandingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
         setContentView(binding.root)
 
 
@@ -82,6 +89,9 @@ class LandingActivity : AppCompatActivity() {
 //        }
 //
 //    }
+
+
+
 
     private fun showBottomSheet() {
         val bottomSheet = LoginFragment()

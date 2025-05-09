@@ -90,9 +90,10 @@
             android:textColor="@color/abu_abu_landing"
             android:background="@drawable/bg_edittext"
             android:hint="@string/email_no_hp"
+            android:textColorHint="@color/abu_abu_landing"
             android:inputType="textEmailAddress"
             android:padding="10dp"
-            android:textAppearance="@style/Txt115Lato"
+            android:textAppearance="@style/Txt115AbuLatoReg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvEmailLogin" />
@@ -127,8 +128,9 @@
             android:drawableEnd="@drawable/ic_eye_open"
             android:textColor="@color/abu_abu_landing"
             android:inputType="textPassword"
+            android:textColorHint="@color/abu_abu_landing"
             android:padding="10dp"
-            android:textAppearance="@style/Txt115Lato"
+            android:textAppearance="@style/Txt115AbuLatoReg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvPasswordReg" />

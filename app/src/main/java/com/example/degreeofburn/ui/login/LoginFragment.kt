@@ -1,5 +1,6 @@
 package com.example.degreeofburn.ui.login
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -192,6 +193,7 @@ class LoginFragment : BottomSheetDialogFragment() {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupPasswordToggle() {
         // Set initial state (password hidden)
         binding.inputPasswordReg.transformationMethod = PasswordTransformationMethod.getInstance()

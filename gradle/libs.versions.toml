@@ -29,6 +29,7 @@ lifecycleViewmodelKtx = "2.8.2"
 roomCompiler = "2.5.0"
 roomKtx = "2.6.0"
 roomRuntime = "2.6.0"
+swiperefreshlayout = "1.1.0"
 
 [libraries]
 android-image-cropper = { module = "com.theartofdev.edmodo:android-image-cropper", version.ref = "androidImageCropper" }
@@ -63,6 +64,7 @@ camera-view = { module = "androidx.camera:camera-view", version.ref = "cameraxVe
 androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "converterGson" }
+androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
