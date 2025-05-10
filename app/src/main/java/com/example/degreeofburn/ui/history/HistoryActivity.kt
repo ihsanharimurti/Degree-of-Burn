@@ -1,5 +1,7 @@
 package com.example.degreeofburn.ui.history
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.degreeofburn.R
 import com.example.degreeofburn.databinding.ActivityHistoryBinding
 import com.example.degreeofburn.ui.history.adapter.HistoryAdapter
+import com.example.degreeofburn.ui.home.MainActivity
 import com.example.degreeofburn.utils.Resource
 
 class HistoryActivity : AppCompatActivity() {
@@ -28,9 +31,16 @@ class HistoryActivity : AppCompatActivity() {
         observeData()
     }
 
+    @SuppressLint("MissingSuperCall")
+    override fun onBackPressed() {
+        // Alih-alih perilaku default, pindah ke MainActivity
+        navigateToMainActivity()
+    }
+
+
     private fun setupUI() {
         binding.btnBackHistory.setOnClickListener {
-            finish()
+            navigateToMainActivity()
         }
     }
 
@@ -99,5 +109,12 @@ class HistoryActivity : AppCompatActivity() {
             binding.loadingOverlay.visibility = View.GONE
             binding.progressBar.visibility = View.GONE
         }
+    }
+
+    private fun navigateToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
+        finish()
     }
 }

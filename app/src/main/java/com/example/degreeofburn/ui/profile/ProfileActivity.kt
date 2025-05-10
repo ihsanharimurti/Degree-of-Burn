@@ -1,5 +1,6 @@
 package com.example.degreeofburn.ui.profile
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -32,6 +33,20 @@ class ProfileActivity : AppCompatActivity() {
         observeViewModel()
         loadData()
     }
+
+    @SuppressLint("MissingSuperCall")
+    override fun onBackPressed() {
+        // Alih-alih perilaku default, pindah ke MainActivity
+        navigateToMainActivity()
+    }
+
+    private fun navigateToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+        startActivity(intent)
+        finish()
+    }
+
 
     private fun setupViewModel() {
         val repository = HomeRepository(this)
@@ -92,7 +107,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun setupClickListeners() {
         binding.btnBackProfile.setOnClickListener {
-            finish()
+            navigateToMainActivity()
         }
 
         binding.btnEditProfile.setOnClickListener {

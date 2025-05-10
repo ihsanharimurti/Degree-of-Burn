@@ -1,11 +1,13 @@
 package com.example.degreeofburn.ui.history.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.degreeofburn.data.model.HistoryModel
 import com.example.degreeofburn.databinding.HistoryCardBinding
+import com.example.degreeofburn.ui.result.ResultActivity
 
 class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() {
 
@@ -42,6 +44,10 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder>() 
                     "ID Rekam Medis: ${history.id}",
                     Toast.LENGTH_SHORT
                 ).show()
+                val intent = Intent(itemView.context, ResultActivity::class.java).apply {
+                    putExtra("ID_REKAM_MEDIS", history.id)
+                }
+                itemView.context.startActivity(intent)
             }
         }
     }

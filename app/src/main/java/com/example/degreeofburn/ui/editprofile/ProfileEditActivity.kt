@@ -1,5 +1,6 @@
 package com.example.degreeofburn.ui.editprofile
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -65,6 +66,7 @@ class ProfileEditActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupPasswordVisibilityToggles() {
         // Set up old password visibility toggle
 // Di dalam setupPasswordVisibilityToggles()

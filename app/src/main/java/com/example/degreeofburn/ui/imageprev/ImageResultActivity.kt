@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide
 import com.example.degreeofburn.R
 import com.example.degreeofburn.data.model.PatientDTO
 import com.example.degreeofburn.databinding.ActivityImageResultBinding
-import com.example.degreeofburn.ui.ResultActivity
+import com.example.degreeofburn.ui.result.ResultActivity
 import com.example.degreeofburn.ui.camera.CameraActivity
 import com.example.degreeofburn.ui.home.MainActivity
 import com.example.degreeofburn.utils.Resource
@@ -119,6 +119,7 @@ class ImageResultActivity : AppCompatActivity() {
                             resource.data?.let { putExtra("ID_REKAM_MEDIS", it.idRekamMedis) }
                         }
                         startActivity(intent)
+                        finish()
                     }
                 }
                 is Resource.Error -> {

@@ -43,7 +43,7 @@ class HistoryViewModel(application: Application) : AndroidViewModel(application)
     // Extension function to convert MedicalHistoryModel to HistoryModel
     private fun MedicalHistoryModel.toHistoryModel(): HistoryModel {
         return HistoryModel(
-            id = this.idRekamMedis.toString(),
+            id = this.idRekamMedis,
             patientName = this.patientName,
             officerName = this.officerName,
             actionDate = this.actionDate
@@ -51,40 +51,40 @@ class HistoryViewModel(application: Application) : AndroidViewModel(application)
     }
 
     // For testing without API
-    fun loadDummyData() {
-        val dummyData = listOf(
-            HistoryModel(
-                id = "1",
-                patientName = "Ahmad Setiawan",
-                officerName = "dr. Budi Santoso",
-                actionDate = "25/04/2025"
-            ),
-            HistoryModel(
-                id = "2",
-                patientName = "Siti Rahayu",
-                officerName = "dr. Ani Wijaya",
-                actionDate = "24/04/2025"
-            ),
-            HistoryModel(
-                id = "3",
-                patientName = "Doni Kurniawan",
-                officerName = "dr. Linda Susanti",
-                actionDate = "23/04/2025"
-            ),
-            HistoryModel(
-                id = "4",
-                patientName = "Maya Putri",
-                officerName = "dr. Rini Agustina",
-                actionDate = "22/04/2025"
-            ),
-            HistoryModel(
-                id = "5",
-                patientName = "Rudi Hermawan",
-                officerName = "dr. Hadi Prasetyo",
-                actionDate = "21/04/2025"
-            )
-        )
+//    fun loadDummyData() {
+//        val dummyData = listOf(
+//            HistoryModel(
+//                id = "1",
+//                patientName = "Ahmad Setiawan",
+//                officerName = "dr. Budi Santoso",
+//                actionDate = "25/04/2025"
+//            ),
+//            HistoryModel(
+//                id = "2",
+//                patientName = "Siti Rahayu",
+//                officerName = "dr. Ani Wijaya",
+//                actionDate = "24/04/2025"
+//            ),
+//            HistoryModel(
+//                id = "3",
+//                patientName = "Doni Kurniawan",
+//                officerName = "dr. Linda Susanti",
+//                actionDate = "23/04/2025"
+//            ),
+//            HistoryModel(
+//                id = "4",
+//                patientName = "Maya Putri",
+//                officerName = "dr. Rini Agustina",
+//                actionDate = "22/04/2025"
+//            ),
+//            HistoryModel(
+//                id = "5",
+//                patientName = "Rudi Hermawan",
+//                officerName = "dr. Hadi Prasetyo",
+//                actionDate = "21/04/2025"
+//            )
+//        )
 
-        _historyItems.value = Resource.Success(dummyData)
-    }
+//        _historyItems.value = Resource.Success(dummyData)
+//    }
 }
