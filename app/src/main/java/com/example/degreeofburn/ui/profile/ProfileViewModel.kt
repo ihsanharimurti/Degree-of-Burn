@@ -53,19 +53,4 @@ class ProfileViewModel(
         }
     }
 
-    fun fetchTotalPatientCount() {
-        viewModelScope.launch {
-            Log.d("HomeViewModel", "Fetching total patient count")
-            _patientCount.value = Resource.Loading()
-
-            try {
-                val result = repository.getTotalPatientCount()
-                _patientCount.value = result
-            } catch (e: Exception) {
-                Log.e("HomeViewModel", "Error fetching total patient count: ${e.message}", e)
-                _patientCount.value = Resource.Error("Error: ${e.message}")
-            }
-        }
-    }
-
 }

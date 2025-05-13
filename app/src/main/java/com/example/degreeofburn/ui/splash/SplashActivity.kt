@@ -22,10 +22,11 @@ class SplashActivity : AppCompatActivity() {
     private val binding by lazy { ActivitySplashBinding.inflate(layoutInflater) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
+        overridePendingTransition(300, 0)
 
         // Pastikan aplikasi tema sudah digunakan sebelum setContentView
-        setTheme(R.style.AppTheme)
         setContentView(binding.root)
 
         supportActionBar?.hide()

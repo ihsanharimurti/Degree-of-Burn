@@ -18,6 +18,9 @@ class HistoryViewModel(application: Application) : AndroidViewModel(application)
     private val _historyItems = MutableLiveData<Resource<List<HistoryModel>>>()
     val historyItems: LiveData<Resource<List<HistoryModel>>> = _historyItems
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     init {
         loadHistoryData()
     }
@@ -37,6 +40,17 @@ class HistoryViewModel(application: Application) : AndroidViewModel(application)
                 is Resource.Error -> Resource.Error(result.message ?: "Unknown error", null)
                 is Resource.Loading -> Resource.Loading()
             }
+        }
+    }
+
+    fun loadMoreItems() {
+        _isLoading.value = true
+        // In a real implementation, you would call the repository with pagination parameters
+        // For now, we'll just simulate the loading state
+        viewModelScope.launch {
+            // Simulate network delay
+            kotlinx.coroutines.delay(1000)
+            _isLoading.value = false
         }
     }
 

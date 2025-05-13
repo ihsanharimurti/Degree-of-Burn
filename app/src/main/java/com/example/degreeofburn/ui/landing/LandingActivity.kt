@@ -1,5 +1,7 @@
 package com.example.degreeofburn.ui.landing
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.graphics.LinearGradient
 import android.graphics.Shader
@@ -22,29 +24,31 @@ class LandingActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityLandingBinding.inflate(layoutInflater) }
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
         setContentView(binding.root)
 
-        val desctv =binding.tvDescLanding
+        overridePendingTransition(0, 0)
+
+        // Set justification mode for description text
+        val desctv = binding.tvDescLanding
+        val titletv= binding.tvTitleLandingReg
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            titletv.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
             desctv.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
         }
 
+        // Set fullscreen mode
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            // Untuk Android 11 (API 30) ke atas
+            // For Android 11 (API 30) and above
             window.setDecorFitsSystemWindows(false)
             window.insetsController?.let {
                 it.hide(WindowInsets.Type.statusBars() or WindowInsets.Type.navigationBars())
                 it.systemBarsBehavior = WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
             }
         } else {
-            // Untuk Android 10 (API 29) ke bawah
+            // For Android 10 (API 29) and below
             @Suppress("DEPRECATION")
             window.decorView.systemUiVisibility = (
                     View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
@@ -52,57 +56,113 @@ class LandingActivity : AppCompatActivity() {
                             or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                     )
         }
-        // Ambil TextView dari layout
-        val textView: TextView = findViewById(R.id.tvTitleLandingReg)
 
-        // Terapkan LinearGradient pada teks
+        // Apply LinearGradient to the title text
+        val textView: TextView = findViewById(R.id.tvTitleLandingReg)
         val textShader = LinearGradient(
             0f, 0f, 0f, textView.textSize * 3,
             intArrayOf(
-                getColor(R.color.blue_start), // Warna awal
-                getColor(R.color.blue_end)   // Warna akhir
+                getColor(R.color.blue_start), // Start color
+                getColor(R.color.blue_end)   // End color
             ),
             null,
             Shader.TileMode.CLAMP
         )
         textView.paint.shader = textShader
 
-        binding.btnNextLanding.setOnClickListener{
+        // Set click listener for the next button
+        binding.btnNextLanding.setOnClickListener {
             showBottomSheet()
         }
 
+        // Initialize UI elements with 0 alpha to prepare for animation
+        setupInitialVisibility()
 
-        // Tombol Selanjutnya
-//        val openBottomSheet : Button = findViewById(R.id.buttonNext)
-//        openBottomSheet.setOnClickListener  {
-//            val bottomSheet =
-//                LoginFragment()
-//            bottomSheet.show(
-//                supportFragmentManager,
-//                "ModalBottomSheet"
-//            )
-//        }
-
-
+        // Play animations
+        playAnimation()
     }
 
-//    private fun showBottomSheet() {
-//        val sheetDialog=BottomSheetDialog(this, R.style.BottomSheetTransparent)
-//        val  sheetBinding = FragmentLoginBinding.inflate(layoutInflater)
-//        sheetDialog.apply {
-//
-//            setContentView(sheetBinding.root)
-//            show()
-//        }
-//
-//    }
+    private fun setupInitialVisibility() {
+        // Set initial alpha to 0 for all animated elements
+        binding.decorativeCross.alpha = 0f
+        binding.decorativeStethoscope.alpha = 0f
+        binding.imageDoctor.alpha = 0f
+        binding.tvTitleLandingReg.alpha = 0f
+        binding.horizontalLine.alpha = 0f
+        binding.tvDescLanding.alpha = 0f
+        binding.btnNextLanding.alpha = 0f
+    }
 
+    private fun playAnimation() {
+        // Floating animation for doctor image
+        ObjectAnimator.ofFloat(binding.imageDoctor, View.TRANSLATION_Y, -15f, 15f).apply {
+            duration = 6000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+            start()
+        }
 
+        // Floating animation for cross
+        ObjectAnimator.ofFloat(binding.decorativeCross, View.TRANSLATION_X, -10f, 10f).apply {
+            duration = 5000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+            start()
+        }
 
+        // Floating animation for stethoscope
+        ObjectAnimator.ofFloat(binding.decorativeStethoscope, View.TRANSLATION_X, 10f, -10f).apply {
+            duration = 7000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+            start()
+        }
+
+        // Create fade-in animations for all elements
+        val crossFade = ObjectAnimator.ofFloat(binding.decorativeCross, View.ALPHA, 0f, 1f).setDuration(500)
+        val stethoscopeFade = ObjectAnimator.ofFloat(binding.decorativeStethoscope, View.ALPHA, 0f, 1f).setDuration(500)
+        val doctorFade = ObjectAnimator.ofFloat(binding.imageDoctor, View.ALPHA, 0f, 1f).setDuration(800)
+        val titleFade = ObjectAnimator.ofFloat(binding.tvTitleLandingReg, View.ALPHA, 0f, 1f).setDuration(500)
+        val lineFade = ObjectAnimator.ofFloat(binding.horizontalLine, View.ALPHA, 0f, 1f).setDuration(500)
+        val descFade = ObjectAnimator.ofFloat(binding.tvDescLanding, View.ALPHA, 0f, 1f).setDuration(500)
+        val buttonFade = ObjectAnimator.ofFloat(binding.btnNextLanding, View.ALPHA, 0f, 1f).setDuration(500)
+
+        // Create sequential animation set
+        AnimatorSet().apply {
+            playSequentially(
+                crossFade,
+                stethoscopeFade,
+                doctorFade,
+                titleFade,
+                lineFade,
+                descFade,
+                buttonFade
+            )
+            startDelay = 300
+        }.start()
+
+        // Add button scale animation
+        val scaleX = ObjectAnimator.ofFloat(binding.btnNextLanding, View.SCALE_X, 0.95f, 1.05f).apply {
+            duration = 1000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }
+
+        val scaleY = ObjectAnimator.ofFloat(binding.btnNextLanding, View.SCALE_Y, 0.95f, 1.05f).apply {
+            duration = 1000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }
+
+        // Start button scale animation with a delay
+        AnimatorSet().apply {
+            playTogether(scaleX, scaleY)
+            startDelay = 3000 // Start after other animations have played
+        }.start()
+    }
 
     private fun showBottomSheet() {
         val bottomSheet = LoginFragment()
         bottomSheet.show(supportFragmentManager, "LoginFragment")
     }
-
 }

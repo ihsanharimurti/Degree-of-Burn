@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -112,6 +113,7 @@ class InputMedicReportsActivity : AppCompatActivity() {
     private fun observeViewModel() {
         // Observer untuk status loading
         viewModel.isLoading.observe(this) { isLoading ->
+            showLoading(isLoading)
             // Handle loading state if needed
             // For example, show/hide progress bar
         }
@@ -156,6 +158,41 @@ class InputMedicReportsActivity : AppCompatActivity() {
         }
     }
 
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            // Show loading overlay and progress bar
+            binding.loadingOverlay.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.VISIBLE
+
+            // Disable all interactive elements
+            binding.btnArm.isEnabled = false
+            binding.btnBackInput.isEnabled = false
+            binding.btnInputNext.isEnabled = false
+            binding.btnHead.isEnabled = false
+            binding.btnLeg.isEnabled = false
+            binding.btnGenital.isEnabled = false
+            binding.btnPalm.isEnabled = false
+            binding.btnTorso.isEnabled = false
+
+            // Bring the overlay and progress bar to the front
+            binding.loadingOverlay.bringToFront()
+            binding.progressBar.bringToFront()
+        } else {
+            // Hide loading overlay and progress bar
+            binding.loadingOverlay.visibility = View.GONE
+            binding.progressBar.visibility = View.GONE
+
+            // Re-enable all interactive elements
+            binding.btnArm.isEnabled = true
+            binding.btnBackInput.isEnabled = true
+            binding.btnInputNext.isEnabled = true
+            binding.btnHead.isEnabled = true
+            binding.btnLeg.isEnabled = true
+            binding.btnGenital.isEnabled = true
+            binding.btnPalm.isEnabled = true
+            binding.btnTorso.isEnabled = true
+        }
+    }
     private fun setupPatientAdapter(patients: List<PatientResponse>) {
         // Gunakan custom adapter
         val adapter = PatientAdapter(

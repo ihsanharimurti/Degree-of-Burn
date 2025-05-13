@@ -45,7 +45,7 @@
     <TextView
         android:id="@+id/tvTitleLandingReg"
         style="@style/TextBigBlueStyle"
-        android:layout_width="wrap_content"
+        android:layout_width="255dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
         android:lineSpacingExtra="4dp"
@@ -85,7 +85,7 @@
     <Button
         android:id="@+id/btnNextLanding"
         android:layout_width="255dp"
-        android:layout_height="30dp"
+        android:layout_height="45dp"
 
         android:background="@drawable/bg_button_darkblue"
         android:backgroundTint="#004AAD"

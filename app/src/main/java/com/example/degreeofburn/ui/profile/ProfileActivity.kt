@@ -65,14 +65,15 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun observeViewModel() {
         // Observer untuk status loading
-
+        viewModel.isLoading.observe(this) { isLoading ->
+            showLoading(isLoading)
+        }
 
         // Observer untuk detail pengguna
         viewModel.userDetail.observe(this) { resource ->
             when (resource) {
                 is Resource.Loading -> {
-                    // Jangan mengubah teks yang sudah ada ke "..."
-                    // Tunggu sampai data tersedia
+                    // Loading handled by isLoading observer
                 }
                 is Resource.Success -> {
                     resource.data?.let { userDetail ->
@@ -91,8 +92,7 @@ class ProfileActivity : AppCompatActivity() {
         viewModel.patientCount.observe(this) { resource ->
             when (resource) {
                 is Resource.Loading -> {
-                    // Jangan mengubah teks yang sudah ada ke "..."
-                    // Tunggu sampai data tersedia
+                    // Loading handled by isLoading observer
                 }
                 is Resource.Success -> {
                     resource.data?.let { response ->
@@ -106,6 +106,32 @@ class ProfileActivity : AppCompatActivity() {
                 }
                 else -> {}
             }
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            // Show loading overlay and progress bar
+            binding.loadingOverlay.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.VISIBLE
+
+            // Disable all interactive elements
+            binding.btnBackProfile.isEnabled = false
+            binding.btnEditProfile.isEnabled = false
+            binding.btnLogout.isEnabled = false
+
+            // Bring the overlay and progress bar to the front
+            binding.loadingOverlay.bringToFront()
+            binding.progressBar.bringToFront()
+        } else {
+            // Hide loading overlay and progress bar
+            binding.loadingOverlay.visibility = View.GONE
+            binding.progressBar.visibility = View.GONE
+
+            // Re-enable all interactive elements
+            binding.btnBackProfile.isEnabled = true
+            binding.btnEditProfile.isEnabled = true
+            binding.btnLogout.isEnabled = true
         }
     }
 

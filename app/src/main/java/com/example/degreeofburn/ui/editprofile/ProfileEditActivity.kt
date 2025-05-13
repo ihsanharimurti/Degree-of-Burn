@@ -307,11 +307,25 @@ class ProfileEditActivity : AppCompatActivity() {
     // Show or hide loading overlay
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
+            // Show loading overlay and progress bar
             binding.loadingOverlay.visibility = View.VISIBLE
             binding.progressBar.visibility = View.VISIBLE
+
+            // Disable all interactive elements
+            binding.btnSave.isEnabled = false
+            binding.btnBackEditProfile.isEnabled = false
+
+            // Bring the overlay and progress bar to the front
+            binding.loadingOverlay.bringToFront()
+            binding.progressBar.bringToFront()
         } else {
+            // Hide loading overlay and progress bar
             binding.loadingOverlay.visibility = View.GONE
             binding.progressBar.visibility = View.GONE
+
+            // Re-enable all interactive elements
+            binding.btnSave.isEnabled = true
+            binding.btnBackEditProfile.isEnabled = true
         }
     }
 }
