@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.example.degreeofburn.data.model.ResultModel
 import com.example.degreeofburn.databinding.ActivityResultBinding
 import com.example.degreeofburn.ui.history.HistoryActivity
@@ -136,7 +135,7 @@ class ResultActivity : AppCompatActivity() {
         // Fluid requirement
         binding.tvWaterResult.text = "${result.kebutuhanCairan}\nML"
 
-        binding.btnImagePreview.setOnClickListener {
+        val toimageclickListener = View.OnClickListener {
             val imageUri = result.gambarLuka
             if (imageUri.isNotEmpty()) {
                 try {
@@ -148,6 +147,9 @@ class ResultActivity : AppCompatActivity() {
                 }
             }
         }
+
+        binding.btnImagePreview.setOnClickListener(toimageclickListener)
+        binding.tvGambarLuka.setOnClickListener(toimageclickListener)
 
         // If you have image loading functionality
         // You can implement it here using Glide or similar library

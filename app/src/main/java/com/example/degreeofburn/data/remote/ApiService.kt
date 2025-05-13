@@ -17,6 +17,7 @@ import com.example.degreeofburn.data.model.response.PatientCountResponse
 import com.example.degreeofburn.data.model.response.PatientResponse
 import com.example.degreeofburn.data.model.response.RegisterResponse
 import com.example.degreeofburn.data.model.response.RekamMedisPostResponse
+import com.example.degreeofburn.data.model.response.ServerConnectionResponse
 import com.example.degreeofburn.data.model.response.UpdateUserResponse
 import com.example.degreeofburn.data.model.response.UserDetailResponse
 import okhttp3.MultipartBody
@@ -72,8 +73,10 @@ interface ApiService {
     @POST("predict") // Make sure this endpoint matches what your API expects
     suspend fun uploadImage(
         @Part file: MultipartBody.Part // Changed from "image" to "file" - this should match what the server expects
-    ): Response<MLResponse>
+    ): Response<List<MLResponse>>
 
+    @GET("health")
+    suspend fun tryServerConnection() : Response<List<ServerConnectionResponse>>
 
     @Multipart
     @POST("rekammedis")

@@ -21,6 +21,9 @@ import com.example.degreeofburn.ui.camera.CameraActivity
 import com.example.degreeofburn.ui.home.MainActivity
 import com.example.degreeofburn.ui.inputpatients.adapter.PatientAdapter
 import com.example.degreeofburn.utils.Resource
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class InputMedicReportsActivity : AppCompatActivity() {
 
@@ -47,6 +50,7 @@ class InputMedicReportsActivity : AppCompatActivity() {
         setupAutoCompletePatients()
         setupBodyPartButtons()
         setupNextButton()
+        setupDate()
         observeViewModel()
     }
 
@@ -64,6 +68,11 @@ class InputMedicReportsActivity : AppCompatActivity() {
             // Create and show a dialog with patient list instead
             showPatientSelectionDialog()
         }
+    }
+
+    private fun setupDate() {
+        val currentDate = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
+        binding.tvDate.text = currentDate
     }
 
     private fun showPatientSelectionDialog() {

@@ -30,7 +30,7 @@ class ImageRepository {
     private val TAG = "ImageRepository"
     private val apiService = RetrofitClient.mlApiService
 
-    fun uploadImage(context: Context, imageUri: Uri): Flow<Resource<MLResponse>> = flow {
+    fun uploadImage(context: Context, imageUri: Uri): Flow<Resource<List<MLResponse>>> = flow {
         emit(Resource.Loading())
 
         try {
@@ -243,7 +243,7 @@ class ImageRepository {
             val bodyPartValue = when (bodyPart) {
                 "Kepala" -> if (isUnderNine) 18 else 9
                 "Dada-Perut/Punggung" -> 18
-                "Lengan" -> if (isUnderNine) 9 else 1
+                "Lengan" -> 9
                 "Genital" -> 18
                 "Kaki" -> if (isUnderNine) 14 else 18
                 "Telapak Tangan" -> 1

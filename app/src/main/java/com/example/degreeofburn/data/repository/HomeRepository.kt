@@ -3,14 +3,18 @@ package com.example.degreeofburn.data.repository
 import android.content.Context
 import com.example.degreeofburn.data.model.response.PatientCountResponse
 import com.example.degreeofburn.data.model.response.PatientResponse
+import com.example.degreeofburn.data.model.response.ServerConnectionResponse
 import com.example.degreeofburn.data.model.response.UserDetailResponse
 import com.example.degreeofburn.data.remote.ApiClient
+import com.example.degreeofburn.data.remote.RetrofitClient
 import com.example.degreeofburn.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class HomeRepository(private val context: Context) {
     private val apiService = ApiClient.getAuthenticatedClient(context)
+    private val apiServiceML = RetrofitClient.mlApiService
+
 
     suspend fun getTodayPatientCount(): Resource<PatientCountResponse> {
         return withContext(Dispatchers.IO) {
@@ -80,4 +84,28 @@ class HomeRepository(private val context: Context) {
             Resource.Error(e.message ?: "Terjadi kesalahan tidak diketahui")
         }
     }
+
+    suspend fun tryServerConnection(): Resource<List<ServerConnectionResponse>> {
+        return withContext(Dispatchers.IO) {
+            try {
+                val response = apiServiceML.tryServerConnection()
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        return@withContext Resource.Success(it)
+                    }
+                }
+                return@withContext Resource.Error("Gagal terhubung ke server: ${response.message()}")
+            } catch (e: Exception) {
+                return@withContext Resource.Error("Terjadi kesalahan: ${e.message}")
+            }
+        }
+    }
+
+
+
+
 }
+
+
+
+

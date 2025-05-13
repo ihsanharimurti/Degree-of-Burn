@@ -3,6 +3,7 @@ package com.example.degreeofburn.ui.landing
 import android.content.Intent
 import android.graphics.LinearGradient
 import android.graphics.Shader
+import android.graphics.text.LineBreaker
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -21,6 +22,8 @@ class LandingActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityLandingBinding.inflate(layoutInflater) }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,6 +31,10 @@ class LandingActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        val desctv =binding.tvDescLanding
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            desctv.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             // Untuk Android 11 (API 30) ke atas

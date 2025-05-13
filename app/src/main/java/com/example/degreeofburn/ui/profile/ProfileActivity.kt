@@ -2,12 +2,16 @@ package com.example.degreeofburn.ui.profile
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import com.example.degreeofburn.R
 import com.example.degreeofburn.databinding.ActivityProfileBinding
 import com.example.degreeofburn.data.repository.HomeRepository
 import com.example.degreeofburn.ui.editprofile.ProfileEditActivity
@@ -116,12 +120,35 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         binding.btnLogout.setOnClickListener {
-            sessionManager.clearSession()
-            Toast.makeText(this, "Anda Telah Logout", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, LandingActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            finish()
+
+            val dialog = AlertDialog.Builder(this, R.style.CustomAlertDialog)
+                .setMessage("Apakah Anda yakin ingin logout?")
+                .setPositiveButton("Ya") { _, _ ->
+                    sessionManager.clearSession()
+                    val intent = Intent(this, LandingActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    finish()
+                    Toast.makeText(this, "Anda Telah Logout", Toast.LENGTH_SHORT).show()
+                }
+                .setNegativeButton("Batal", null)
+                .create()
+
+            // Set custom background
+            dialog.window?.setBackgroundDrawableResource(R.drawable.custom_dialog_background)
+
+            // Show the dialog
+            dialog.show()
+
+            // Style the buttons
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).apply {
+                setTextColor(ContextCompat.getColor(context, R.color.blue_start))
+                setTypeface(typeface, Typeface.BOLD)
+            }
+
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).apply {
+                setTextColor(ContextCompat.getColor(context, R.color.red_logout))
+            }
         }
     }
 

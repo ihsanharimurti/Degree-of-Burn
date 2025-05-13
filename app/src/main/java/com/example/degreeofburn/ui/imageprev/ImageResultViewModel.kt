@@ -21,8 +21,9 @@ class ImageResultViewModel : ViewModel() {
     private val _imageUri = MutableLiveData<Uri>()
     val imageUri: LiveData<Uri> = _imageUri
 
-    private val _uploadStatus = MutableLiveData<Resource<MLResponse>>()
-    val uploadStatus: LiveData<Resource<MLResponse>> = _uploadStatus
+    // Update the type to match the repository response
+    private val _uploadStatus = MutableLiveData<Resource<List<MLResponse>>>()
+    val uploadStatus: LiveData<Resource<List<MLResponse>>> = _uploadStatus
 
     private val _patientWithMlResult = MutableLiveData<PatientDTO>()
     val patientWithMlResult: LiveData<PatientDTO> = _patientWithMlResult
@@ -43,15 +44,22 @@ class ImageResultViewModel : ViewModel() {
 
                 when (result) {
                     is Resource.Success -> {
-                        result.data?.let { mlResponse ->
-                            // Create a new PatientDTO with the ML result
-                            val updatedPatient = patientData.copy(
-                                classId = mlResponse.classId
-                            )
-                            _patientWithMlResult.postValue(updatedPatient)
+                        result.data?.let { mlResponses ->
+                            // Now we're handling a list of MLResponse, so let's take the first one
+                            // or handle the list as needed
+                            val mlResponse = mlResponses.firstOrNull()
+                            mlResponse?.let {
+                                // Create a new PatientDTO with the ML result
+                                val updatedPatient = patientData.copy(
+                                    classId = it.classId
+                                )
+                                _patientWithMlResult.postValue(updatedPatient)
 
-                            Log.d("ImageResultViewModel", "ML processing successful: Class ID = ${mlResponse.classId}")
-                            Log.d("ImageResultViewModel", "ML processing successful: Confidence = ${mlResponse.confidence}")
+                                Log.d("ImageResultViewModel", "ML processing successful: Class ID = ${it.classId}")
+                                Log.d("ImageResultViewModel", "ML processing successful: Confidence = ${it.confidence}")
+                            } ?: run {
+                                Log.e("ImageResultViewModel", "ML response list is empty")
+                            }
                         }
                     }
                     is Resource.Error -> {

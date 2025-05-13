@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@drawable/bg_general_gradient_act">
 
     <!-- Dekorasi Salib Transparan -->
@@ -9,88 +11,82 @@
         android:id="@+id/decorativeCross"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentStart="true"
         android:layout_marginTop="50dp"
+        android:scaleType="fitCenter"
         android:src="@drawable/ic_cross"
-        android:scaleType="fitCenter" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Dekorasi Stetoskop -->
     <ImageView
         android:id="@+id/decorativeStethoscope"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_alignParentEnd="true"
         android:layout_marginTop="200dp"
-        android:src="@drawable/ic_stethoscope"
         android:alpha="1"
-        android:scaleType="fitCenter" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_stethoscope"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Gambar Dokter -->
     <ImageView
         android:id="@+id/imageDoctor"
         android:layout_width="165dp"
         android:layout_height="350dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="85dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/ic_doctor" />
+        android:src="@drawable/ic_doctor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Judul -->
-
-    <!-- Garis Horizontal -->
     <TextView
         android:id="@+id/tvTitleLandingReg"
+        style="@style/TextBigBlueStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageDoctor"
         android:layout_marginTop="21dp"
         android:lineSpacingExtra="4dp"
         android:text="@string/title_landing"
-        android:layout_marginStart="77dp"
-        android:layout_marginEnd="77dp"
         android:textAlignment="textStart"
-        style="@style/TextBigBlueStyle"
-        />
+        app:layout_constraintEnd_toEndOf="@+id/imageDoctor"
+        app:layout_constraintStart_toStartOf="@+id/imageDoctor"
+        app:layout_constraintTop_toBottomOf="@id/imageDoctor" />
 
+    <!-- Garis Horizontal -->
     <View
         android:id="@+id/horizontalLine"
-        android:layout_width="match_parent"
+        android:layout_width="255dp"
         android:layout_height="3dp"
-        android:layout_below="@id/tvTitleLandingReg"
-        android:layout_marginStart="77dp"
-        android:layout_marginEnd="77dp"
         android:layout_marginTop="8dp"
-        android:background="#004AAD" />
+        android:background="#004AAD"
+        app:layout_constraintEnd_toEndOf="@+id/tvTitleLandingReg"
+        app:layout_constraintStart_toStartOf="@+id/tvTitleLandingReg"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleLandingReg" />
 
     <!-- Deskripsi -->
     <TextView
         android:id="@+id/tvDescLanding"
-        android:layout_width="match_parent"
+        android:layout_width="255dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/horizontalLine"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="77dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="77dp"
+        android:fontFamily="@font/lato_regular"
         android:gravity="start"
         android:text="@string/subtitle_landing"
         android:textColor="@color/abu_abu_landing"
-        android:fontFamily="@font/lato_regular"
-        android:textSize="11.5sp" />
+        android:textSize="11.5sp"
+        app:layout_constraintEnd_toEndOf="@+id/horizontalLine"
+        app:layout_constraintStart_toStartOf="@+id/horizontalLine"
+        app:layout_constraintTop_toBottomOf="@id/horizontalLine" />
 
     <!-- Tombol -->
-
     <Button
         android:id="@+id/btnNextLanding"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="77dp"
-        android:layout_marginEnd="66dp"
-        android:layout_marginBottom="51dp"
+        android:layout_width="255dp"
+        android:layout_height="30dp"
+
         android:background="@drawable/bg_button_darkblue"
         android:backgroundTint="#004AAD"
         android:drawableEnd="@drawable/ic_arrow"
@@ -102,13 +98,21 @@
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:textSize="11.5sp" />
+        android:textSize="11.5sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvDescLanding"
+        app:layout_constraintStart_toStartOf="@+id/tvDescLanding"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescLanding" />
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_general_gradient_act"
         android:visibility="gone"
-        android:background="@drawable/bg_general_gradient_act" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

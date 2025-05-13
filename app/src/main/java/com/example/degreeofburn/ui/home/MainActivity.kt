@@ -140,17 +140,20 @@ class MainActivity : AppCompatActivity() {
     private fun setupClickListeners() {
         // Add Patient button
         binding.btnAddPatient.setOnClickListener {
+            viewModel.triggerServer()
             val intent = Intent(this, OptionInputActivity::class.java)
             startActivity(intent)
         }
 
         // Also make the "Click Here" text and whole right side clickable
         binding.tvClickHere.setOnClickListener {
+            viewModel.triggerServer()
             val intent = Intent(this, OptionInputActivity::class.java)
             startActivity(intent)
         }
 
         binding.kanan.setOnClickListener {
+            viewModel.triggerServer()
             val intent = Intent(this, OptionInputActivity::class.java)
             startActivity(intent)
         }

@@ -45,9 +45,9 @@ class ResultActivityViewModel(application: Application) : AndroidViewModel(appli
     // Method to determine burn degree type in Indonesian
     fun getBurnDegreeType(degree: Int): String {
         return when (degree) {
-            1 -> "TIPE I"
-            2 -> "TIPE II"
-            3 -> "TIPE III"
+            1 -> "1st"
+            2 -> "2nd"
+            3 -> "3rd"
             else -> "TIDAK DIKETAHUI"
         }
     }
