@@ -1,5 +1,6 @@
 package com.example.degreeofburn.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.degreeofburn.data.repository.HomeRepository
 import com.example.degreeofburn.databinding.ActivityMainBinding
 import com.example.degreeofburn.ui.history.HistoryActivity
-import com.example.degreeofburn.ui.input.InputActivity
 import com.example.degreeofburn.ui.optioninput.OptionInputActivity
 import com.example.degreeofburn.ui.profile.ProfileActivity
 import com.example.degreeofburn.utils.Resource
@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         observeViewModel()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun observeViewModel() {
         // Observe today's patient count
         viewModel.todayPatientCount.observe(this) { result ->

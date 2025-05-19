@@ -35,7 +35,8 @@
                 android:src="@drawable/ic_arrow_back"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/back" />
 
             <TextView
                 android:id="@+id/tvTitleHistory"
@@ -43,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="Riwayat Tindakan"
+                android:text="@string/riwayat_tindakan"
                 android:textColor="@color/blue_start"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +80,7 @@
                 android:layout_height="24dp"
                 android:layout_marginStart="12dp"
                 android:src="@android:drawable/ic_menu_search"
-                android:contentDescription="Search Icon" />
+                android:contentDescription="@string/search_icon" />
 
             <EditText
                 android:id="@+id/searchEditText"
@@ -87,12 +88,13 @@
                 android:layout_height="48dp"
                 android:layout_weight="1"
                 android:background="@android:color/transparent"
-                android:hint="Cari riwayat pasien..."
+                android:hint="@string/cari_riwayat_pasien"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:importantForAutofill="no" />
 
             <ImageButton
                 android:id="@+id/clearSearchButton"
@@ -102,7 +104,7 @@
                 android:background="@android:color/transparent"
                 android:src="@android:drawable/ic_menu_close_clear_cancel"
                 android:visibility="gone"
-                android:contentDescription="Clear Search" />
+                android:contentDescription="@string/clear_search" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

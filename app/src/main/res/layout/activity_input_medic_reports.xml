@@ -27,7 +27,8 @@
             android:layout_height="30dp"
             android:background="@null"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_arrow_back" />
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="@string/back" />
 
 
         <TextView
@@ -36,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Informasi Medis"
+            android:text="@string/informasi_medis"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="19dp" />
 
@@ -66,7 +67,7 @@
                 style="@style/TextSubMainTitleBlue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Petugas :"
+                android:text="@string/petugas2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -76,7 +77,7 @@
                 style="@style/TextSubMainTitleWhite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="....... ..............."
+                android:text="@string/titik_banyak_2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.046"
@@ -99,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:text="Tanggal"
+                    android:text="@string/tanggal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -109,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
-                    android:text="01/01/0001"
+                    android:text="@string/_01_01_0001"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView2"
@@ -127,7 +128,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Nama Pasien"
+        android:text="@string/nama_pasien"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/linearLayout4"
@@ -139,7 +140,7 @@
         android:layout_height="32dp"
         android:layout_marginTop="4dp"
         android:padding="10dp"
-        android:hint="Nama Pasien"
+        android:hint="@string/nama_pasien"
         android:dropDownHeight="wrap_content"
         android:dropDownHorizontalOffset="0dp"
         android:dropDownVerticalOffset="10dp"
@@ -175,14 +176,15 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:gravity="center"
-            android:text="Distribusi Presentase Luka Bakar" />
+            android:text="@string/distribusi_presentase_luka_bakar" />
 
         <ImageView
             android:id="@+id/imgGuide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:src="@drawable/ic_wound_distribution" />
+            android:src="@drawable/ic_wound_distribution"
+            android:contentDescription="@string/distribusi_presentase_luka_bakar" />
 
 
     </LinearLayout>
@@ -203,7 +205,7 @@
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:background="@drawable/bg_rct_btnbody"
-            android:text="Dada-Perut/\n Punggung"
+            android:text="@string/dada_perut_n_punggung"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.289"
@@ -217,7 +219,7 @@
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:background="@drawable/bg_rct_btnbody"
-            android:text="Kepala"
+            android:text="@string/kepala"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -231,7 +233,7 @@
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:background="@drawable/bg_rct_btnbody"
-            android:text="Lengan"
+            android:text="@string/lengan"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -245,7 +247,7 @@
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:background="@drawable/bg_rct_btnbody"
-            android:text="Genital"
+            android:text="@string/genital"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -259,7 +261,7 @@
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:background="@drawable/bg_rct_btnbody"
-            android:text="Kaki"
+            android:text="@string/kaki"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -273,7 +275,7 @@
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:background="@drawable/bg_rct_btnbody"
-            android:text="Telapak\nTangan"
+            android:text="@string/telapak_ntangan"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -290,7 +292,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_btn_gradient"
-        android:text="Selanjutnya"
+        android:text="@string/selanjutnya"
         android:layout_marginBottom="20dp"
         android:textAllCaps="false"
         android:textAppearance="@style/Txt115AbuLatoReg"

@@ -15,7 +15,8 @@
         android:scaleType="fitCenter"
         android:src="@drawable/ic_cross"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAccessibility="no" />
 
     <!-- Dekorasi Stetoskop -->
     <ImageView
@@ -27,7 +28,8 @@
         android:scaleType="fitCenter"
         android:src="@drawable/ic_stethoscope"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAccessibility="no" />
 
     <!-- Gambar Dokter -->
     <ImageView
@@ -39,13 +41,14 @@
         android:src="@drawable/ic_doctor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAccessibility="no" />
 
     <!-- Judul -->
     <TextView
         android:id="@+id/tvTitleLandingReg"
         style="@style/TextBigBlueStyle"
-        android:layout_width="255dp"
+        android:layout_width="260dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
         android:lineSpacingExtra="4dp"

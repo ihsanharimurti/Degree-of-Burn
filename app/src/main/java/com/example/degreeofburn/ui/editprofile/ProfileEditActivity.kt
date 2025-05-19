@@ -1,17 +1,23 @@
 package com.example.degreeofburn.ui.editprofile
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.example.degreeofburn.R
+import com.example.degreeofburn.data.model.UserDataCache
 import com.example.degreeofburn.databinding.ActivityProfileEditBinding
+import com.example.degreeofburn.ui.landing.LandingActivity
 import com.example.degreeofburn.utils.Resource
 
 class ProfileEditActivity : AppCompatActivity() {
@@ -37,6 +43,7 @@ class ProfileEditActivity : AppCompatActivity() {
         setupClickListeners()
         setupPasswordVisibilityToggles()
         setupPasswordValidation()
+        setupTextChangeListeners()
         observeViewModel()
 
         // Show loading overlay
@@ -54,6 +61,13 @@ class ProfileEditActivity : AppCompatActivity() {
         binding.inputConfirmPasswordEdit.setBackgroundResource(R.drawable.bg_edittext_greyed)
     }
 
+    private fun setupTextChangeListeners() {
+        // Add text change listeners to track changes in fields
+        binding.inputNameEdit.addTextChangedListener {}
+        binding.inputNoHPEdit.addTextChangedListener {}
+        // Old password already has a listener for validation
+    }
+
     private fun setupClickListeners() {
         // Set up back button click listener
         binding.btnBackEditProfile.setOnClickListener {
@@ -62,14 +76,47 @@ class ProfileEditActivity : AppCompatActivity() {
 
         // Set up save button click listener
         binding.btnSave.setOnClickListener {
-            saveProfileChanges()
+            val name = binding.inputNameEdit.text.toString()
+            val phone = binding.inputNoHPEdit.text.toString()
+            val oldPassword = binding.inputOldPasswordEdit.text.toString()
+
+            // Check if any data has changed
+            if (!viewModel.checkForDataChanges(name, phone, oldPassword)) {
+                // No changes detected
+                Toast.makeText(this, "Tidak ada data yang diubah", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Changes detected - show confirmation dialog
+            val dialog = AlertDialog.Builder(this, R.style.CustomAlertDialog)
+                .setMessage("Apakah Anda yakin ingin melakukan perubahan pada profil anda?")
+                .setPositiveButton("Ya") { _, _ ->
+                    saveProfileChanges()
+                }
+                .setNegativeButton("Batal", null)
+                .create()
+
+            // Set custom background
+            dialog.window?.setBackgroundDrawableResource(R.drawable.custom_dialog_background)
+
+            // Show the dialog
+            dialog.show()
+
+            // Style the buttons
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).apply {
+                setTextColor(ContextCompat.getColor(context, R.color.blue_start))
+                setTypeface(typeface, Typeface.BOLD)
+            }
+
+            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).apply {
+                setTextColor(ContextCompat.getColor(context, R.color.red_logout))
+            }
         }
     }
 
     @SuppressLint("ClickableViewAccessibility")
     private fun setupPasswordVisibilityToggles() {
         // Set up old password visibility toggle
-// Di dalam setupPasswordVisibilityToggles()
         binding.inputOldPasswordEdit.setOnTouchListener { view, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 // Perluas area klik dengan menambah offset
@@ -87,7 +134,7 @@ class ProfileEditActivity : AppCompatActivity() {
             return@setOnTouchListener false
         }
 
-// Terapkan juga ke dua field password lainnya dengan cara yang sama
+        // Terapkan juga ke dua field password lainnya dengan cara yang sama
         binding.inputNewPasswordEdit.setOnTouchListener { view, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 val drawableRight = 2
@@ -156,7 +203,7 @@ class ProfileEditActivity : AppCompatActivity() {
             when (result) {
                 is Resource.Success -> {
                     showLoading(false)
-                    Toast.makeText(this, "Profile updated successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Profil berhasil di update", Toast.LENGTH_SHORT).show()
                     // If no password change, finish activity
                     if (binding.inputOldPasswordEdit.text.toString().isEmpty()) {
                         finish()
@@ -178,6 +225,12 @@ class ProfileEditActivity : AppCompatActivity() {
                 is Resource.Success -> {
                     showLoading(false)
                     Toast.makeText(this, "Password changed successfully", Toast.LENGTH_SHORT).show()
+
+                    // Clear cache and logout after password change
+                    UserDataCache.clearCache()
+                    val intent = Intent(this, LandingActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
                     finish()
                 }
                 is Resource.Error -> {

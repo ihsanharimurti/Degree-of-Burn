@@ -16,14 +16,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAccessibility="no" />
 
     <TextView
         android:id="@+id/tvAppName"
         style="@style/Txt18PoppinsBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Degree Of Burn"
+        android:text="@string/degree_of_burn"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +37,7 @@
         style="@style/Txt115LatoBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="v1.0"
+        android:text="@string/v1_0"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/tvAppName"

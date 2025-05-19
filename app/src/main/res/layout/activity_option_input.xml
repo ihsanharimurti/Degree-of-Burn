@@ -24,14 +24,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            android:contentDescription="@string/pasien_lama" />
 
         <TextView
             android:id="@+id/tvNewPatient"
             style="@style/Txt30PoppinsBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pasien Lama"
+            android:text="@string/pasien_lama"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +47,8 @@
         android:layout_height="3dp"
         android:src="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/divider_menu" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/optionOldPatient"
@@ -64,14 +66,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            android:contentDescription="@string/pasien_baru" />
 
         <TextView
             android:id="@+id/tvOldPatient"
             style="@style/Txt30PoppinsBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pasien Baru"
+            android:text="@string/pasien_baru"
             android:textColor="@color/blue_end"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

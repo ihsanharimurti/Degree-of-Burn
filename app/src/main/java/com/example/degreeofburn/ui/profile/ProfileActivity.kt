@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.example.degreeofburn.R
+import com.example.degreeofburn.data.model.UserDataCache
 import com.example.degreeofburn.databinding.ActivityProfileBinding
 import com.example.degreeofburn.data.repository.HomeRepository
 import com.example.degreeofburn.ui.editprofile.ProfileEditActivity
@@ -35,7 +36,9 @@ class ProfileActivity : AppCompatActivity() {
         setupViewModel()
         setupClickListeners()
         observeViewModel()
-        loadData()
+
+        // Load data, akan menggunakan cache jika tersedia dan valid
+        viewModel.loadData()
     }
 
     @SuppressLint("MissingSuperCall")
@@ -51,17 +54,13 @@ class ProfileActivity : AppCompatActivity() {
         finish()
     }
 
-
     private fun setupViewModel() {
         val repository = HomeRepository(this)
         val factory = ProfileViewModelFactory(application, repository)
         viewModel = ViewModelProvider(this, factory)[ProfileViewModel::class.java]
     }
 
-    private fun loadData() {
-        viewModel.getUserDetail()
-        viewModel.getTotalPatientCount()
-    }
+
 
     private fun observeViewModel() {
         // Observer untuk status loading
@@ -112,7 +111,6 @@ class ProfileActivity : AppCompatActivity() {
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
             // Show loading overlay and progress bar
-            binding.loadingOverlay.visibility = View.VISIBLE
             binding.progressBar.visibility = View.VISIBLE
 
             // Disable all interactive elements
@@ -125,7 +123,6 @@ class ProfileActivity : AppCompatActivity() {
             binding.progressBar.bringToFront()
         } else {
             // Hide loading overlay and progress bar
-            binding.loadingOverlay.visibility = View.GONE
             binding.progressBar.visibility = View.GONE
 
             // Re-enable all interactive elements
@@ -142,14 +139,17 @@ class ProfileActivity : AppCompatActivity() {
 
         binding.btnEditProfile.setOnClickListener {
             val intent = Intent(this, ProfileEditActivity::class.java)
+            // Flag untuk mencatat bahwa kita perlu refresh data saat kembali
+            UserDataCache.setForceRefresh(true)
             startActivity(intent)
         }
 
         binding.btnLogout.setOnClickListener {
-
             val dialog = AlertDialog.Builder(this, R.style.CustomAlertDialog)
                 .setMessage("Apakah Anda yakin ingin logout?")
                 .setPositiveButton("Ya") { _, _ ->
+                    // Clear cache saat logout
+                    UserDataCache.clearCache()
                     sessionManager.clearSession()
                     val intent = Intent(this, LandingActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -180,7 +180,7 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        // Refresh data when returning from edit profile
-        loadData()
+        // Load data dengan memeriksa apakah perlu update (dari EditProfile)
+        viewModel.loadData()
     }
 }

@@ -12,7 +12,7 @@
         android:id="@+id/tvTitleImageResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Apakah Gambar Luka Sudah Tepat?"
+        android:text="@string/apakah_gambar_luka_sudah_tepat"
         android:gravity="center"
         style="@style/Txt30PoppinsBold"
         android:textColor="@color/blue_start"
@@ -42,7 +42,8 @@
             android:layout_width="220dp"
             android:layout_height="220dp"
             android:layout_gravity="center"
-            android:src="@color/abu_abu_landing" />
+            android:src="@color/abu_abu_landing"
+            android:contentDescription="@string/gambar_luka" />
     </LinearLayout>
 
     <TextView
@@ -51,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="end"
-        android:text="*Pastikan gambar menunjukkan area luka dengan jelas sebelum melanjutkan."
+        android:text="@string/pastikan_gambar_menunjukkan_area_luka_dengan_jelas_sebelum_melanjutkan"
         android:textColor="@color/blue_start"
         style="@style/Txt115Lato"
         app:layout_constraintEnd_toEndOf="@+id/linearLayoutImage"
@@ -67,7 +68,7 @@
         android:background="@drawable/bg_btn_ulang"
         android:drawableTop="@drawable/ic_cam"
         android:paddingVertical="10dp"
-        android:text="Ambil Ulang"
+        android:text="@string/ambil_ulang"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -86,7 +87,7 @@
         android:background="@drawable/bg_btn_lanjut"
         android:drawableTop="@drawable/ic_arrow_lanjut"
         android:paddingVertical="10dp"
-        android:text="Lanjutkan"
+        android:text="@string/lanjutkan"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -101,7 +102,7 @@
         android:layout_height="32dp"
         android:layout_marginTop="4dp"
         android:textColor="@color/blue_start"
-        android:text="*Jika gambar kurang jelas,\n silakan ambil ulang"
+        android:text="@string/jika_gambar_kurang_jelas_n_silakan_ambil_ulang"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btnRetry"
         app:layout_constraintHorizontal_bias="0.0"

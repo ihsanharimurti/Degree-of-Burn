@@ -18,6 +18,10 @@ class ProfileEditViewModel(application: Application) : AndroidViewModel(applicat
     private val userRepository = UserRepository(application)
     private val sessionManager = SessionManager(application)
 
+    // Store original values for comparison
+    private var originalName = ""
+    private var originalPhoneNumber = ""
+
     // LiveData for UI states
     private val _userDetailState = MutableLiveData<Resource<UserDetailResponse>>()
     val userDetailState: LiveData<Resource<UserDetailResponse>> = _userDetailState
@@ -30,13 +34,15 @@ class ProfileEditViewModel(application: Application) : AndroidViewModel(applicat
 
     // Form validation states
     private val _isFormValid = MutableLiveData<Boolean>()
-    val isFormValid: LiveData<Boolean> = _isFormValid
 
     private val _isOldPasswordCorrect = MutableLiveData<Boolean>()
     val isOldPasswordCorrect: LiveData<Boolean> = _isOldPasswordCorrect
 
     private val _isPasswordsMatch = MutableLiveData<Boolean>()
     val isPasswordsMatch: LiveData<Boolean> = _isPasswordsMatch
+
+    // State to track if any data has changed
+    private val _hasDataChanged = MutableLiveData<Boolean>()
 
     // Fetch user details
     fun getUserDetails() {
@@ -46,6 +52,14 @@ class ProfileEditViewModel(application: Application) : AndroidViewModel(applicat
             _userDetailState.value = Resource.Loading()
             val result = userRepository.getUserDetails(userId)
             _userDetailState.value = result
+
+            // Store original values when data is successfully loaded
+            if (result is Resource.Success) {
+                result.data?.let { userData ->
+                    originalName = userData.nama ?: ""
+                    originalPhoneNumber = userData.nomor_telepon ?: ""
+                }
+            }
         }
     }
 
@@ -96,5 +110,16 @@ class ProfileEditViewModel(application: Application) : AndroidViewModel(applicat
         val isValid = name.isNotEmpty() && phoneNumber.isNotEmpty()
         _isFormValid.value = isValid
         return isValid
+    }
+
+    // Check if any data has changed compared to original values
+    fun checkForDataChanges(name: String, phoneNumber: String, oldPassword: String): Boolean {
+        val nameChanged = name != originalName
+        val phoneNumberChanged = phoneNumber != originalPhoneNumber
+        val passwordChangeRequested = oldPassword.isNotEmpty()
+
+        val hasChanges = nameChanged || phoneNumberChanged || passwordChangeRequested
+        _hasDataChanged.value = hasChanges
+        return hasChanges
     }
 }

@@ -24,7 +24,8 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.339" />
+            app:layout_constraintVertical_bias="0.339"
+            android:contentDescription="@string/no_internet" />
 
         <TextView
             android:id="@+id/tvNoInternet"
@@ -32,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Internet\nTidak Terhubung"
+            android:text="@string/internet_ntidak_terhubung"
             android:textColor="@color/blue_end"
             app:layout_constraintEnd_toEndOf="@+id/icNoInternet"
             app:layout_constraintStart_toStartOf="@+id/icNoInternet"
@@ -44,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="Tarik ke Bawah Untuk Mencoba Lagi"
+            android:text="@string/tarik_ke_bawah_untuk_mencoba_lagi"
             app:layout_constraintEnd_toEndOf="@+id/tvNoInternet"
             app:layout_constraintStart_toStartOf="@+id/tvNoInternet"
             app:layout_constraintTop_toBottomOf="@+id/tvNoInternet" />

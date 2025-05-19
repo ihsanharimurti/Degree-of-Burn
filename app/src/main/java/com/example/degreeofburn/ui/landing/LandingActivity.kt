@@ -2,12 +2,9 @@ package com.example.degreeofburn.ui.landing
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.content.Intent
 import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.graphics.text.LineBreaker
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -18,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.degreeofburn.R
 import com.example.degreeofburn.databinding.ActivityLandingBinding
 import com.example.degreeofburn.ui.login.LoginFragment
-import com.example.degreeofburn.ui.nointernet.NoInternetActivity
 
 class LandingActivity : AppCompatActivity() {
 
@@ -142,23 +138,8 @@ class LandingActivity : AppCompatActivity() {
         }.start()
 
         // Add button scale animation
-        val scaleX = ObjectAnimator.ofFloat(binding.btnNextLanding, View.SCALE_X, 0.95f, 1.05f).apply {
-            duration = 1000
-            repeatCount = ObjectAnimator.INFINITE
-            repeatMode = ObjectAnimator.REVERSE
-        }
-
-        val scaleY = ObjectAnimator.ofFloat(binding.btnNextLanding, View.SCALE_Y, 0.95f, 1.05f).apply {
-            duration = 1000
-            repeatCount = ObjectAnimator.INFINITE
-            repeatMode = ObjectAnimator.REVERSE
-        }
 
         // Start button scale animation with a delay
-        AnimatorSet().apply {
-            playTogether(scaleX, scaleY)
-            startDelay = 3000 // Start after other animations have played
-        }.start()
     }
 
     private fun showBottomSheet() {
