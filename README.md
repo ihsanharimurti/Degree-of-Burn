@@ -1,7 +1,7 @@
 # Degree of Burn: Android-Based Burn Detection Application
 
 ## Overview
-**Degree of Burn** is a final year project developed by **Ihsan Harimurti**, **Bima Abizard**, and **Ratna Goeng Permadi**. This Android application facilitates easier, more accurate, and precise identification of burn injuries. It uses **Jetpack Compose** for a modern UI, integrates with **Google Cloud**, and leverages a machine learning model hosted on Google Cloud for burn detection.
+**Degree of Burn** is a final year project developed by **Ihsan Harimurti**, **Bima Abizard Nurqolbi**, and **Ratna Goeng Permadi**. This Android application facilitates easier, more accurate, and precise identification of burn injuries. It uses **Jetpack Compose** for a modern UI, integrates with **Google Cloud**, and leverages a machine learning model hosted on Google Cloud for burn detection.
 
 > ⚠️ **Important:** This application is intended as a supportive tool for preliminary burn assessment and is **not** a substitute for professional medical advice. Always consult a healthcare provider for diagnosis and treatment of burn injuries.
 
