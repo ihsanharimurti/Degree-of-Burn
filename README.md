@@ -29,7 +29,7 @@
 
 ## Contributors
 - [Ihsan Harimurti](https://github.com/ihsanharimurti)  
-- Bima Abizard  
+- Bima Abizard Nurqolbi 
 - Ratna Goeng Permadi
 
 ## License
