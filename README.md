@@ -1,7 +1,7 @@
 # Degree of Burn: Android-Based Burn Detection Application
 
 ## Overview
-**Degree of Burn** is a final year project developed by **Ihsan Harimurti**, **Bima Abizard Nurqolbi**, and **Ratna Goeng Permadi**. This Android application facilitates easier, more accurate, and precise identification of burn injuries. It uses **Jetpack Compose** for a modern UI, integrates with **Google Cloud**, and leverages a machine learning model hosted on Google Cloud for burn detection.
+**Degree of Burn** is a final year project developed by **Ihsan Harimurti**, **Bima Abizard Nurqolbi**, and **Ratna Goeng Permadi**. This Android application facilitates easier, more accurate, and precise identification of burn injuries. It uses **Android Jetpack** for a modern UI, integrates with **Google Cloud**, and leverages a machine learning model hosted on Google Cloud for burn detection.
 
 > ⚠️ **Important:** This application is intended as a supportive tool for preliminary burn assessment and is **not** a substitute for professional medical advice. Always consult a healthcare provider for diagnosis and treatment of burn injuries.
 
@@ -10,11 +10,10 @@
 - 📏 **Burn Percentage Calculation**: Estimates total body surface area (TBSA) affected.
 - 💧 **Fluid Resuscitation Recommendation**: Calculates fluid needs based on assessment.
 - 📝 **Patient Medical Records**: Stores detailed records including burn degree, TBSA, and fluid recommendations.
-- 📱 **Modern UI**: Built with Jetpack Compose for a clean and responsive experience.
 - ☁️ **Google Cloud Integration**: Uses Google Cloud for database and ML model hosting.
 
 ## Technology Stack
-- **Android**: Kotlin, Jetpack Compose  
+- **Android**: Kotlin  
 - **Machine Learning**: TensorFlow (or similar, hosted on Google Cloud)  
 - **Backend & Database**: Google Cloud Platform (Firestore, Cloud Functions, etc.)
 
@@ -32,5 +31,3 @@
 - Bima Abizard Nurqolbi 
 - Ratna Goeng Permadi
 
-## License
-This project is licensed under the [MIT License](LICENSE).
